@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.uid.smartmobilityapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_flexible_intents"
+        android:name="com.uid.smartmobilityapp.ui.my_flexible_intents.MyFlexibleIntentsFragment"
+        android:label="@string/menu_flexible_intents"
+        tools:layout="@layout/fragment_my_flexible_intents" />
+
+    <fragment
+        android:id="@+id/nav_regular_intents"
+        android:name="com.uid.smartmobilityapp.ui.my_regular_intents.MyRegularIntentsFragment"
+        android:label="@string/menu_regular_intents"
+        tools:layout="@layout/fragment_my_regular_intents" />
+
+    <fragment
+        android:id="@+id/nav_report_event"
+        android:name="com.uid.smartmobilityapp.ui.report_event.ReportEventFragment"
+        android:label="@string/menu_report_an_event"
+        tools:layout="@layout/fragment_report_event" />
+
+    <fragment
+        android:id="@+id/nav_rate_ride"
+        android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideFragment"
+        android:label="@string/menu_rate_a_ride"
+        tools:layout="@layout/fragment_rate_ride" />
+
+    <fragment
+        android:id="@+id/nav_bookmarks"
+        android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideFragment"
+        android:label="@string/menu_bookmarks"
+        tools:layout="@layout/fragment_bookmarks" />
+</navigation>
