@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">SmartMobilityApp</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_flexible_intents">My flexible intents</string>
+    <string name="menu_regular_intents">My regular intents</string>
+    <string name="menu_report_an_event">Report an Event</string>
+    <string name="menu_rate_a_ride">Rate a ride</string>
+    <string name="menu_bookmarks">Bookmarks</string>
 </resources>
