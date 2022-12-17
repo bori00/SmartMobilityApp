@@ -46,7 +46,12 @@
         <activity
             android:name=".VehicleListActivity"
             android:exported="true"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+
+        <activity
+            android:name=".ui.home.travel_now.TravelNowActivity"
+            android:exported="true"
+            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>
