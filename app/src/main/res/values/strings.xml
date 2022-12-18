@@ -16,4 +16,9 @@
     <string name="schedule_a_flexible_trip">Schedule a flexible trip</string>
     <string name="select_day">Select day</string>
     <string name="optimize">Optimize</string>
+
+    <string name="task_add_bookmark">Add bookmark</string>
+
+    <string name="missing_text">TextView</string>
+    <string name="my_bookmarks_fragment_title">My Bookmarks</string>
 </resources>

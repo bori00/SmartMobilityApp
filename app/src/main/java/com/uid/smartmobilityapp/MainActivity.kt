@@ -1,18 +1,18 @@
 package com.uid.smartmobilityapp
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import android.widget.Button
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.navigation.NavigationView
 import com.uid.smartmobilityapp.databinding.ActivityMainBinding
 import com.uid.smartmobilityapp.flexible_intent.FlexibleIntentSetupActivity
 
@@ -27,12 +27,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        context = this
+
         setSupportActionBar(binding.appBarMain.toolbar)
 
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+        val navController = navHostFragment.navController
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -47,17 +53,15 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        val scheduleFlexibleIntentButtonClick = findViewById<Button>(R.id.scheduleFlexibleIntentButton)
-        scheduleFlexibleIntentButtonClick.setOnClickListener {
-            val intent = Intent(this, FlexibleIntentSetupActivity::class.java)
-            startActivity(intent)
-        }
     }
 
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    companion object {
+        lateinit var context: Activity
     }
 }
