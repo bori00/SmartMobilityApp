@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.uid.smartmobilityapp.databinding.ActivityMainBinding
 import com.uid.smartmobilityapp.ui.home.travel_now.TravelNowActivity
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -29,10 +29,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
 
-
         val button = findViewById<Button>(R.id.travelNowButtonId);
-
-        button.setOnClickListener(this);
+        button.setOnClickListener {
+            val intent = Intent(this, TravelNowActivity::class.java)
+            startActivity(intent)
+        }
         setSupportActionBar(binding.appBarMain.toolbar)
 
 
@@ -55,11 +56,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         navView.setupWithNavController(navController)
     }
 
-    override fun onClick(p0: View?) {
-        val intent = Intent ( this, TravelNowActivity::class.java )
-        startActivity ( intent )
-
-    }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()

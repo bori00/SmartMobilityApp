@@ -8,19 +8,16 @@ import android.widget.Button
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.VehicleListActivity
 
-class TravelNowActivity : AppCompatActivity(), View.OnClickListener {
+class TravelNowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_travel_now)
 
-        val button = findViewById<Button>(R.id.searchRoutesButtonId);
-        button.setOnClickListener(this)
-    }
-
-    override fun onClick(p0: View?) {
-        val intent = Intent ( this, VehicleListActivity::class.java )
-        startActivity ( intent )
-
+        val button = findViewById<Button>(R.id.searchRoutesButtonId)
+        button.setOnClickListener {
+            val intent = Intent ( this, VehicleListActivity::class.java )
+            startActivity ( intent )
+        }
     }
 }
 
