@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     tools:context=".flexible_intent.FlexibleIntentSetupActivity">
 
     <TextView
@@ -17,7 +18,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/daySpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/selectDayTextInput" />
 
     <TextView
         android:id="@+id/FlexibleIntentTitle"
@@ -51,9 +52,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:width="@dimen/default_width"
+        android:backgroundTint="@color/dark_purple"
         android:ems="10"
         android:hint="Intent name"
         android:inputType="textPersonName"
+        android:textColorHighlight="@color/dark_purple"
+        android:textColorLink="@color/dark_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/specifyAnIntentNameLabel" />
@@ -72,20 +76,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextIntentName" />
 
-    <Spinner
-        android:id="@+id/daySpinner"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/selectDayTextInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="@dimen/default_width"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
+        android:hint="@string/select_day"
+        app:boxStrokeColor="@color/dark_purple"
+        app:hintTextColor="@color/dark_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/specifyTheDayNameLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/specifyTheDayNameLabel">
+
+        <AutoCompleteTextView
+            android:id="@+id/selectDayAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/betweenLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Between"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -97,8 +112,11 @@
         android:layout_width="@dimen/hour_width"
         android:layout_height="@dimen/hour_height"
         android:layout_marginStart="16dp"
+        android:backgroundTint="@color/dark_purple"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColorHighlight="@color/dark_purple"
+        android:textColorLink="@color/dark_purple"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
         app:layout_constraintStart_toEndOf="@+id/betweenLabel"
@@ -112,30 +130,34 @@
         android:text="and"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fromHourFlexibleIntent"
+        app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
         app:layout_constraintStart_toEndOf="@+id/fromHourFlexibleIntent"
-        app:layout_constraintTop_toTopOf="@+id/fromHourFlexibleIntent" />
+        app:layout_constraintTop_toTopOf="@+id/betweenLabel" />
 
     <EditText
         android:id="@+id/toHourFlexibleIntent"
         android:layout_width="@dimen/hour_width"
         android:layout_height="@dimen/hour_height"
         android:layout_marginStart="16dp"
+        android:backgroundTint="@color/dark_purple"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColorLink="@color/dark_purple"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fromHourFlexibleIntent"
+        app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
         app:layout_constraintStart_toEndOf="@+id/andLabel"
-        app:layout_constraintTop_toTopOf="@+id/fromHourFlexibleIntent" />
+        app:layout_constraintTop_toTopOf="@+id/betweenLabel" />
 
     <Button
         android:id="@+id/selectDestinationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/dark_purple"
         android:text="Select destination"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textAllCaps="false"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

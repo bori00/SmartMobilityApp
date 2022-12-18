@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".flexible_intent.FlexibleIntentSelectTransportActivity">
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/dark_purple"
+        android:text="Next"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/busCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:buttonTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/chipBus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chipBus" />
+
+    <CheckBox
+        android:id="@+id/walkCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:buttonTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/chipWalk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chipWalk" />
+
+    <CheckBox
+        android:id="@+id/bikeCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:buttonTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/chipBike"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chipBike" />
+
+    <TextView
+        android:id="@+id/walkLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Walk"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/chipWalk"
+        app:layout_constraintStart_toEndOf="@+id/chipWalk"
+        app:layout_constraintTop_toTopOf="@+id/chipWalk" />
+
+    <TextView
+        android:id="@+id/busLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Bus"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/chipBus"
+        app:layout_constraintStart_toEndOf="@+id/chipBus"
+        app:layout_constraintTop_toTopOf="@+id/chipBus" />
+
+    <TextView
+        android:id="@+id/bikeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Bike"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/chipBike"
+        app:layout_constraintStart_toEndOf="@+id/chipBike"
+        app:layout_constraintTop_toTopOf="@+id/chipBike" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipWalk"
+        android:layout_width="@dimen/chip_width"
+        android:layout_height="@dimen/chip_height"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:chipBackgroundColor="@color/purple_200"
+        app:chipIcon="@drawable/ic_baseline_directions_walk_24"
+        app:chipIconSize="30dp"
+        app:chipIconTint="@color/white"
+        app:iconStartPadding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipBus" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipBus"
+        android:layout_width="@dimen/chip_width"
+        android:layout_height="@dimen/chip_height"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:chipBackgroundColor="@color/purple_200"
+        app:chipIcon="@drawable/ic_baseline_directions_bus_24"
+        app:chipIconSize="30dp"
+        app:chipIconTint="@color/white"
+        app:iconStartPadding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipBike" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipBike"
+        android:layout_width="@dimen/chip_width"
+        android:layout_height="@dimen/chip_height"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:chipBackgroundColor="@color/purple_200"
+        app:chipIcon="@drawable/ic_baseline_pedal_bike_24"
+        app:chipIconSize="30dp"
+        app:chipIconTint="@color/white"
+        app:iconStartPadding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chipCar" />
+
+    <TextView
+        android:id="@+id/selectTransportLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:width="@dimen/default_width"
+        android:text="Select the accepted means of transport for &quot;Get groceries&quot;"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipCar"
+        android:layout_width="@dimen/chip_width"
+        android:layout_height="@dimen/chip_height"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        app:chipBackgroundColor="@color/purple_200"
+        app:chipIcon="@drawable/ic_baseline_directions_car_24"
+        app:chipIconSize="30dp"
+        app:chipIconTint="@color/white"
+        app:iconStartPadding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectTransportLabel" />
+
+    <TextView
+        android:id="@+id/CarLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Car"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/chipCar"
+        app:layout_constraintStart_toEndOf="@+id/chipCar"
+        app:layout_constraintTop_toTopOf="@+id/chipCar" />
+
+    <CheckBox
+        android:id="@+id/carCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:buttonTint="@color/black"
+        android:checked="false"
+        android:shadowColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/chipCar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chipCar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

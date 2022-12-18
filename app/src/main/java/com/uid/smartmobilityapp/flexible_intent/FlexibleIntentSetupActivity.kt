@@ -1,7 +1,10 @@
 package com.uid.smartmobilityapp.flexible_intent
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Button
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.uid.smartmobilityapp.R
@@ -11,9 +14,15 @@ class FlexibleIntentSetupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flexible_intent_setup)
 
-        val dropdown = findViewById<Spinner>(R.id.daySpinner)
+        val dropdown = findViewById<AutoCompleteTextView>(R.id.selectDayAutoComplete)
         val items = arrayOf("Today", "Tomorrow", "In two days")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
-        dropdown.adapter = adapter
+        dropdown.setAdapter(adapter)
+
+        val selectDestinationButtonClick = findViewById<Button>(R.id.selectDestinationButton)
+        selectDestinationButtonClick.setOnClickListener {
+            val intent = Intent(this, FlexibleIntentSelectTransportActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

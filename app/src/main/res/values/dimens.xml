@@ -8,4 +8,6 @@
     <dimen name="default_width">286dp</dimen>
     <dimen name="hour_width">71dp</dimen>
     <dimen name="hour_height">37dp</dimen>
+    <dimen name="chip_width">44dp</dimen>
+    <dimen name="chip_height">60dp</dimen>
 </resources>
