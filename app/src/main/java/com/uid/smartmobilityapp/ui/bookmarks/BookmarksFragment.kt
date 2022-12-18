@@ -1,6 +1,7 @@
 package com.uid.smartmobilityapp.ui.bookmarks
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,13 +23,14 @@ class BookmarksFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d("MainActivity", "Open Bookmarks Fragment")
         val viewModel =
             ViewModelProvider(this).get(BookmarksViewModel::class.java)
 
         _binding = FragmentBookmarksBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.bookmarksTitleTextView
+        val textView: TextView = binding.bookmarkingFragmentTitleTextView
         viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
