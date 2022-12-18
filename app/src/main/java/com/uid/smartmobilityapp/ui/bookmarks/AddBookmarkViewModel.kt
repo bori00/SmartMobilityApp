@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.uid.smartmobilityapp.ui.bookmarks.model.MyBookmarks
 
-class BookmarksViewModel : ViewModel() {
+class AddBookmarkViewModel : ViewModel() {
 
-    val bookmarks = MyBookmarks.bookmarks
 }
