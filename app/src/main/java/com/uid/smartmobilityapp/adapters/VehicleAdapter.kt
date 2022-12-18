@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
@@ -47,21 +48,20 @@ class VehicleAdapter(
     inner class VehicleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val vehicleRouteList: ArrayList<VehicleRouteListItem> = arrayListOf(
             VehicleRouteListItem(
-                "Dragalina",
-                "Donath",
-                "9:43",
-                0,
-                0,
-                "9:56"
-
-            ),
-            VehicleRouteListItem(
                 "Grigorescu",
                 "Belgrad",
                 "9:43",
                 0,
                 0,
                 "10:00"
+            ),
+            VehicleRouteListItem(
+                "Donath",
+                "Malmo",
+                "9:53",
+                0,
+                0,
+                "10:06"
             )
         )
         private var innerRecyclerView: RecyclerView =
@@ -93,11 +93,11 @@ class VehicleAdapter(
             titleRef.text = data.title
             iconRef.setImageResource(data.image)
             descriptionRef.text = data.description
+            listRef = innerRecyclerView
             if (data.isExpanded) {
                 Log.d("Second recycler", "Visible ")
                 listRef.visibility = View.VISIBLE;
             } else {
-                Log.d("Second recycler", "Invisible ")
                 listRef.visibility = View.GONE;
             }
             this.iconRef.setOnClickListener {
