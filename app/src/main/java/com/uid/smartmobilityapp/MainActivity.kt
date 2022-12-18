@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.uid.smartmobilityapp.databinding.ActivityMainBinding
+import com.uid.smartmobilityapp.ui.home.travel_now.TravelNowActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

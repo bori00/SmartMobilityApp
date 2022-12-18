@@ -73,15 +73,10 @@
         android:drawableTop = "@drawable/ic_baseline_search_24"
         />
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="414dp"
-        android:layout_height="565dp"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="166dp"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        tools:context=".MapsActivity"
-        />
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/activity_maps" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
