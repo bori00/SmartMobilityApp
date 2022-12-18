@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        val intent = Intent ( this, VehicleListActivity::class.java )
+        val intent = Intent ( this, TravelNowActivity::class.java )
         startActivity ( intent )
 
     }
