@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".flexible_intent.FlexibleIntentSetupActivity">
+
+    <TextView
+        android:id="@+id/specifyTimeIntervalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Specify the time interval"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daySpinner" />
+
+    <TextView
+        android:id="@+id/FlexibleIntentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Flexible Intent Setup"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/specifyAnIntentNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Specify an intent name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FlexibleIntentTitle" />
+
+    <EditText
+        android:id="@+id/editTextIntentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:width="@dimen/default_width"
+        android:ems="10"
+        android:hint="Intent name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specifyAnIntentNameLabel" />
+
+    <TextView
+        android:id="@+id/specifyTheDayNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Specify a day"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextIntentName" />
+
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="@dimen/default_width"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specifyTheDayNameLabel" />
+
+    <TextView
+        android:id="@+id/betweenLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Between"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/editTextIntentName"
+        app:layout_constraintTop_toBottomOf="@+id/specifyTimeIntervalLabel" />
+
+    <EditText
+        android:id="@+id/fromHourFlexibleIntent"
+        android:layout_width="@dimen/hour_width"
+        android:layout_height="@dimen/hour_height"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
+        app:layout_constraintStart_toEndOf="@+id/betweenLabel"
+        app:layout_constraintTop_toTopOf="@+id/betweenLabel" />
+
+    <TextView
+        android:id="@+id/andLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="and"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fromHourFlexibleIntent"
+        app:layout_constraintStart_toEndOf="@+id/fromHourFlexibleIntent"
+        app:layout_constraintTop_toTopOf="@+id/fromHourFlexibleIntent" />
+
+    <EditText
+        android:id="@+id/toHourFlexibleIntent"
+        android:layout_width="@dimen/hour_width"
+        android:layout_height="@dimen/hour_height"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fromHourFlexibleIntent"
+        app:layout_constraintStart_toEndOf="@+id/andLabel"
+        app:layout_constraintTop_toTopOf="@+id/fromHourFlexibleIntent" />
+
+    <Button
+        android:id="@+id/selectDestinationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Select destination"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAllCaps="false"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

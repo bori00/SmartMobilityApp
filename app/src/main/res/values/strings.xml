@@ -13,4 +13,5 @@
     <string name="menu_report_an_event">Report an Event</string>
     <string name="menu_rate_a_ride">Rate a ride</string>
     <string name="menu_bookmarks">Bookmarks</string>
+    <string name="schedule_a_flexible_trip">Schedule a flexible trip</string>
 </resources>

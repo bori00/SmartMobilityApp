@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.uid.smartmobilityapp.databinding.FragmentHomeBinding
 
+
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
