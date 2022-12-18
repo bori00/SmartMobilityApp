@@ -12,7 +12,7 @@
         layout="@layout/route_summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="4dp"
         app:cardCornerRadius="30dp"
         app:circularflow_radiusInDP="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="403dp"
+        android:layout_width="416dp"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
         android:background="#E7E0EC"
@@ -73,11 +73,39 @@
         android:drawableTop = "@drawable/ic_baseline_search_24"
         />
 
-<!--    <include-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        layout="@layout/activity_maps" />-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="412dp"
+        android:layout_height="463dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintVertical_bias="1.0">
 
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    layout="@layout/activity_maps"
+
+                    />
+
+        <Button
+            android:id="@+id/searchRoutesButtonId"
+            android:layout_width="157dp"
+            android:layout_height="42dp"
+            android:text="Search routes"
+            android:textAllCaps="false"
+            android:textSize="10sp"
+            app:cornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.961" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

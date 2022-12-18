@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.uid.smartmobilityapp.databinding.ActivityMainBinding
+import com.uid.smartmobilityapp.ui.home.travel_now.TravelNowActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        val intent = Intent ( this, VehicleListActivity::class.java )
+        val intent = Intent ( this, TravelNowActivity::class.java )
         startActivity ( intent )
 
     }
