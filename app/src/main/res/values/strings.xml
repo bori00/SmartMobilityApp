@@ -13,5 +13,9 @@
     <string name="menu_report_an_event">Report an Event</string>
     <string name="menu_rate_a_ride">Rate a ride</string>
     <string name="menu_bookmarks">Bookmarks</string>
+
+    <string name="task_add_bookmark">Add bookmark</string>
+
     <string name="missing_text">TextView</string>
+    <string name="my_bookmarks_fragment_title">My Bookmarks</string>
 </resources>

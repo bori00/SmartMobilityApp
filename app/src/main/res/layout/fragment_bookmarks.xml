@@ -7,16 +7,16 @@
     tools:context=".ui.bookmarks.BookmarksFragment">
 
     <TextView
-        android:id="@+id/bookmarkingFragmentTitleTextView"
+        android:id="@+id/addBookmarkFragmentTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fragment_title_top_margin"
-        android:text="@string/missing_text"
-        android:textColor="@color/purple_500"
+        android:layout_marginTop="8dp"
+        android:text="@string/my_bookmarks_fragment_title"
         android:textSize="@dimen/fragment_title_size"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/bookmarkIcon" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewBookmarkFAB"
@@ -32,5 +32,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myBookmarksRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/addNewBookmarkFAB"
+        app:layout_constraintTop_toBottomOf="@+id/addBookmarkFragmentTitleTextView"
+        tools:layout_editor_absoluteX="1dp" />
+
+    <ImageView
+        android:id="@+id/bookmarkIcon"
+        android:layout_width="@dimen/fragment_icon_size"
+        android:layout_height="@dimen/fragment_icon_size"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_menu_bookmarks"
+        android:tint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
