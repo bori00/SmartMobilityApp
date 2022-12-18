@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.adapters.VehicleAdapter
 import com.uid.smartmobilityapp.models.VehicleListItem
+import com.uid.smartmobilityapp.models.VehicleRouteListItem
 
 
-class VehicleListActivity: AppCompatActivity()  {
+class VehicleListActivity : AppCompatActivity() {
 
     private val vehicleList: ArrayList<VehicleListItem> = ArrayList()
 
