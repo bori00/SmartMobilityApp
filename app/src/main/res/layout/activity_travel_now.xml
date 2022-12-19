@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/addressTextId"
         android:layout_width="416dp"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
@@ -29,7 +29,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingStart="30dp"
-        android:text="Name"
+        android:text="Address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,11 +39,11 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/addressTextId"
+        app:layout_constraintEnd_toEndOf="@+id/addressTextId"
         app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toTopOf="@+id/addressTextId"
         app:srcCompat="@drawable/ic_baseline_search_24" />
 
     <TextView
@@ -51,11 +51,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="260dp"
-        android:textColor="#6750A4"
         android:text="Destination"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+        android:textColor="#6750A4"
+        app:layout_constraintBottom_toBottomOf="@+id/addressTextId"
+        app:layout_constraintEnd_toEndOf="@+id/addressTextId"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addressTextId"
         app:layout_constraintVertical_bias="0.022" />
 
     <Button
@@ -64,11 +66,11 @@
         android:layout_height="43dp"
         android:layout_marginStart="188dp"
         app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/addressTextId"
+        app:layout_constraintEnd_toEndOf="@+id/addressTextId"
         app:layout_constraintHorizontal_bias="0.911"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toTopOf="@+id/addressTextId"
         app:layout_constraintVertical_bias="0.562"
         android:drawableTop = "@drawable/ic_baseline_search_24"
         />
@@ -80,15 +82,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/addressTextId"
         app:layout_constraintVertical_bias="1.0">
 
-                <include
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    layout="@layout/activity_maps"
-
-                    />
+<!--                <include-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    layout="@layout/activity_maps" />-->
 
         <Button
             android:id="@+id/searchRoutesButtonId"
@@ -104,7 +104,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.961" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
