@@ -18,4 +18,6 @@
 
     <string name="missing_text">TextView</string>
     <string name="my_bookmarks_fragment_title">My Bookmarks</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
 </resources>

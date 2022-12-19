@@ -10,12 +10,86 @@
         android:id="@+id/addBookmarkFragmentTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="New Bookmark"
+        android:layout_marginTop="8dp"
+        android:text="@string/task_add_bookmark"
         android:textSize="@dimen/fragment_title_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/bookmarkIcon" />
+
+    <ImageView
+        android:id="@+id/bookmarkIcon"
+        android:layout_width="@dimen/fragment_icon_size"
+        android:layout_height="@dimen/fragment_icon_size"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_menu_bookmarks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/cardview_dark_background"
+        android:contentDescription="Icon" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bookmarkNameTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/addBookmarkFragmentTitleTextView">
+
+        <EditText
+            android:id="@+id/bookmarkNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:backgroundTint="@color/purple_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addBookmarkFragmentTitleTextView" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bookmarkAddressTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/bookmarkNameTextInputLayout">
+
+        <SearchView
+            android:id="@+id/bookmarkAddressSearchView"
+            android:queryHint="Address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/purple_100"
+            android:backgroundTint="@color/purple_100" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/bookmarkMapView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookmarkAddressTextInputLayout" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveBookmarkFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_done_24"
+        app:iconifiedByDefault="false"
+        app:backgroundTint="@color/purple_500"
+        app:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="Approve" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
