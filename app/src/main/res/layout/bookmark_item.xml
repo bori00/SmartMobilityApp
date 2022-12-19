@@ -19,13 +19,15 @@
             android:id="@+id/bookmarkNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="16dp"
+            android:paddingStart="16dp"
+            app:layout_constrainedWidth="true"
             android:text="@string/missing_text"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/bookmarkAddressTextView"
@@ -35,6 +37,8 @@
             android:layout_marginBottom="16dp"
             android:text="@string/missing_text"
             android:textSize="16sp"
+            android:paddingStart="16dp"
+            app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/bookmarkNameTextView"
             app:layout_constraintTop_toBottomOf="@+id/bookmarkNameTextView" />

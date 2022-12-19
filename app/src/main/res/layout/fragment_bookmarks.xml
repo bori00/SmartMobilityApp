@@ -49,9 +49,9 @@
         android:layout_height="@dimen/fragment_icon_size"
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_menu_bookmarks"
-        android:tint="@color/cardview_dark_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/cardview_dark_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

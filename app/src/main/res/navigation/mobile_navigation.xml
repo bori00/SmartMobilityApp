@@ -53,7 +53,11 @@
         android:id="@+id/nav_add_bookmark"
         android:name="com.uid.smartmobilityapp.ui.bookmarks.AddBookmarkFragment"
         android:label="@string/task_add_bookmark"
-        tools:layout="@layout/fragment_add_bookmark" />
+        tools:layout="@layout/fragment_add_bookmark" >
+        <action
+            android:id="@+id/action_nav_add_bookmark_to_nav_bookmarks2"
+            app:destination="@id/nav_bookmarks" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_flexible_intent_setup"
@@ -94,5 +98,4 @@
             android:id="@+id/action_nav_flexible_intent_success_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
-
 </navigation>
