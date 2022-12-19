@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    tools:context=".flexible_intent.FlexibleIntentSelectTransportActivity">
+    tools:context=".ui.flexible_intent.FlexibleIntentSelectTransportFragment">
+
 
     <Button
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/dark_purple"
-        android:text="Next"
+        android:backgroundTint="@color/purple_700"
+        android:text="@string/next"
         android:textAllCaps="false"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -179,4 +179,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/chipCar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/chipCar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

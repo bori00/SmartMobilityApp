@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    tools:context=".flexible_intent.FlexibleIntentSelectOptimizationActivity">
+    tools:context=".ui.flexible_intent.FlexibleIntentSelectOptimizationFragment">
 
     <Button
         android:id="@+id/saveFlexibleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/dark_purple"
+        android:backgroundTint="@color/purple_700"
         android:text="Save flexible intent"
         android:textAllCaps="false"
         app:cornerRadius="20dp"
@@ -27,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="@string/optimize"
-        app:boxStrokeColor="@color/dark_purple"
-        app:hintTextColor="@color/dark_purple"
+        app:boxStrokeColor="@color/purple_700"
+        app:hintTextColor="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectLabel">

@@ -21,4 +21,9 @@
 
     <string name="missing_text">TextView</string>
     <string name="my_bookmarks_fragment_title">My Bookmarks</string>
+    <string name="_00_00">00:00</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
 </resources>

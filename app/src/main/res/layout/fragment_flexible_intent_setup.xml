@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    tools:context=".flexible_intent.FlexibleIntentSetupActivity">
+    tools:context=".ui.flexible_intent.FlexibleIntentSetupFragment">
 
     <TextView
         android:id="@+id/specifyTimeIntervalLabel"
@@ -52,12 +51,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:width="@dimen/default_width"
-        android:backgroundTint="@color/dark_purple"
+        android:backgroundTint="@color/purple_700"
         android:ems="10"
         android:hint="Intent name"
         android:inputType="textPersonName"
-        android:textColorHighlight="@color/dark_purple"
-        android:textColorLink="@color/dark_purple"
+        android:textColorHighlight="@color/purple_700"
+        android:textColorLink="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/specifyAnIntentNameLabel" />
@@ -82,8 +81,8 @@
         android:layout_width="@dimen/default_width"
         android:layout_height="wrap_content"
         android:hint="@string/select_day"
-        app:boxStrokeColor="@color/dark_purple"
-        app:hintTextColor="@color/dark_purple"
+        app:boxStrokeColor="@color/purple_700"
+        app:hintTextColor="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/specifyTheDayNameLabel">
@@ -107,21 +106,6 @@
         app:layout_constraintStart_toStartOf="@+id/editTextIntentName"
         app:layout_constraintTop_toBottomOf="@+id/specifyTimeIntervalLabel" />
 
-    <EditText
-        android:id="@+id/fromHourFlexibleIntent"
-        android:layout_width="@dimen/hour_width"
-        android:layout_height="@dimen/hour_height"
-        android:layout_marginStart="16dp"
-        android:backgroundTint="@color/dark_purple"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColorHighlight="@color/dark_purple"
-        android:textColorLink="@color/dark_purple"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
-        app:layout_constraintStart_toEndOf="@+id/betweenLabel"
-        app:layout_constraintTop_toTopOf="@+id/betweenLabel" />
-
     <TextView
         android:id="@+id/andLabel"
         android:layout_width="wrap_content"
@@ -131,21 +115,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
-        app:layout_constraintStart_toEndOf="@+id/fromHourFlexibleIntent"
-        app:layout_constraintTop_toTopOf="@+id/betweenLabel" />
-
-    <EditText
-        android:id="@+id/toHourFlexibleIntent"
-        android:layout_width="@dimen/hour_width"
-        android:layout_height="@dimen/hour_height"
-        android:layout_marginStart="16dp"
-        android:backgroundTint="@color/dark_purple"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColorLink="@color/dark_purple"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
-        app:layout_constraintStart_toEndOf="@+id/andLabel"
+        app:layout_constraintStart_toEndOf="@+id/fromHourButton"
         app:layout_constraintTop_toTopOf="@+id/betweenLabel" />
 
     <Button
@@ -153,11 +123,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/dark_purple"
+        android:backgroundTint="@color/purple_700"
         android:text="Select destination"
         android:textAllCaps="false"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/fromHourButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/_00_00"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
+        app:layout_constraintStart_toEndOf="@+id/betweenLabel"
+        app:layout_constraintTop_toTopOf="@+id/betweenLabel" />
+
+    <Button
+        android:id="@+id/toHourButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/_00_00"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/betweenLabel"
+        app:layout_constraintStart_toEndOf="@+id/andLabel"
+        app:layout_constraintTop_toTopOf="@+id/betweenLabel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

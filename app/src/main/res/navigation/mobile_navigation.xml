@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.uid.smartmobilityapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_flexible_intent_setup"
+            app:destination="@id/nav_flexible_intent_setup" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_flexible_intents"
@@ -50,4 +54,45 @@
         android:name="com.uid.smartmobilityapp.ui.bookmarks.AddBookmarkFragment"
         android:label="@string/task_add_bookmark"
         tools:layout="@layout/fragment_add_bookmark" />
+
+    <fragment
+        android:id="@+id/nav_flexible_intent_setup"
+        android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSetupFragment"
+        android:label="@string/schedule_a_flexible_trip"
+        tools:layout="@layout/fragment_flexible_intent_setup" >
+        <action
+            android:id="@+id/action_nav_flexible_intent_setup_to_nav_flexible_intent_select_transport"
+            app:destination="@id/nav_flexible_intent_select_transport" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_flexible_intent_select_transport"
+        android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSelectTransportFragment"
+        android:label="@string/next"
+        tools:layout="@layout/fragment_flexible_intent_select_transport" >
+        <action
+            android:id="@+id/action_nav_flexible_intent_select_transport_to_nav_flexible_intent_select_optimization"
+            app:destination="@id/nav_flexible_intent_select_optimization" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_flexible_intent_select_optimization"
+        android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSelectOptimizationFragment"
+        android:label="@string/next"
+        tools:layout="@layout/fragment_flexible_intent_select_optimization" >
+        <action
+            android:id="@+id/action_nav_flexible_intent_select_optimization_to_nav_flexible_intent_success"
+            app:destination="@id/nav_flexible_intent_success" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_flexible_intent_success"
+        android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSuccessFragment"
+        android:label="@string/next"
+        tools:layout="@layout/fragment_flexible_intent_success" >
+        <action
+            android:id="@+id/action_nav_flexible_intent_success_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
 </navigation>
