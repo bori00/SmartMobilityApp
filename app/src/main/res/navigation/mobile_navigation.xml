@@ -37,7 +37,21 @@
 
     <fragment
         android:id="@+id/nav_bookmarks"
-        android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideFragment"
+        android:name="com.uid.smartmobilityapp.ui.bookmarks.BookmarksFragment"
         android:label="@string/menu_bookmarks"
-        tools:layout="@layout/fragment_bookmarks" />
+        tools:layout="@layout/fragment_bookmarks" >
+        <action
+            android:id="@+id/action_nav_bookmarks_to_nav_add_bookmark"
+            app:destination="@id/nav_add_bookmark" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add_bookmark"
+        android:name="com.uid.smartmobilityapp.ui.bookmarks.AddBookmarkFragment"
+        android:label="@string/task_add_bookmark"
+        tools:layout="@layout/fragment_add_bookmark" >
+        <action
+            android:id="@+id/action_nav_add_bookmark_to_nav_bookmarks2"
+            app:destination="@id/nav_bookmarks" />
+    </fragment>
 </navigation>
