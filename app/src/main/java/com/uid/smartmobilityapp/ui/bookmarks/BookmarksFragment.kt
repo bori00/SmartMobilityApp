@@ -57,7 +57,11 @@ class BookmarksFragment : Fragment() {
     private fun setupBookmarksRecyclerView() {
         val bookmarksRecyclerView: RecyclerView = binding.myBookmarksRecyclerView
         val layoutManager = LinearLayoutManager ( MainActivity.context, LinearLayoutManager.VERTICAL, false)
-        val adapter = MyBookmarksRecyclerViewAdapter(MainActivity.context, _viewModel.bookmarks)
+        val adapter = _viewModel.bookmarks.value?.let {
+            MyBookmarksRecyclerViewAdapter(MainActivity.context,
+                it
+            )
+        }
         bookmarksRecyclerView.layoutManager = layoutManager
         bookmarksRecyclerView.adapter = adapter
         addMessageDividers(bookmarksRecyclerView, layoutManager)

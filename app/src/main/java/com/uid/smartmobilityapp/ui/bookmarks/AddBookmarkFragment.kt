@@ -12,6 +12,7 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -20,14 +21,16 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.MainActivity
+import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentAddBookmarkBinding
+import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import java.io.IOException
 
 
 class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
 
     private var _binding: FragmentAddBookmarkBinding ? = null
-    lateinit private var _viewModel: AddBookmarkViewModel;
+    lateinit private var _viewModel: BookmarksViewModel;
 
     private var _mMapView: MapView? = null
     private val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
@@ -47,13 +50,16 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
     ): View {
         Log.d("MainActivity", "Open Add Bookmark Fragment")
         _viewModel =
-            ViewModelProvider(this).get(AddBookmarkViewModel::class.java)
+            ViewModelProvider(this).get(BookmarksViewModel::class.java)
 
         _binding = FragmentAddBookmarkBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         setupMap(savedInstanceState)
         setupViewModel()
+
+        val saveBookmarkFAB = binding.saveBookmarkFAB
+        saveBookmarkFAB.setOnClickListener { saveBookmark() }
 
         return root
     }
@@ -65,6 +71,23 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
     override fun onResume() {
         _mMapView?.onResume()
         super.onResume()
+    }
+
+    private fun saveBookmark() {
+        if (_viewModel.selectedAddress.value == null) {
+            Toast.makeText(MainActivity.context, "Please select an Address", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val selectedName = binding.bookmarkNameEditText.text.toString()
+        if (selectedName.isEmpty()) {
+            Toast.makeText(MainActivity.context, "Please select a name for the Bookmark", Toast.LENGTH_SHORT).show()
+            return
+        }
+        _viewModel.bookmarks.value?.add(Bookmark(
+            selectedName,
+            _viewModel.selectedAddress.value!!
+        ))
+        binding.root.findNavController().navigate(R.id.action_nav_add_bookmark_to_nav_bookmarks2)
     }
 
     private fun setupMap(savedInstanceState: Bundle?) {
@@ -116,11 +139,6 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setupViewModel() {
-        // Name selection
-        val nameEditText: EditText = binding.bookmarkNameEditText
-        _viewModel.selectedName.observe(viewLifecycleOwner) {
-            nameEditText.setText(it)
-        }
         // Address selection
         _viewModel.selectedAddress.observe(viewLifecycleOwner) {
             if (it != null && _mMap != null) {
@@ -140,4 +158,6 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
             }
         }
     }
+
+
 }

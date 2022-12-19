@@ -7,7 +7,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 object MyBookmarks {
-    val bookmarks : List<Bookmark> = mutableListOf(
+    val bookmarks : ArrayList<Bookmark> = arrayListOf(
         Bookmark("Home",
             Geocoder(MainActivity.context).getFromLocationName(
                 "Str. Donath 15, Cluj-Napoca", 1).get(0)),
