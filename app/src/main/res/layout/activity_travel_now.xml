@@ -85,10 +85,11 @@
         app:layout_constraintTop_toBottomOf="@+id/addressTextId"
         app:layout_constraintVertical_bias="1.0">
 
-<!--                <include-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    layout="@layout/activity_maps" />-->
+        <include
+            android:id="@+id/travelNowMap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/activity_maps" />
 
         <Button
             android:id="@+id/searchRoutesButtonId"

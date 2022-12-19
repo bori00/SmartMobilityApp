@@ -1,23 +1,22 @@
 package com.uid.smartmobilityapp.ui.home.travel_now
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.libraries.places.api.Places
-import com.google.android.libraries.places.api.model.Place
-import com.google.android.libraries.places.api.net.PlacesClient
-import com.google.android.libraries.places.widget.Autocomplete
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.VehicleListActivity
-import java.util.*
 
-class TravelNowActivity : AppCompatActivity() {
+class TravelNowActivity : AppCompatActivity(), OnMapReadyCallback {
+    private lateinit var mMap: GoogleMap
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,36 +30,22 @@ class TravelNowActivity : AppCompatActivity() {
 
         val addressTF = findViewById<TextView>(R.id.addressTextId)
 
-        //initialize places
-        Places.initialize(applicationContext, "AIzaSyByB3ZxKmq4KjtdnFDXSoD8axyXmxpEL6I")
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
-        val placesClient: PlacesClient
 
-
-        //set text view non focusable
-        addressTF.isFocusable = false
-//        addressTF.setOnClickListener {
-//            val fieldList: List<Place.Field> =
-//                Arrays.asList(Place.Field.ADDRESS, Place.Field.LAT_LNG, Place.Field.NAME)
-//            val intent: Intent =
-//                Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fieldList).build(this)
-//
-//            startActivityIntent.launch(intent)
-//
-////            startActivityForResult(intent,100)
-//
-//
-//        }
     }
 
-//    private val startActivityIntent =
-//        registerForActivityResult(
-//            ActivityResultContracts.StartActivityForResult()
-//        ) {
-//            if (it.resultCode == Activity.RESULT_OK) {
-//                Place place = Autocomplete . getPlaceFromIntent ()
-//
-//            }
-//        }
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+         //Add a marker in Sydney and move the camera
+        val bucharest = LatLng(44.4, 26.09)
+        mMap.addMarker(MarkerOptions().position(bucharest).title("Marker in bucharest"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(bucharest))
+    }
+
 }
+
 
