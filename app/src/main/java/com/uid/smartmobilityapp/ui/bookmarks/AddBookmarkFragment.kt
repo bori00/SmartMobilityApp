@@ -109,6 +109,7 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
     private fun setupMapSearch() {
         // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
         _searchView = binding.bookmarkAddressSearchView
+        _searchView.onActionViewExpanded()
         _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 val location = _searchView.query.toString()
