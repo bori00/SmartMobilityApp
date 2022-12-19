@@ -83,6 +83,10 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
             Toast.makeText(MainActivity.context, "Please select a name for the Bookmark", Toast.LENGTH_SHORT).show()
             return
         }
+        if (_viewModel.bookmarks.value?.find { b -> b.name.equals(selectedName)} != null) {
+            Toast.makeText(MainActivity.context, "You already have a name with this bookmark. Please select another name!", Toast.LENGTH_SHORT).show()
+            return
+        }
         _viewModel.bookmarks.value?.add(Bookmark(
             selectedName,
             _viewModel.selectedAddress.value!!
