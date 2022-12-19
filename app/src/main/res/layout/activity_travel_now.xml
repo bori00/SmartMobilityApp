@@ -25,16 +25,11 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/bookmarkAddressTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2">
+        android:layout_height="wrap_content">
+<!--        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2">-->
         <!--        app:layout_constraintTop_toBottomOf="@+id/bookmarkNameTextInputLayout"-->
         <!--        >-->
 
-        <SearchView
-            android:id="@+id/bookmarkAddressSearchView"
-            android:layout_width="match_parent"
-            android:layout_height="69dp"
-            android:queryHint="Address" />
         <!--            android:background="@color/purple_100"-->
         <!--            android:backgroundTint="@color/purple_100" -->
         <!--            />-->
@@ -97,23 +92,49 @@
 <!--        android:drawableTop = "@drawable/ic_baseline_search_24"-->
 <!--        />-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="412dp"
-        android:layout_height="463dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/constraintLayout2"-->
+<!--        android:layout_width="412dp"-->
+<!--        android:layout_height="463dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/addressTextId"-->
 <!--        app:layout_constraintVertical_bias="1.0">-->
-                <include
-                    android:id="@+id/travelNowMap"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    layout="@layout/activity_maps" />
+<!--                <include-->
+<!--                    android:id="@+id/travelNowMap"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    layout="@layout/activity_maps" />-->
 
-        <Button
+
+    <SearchView
+        android:id="@+id/getLocationSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:queryHint="Address"
+        app:layout_constraintStart_toStartOf="@id/include"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+<!--    <include-->
+<!--        android:id="@+id/travelNowMap"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        layout="@layout/activity_maps" />-->
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/locationMapView"
+        android:layout_width="411dp"
+        android:layout_height="465dp"
+        android:layout_marginBottom="156dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getLocationSearchView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
             android:id="@+id/searchRoutesButtonId"
             android:layout_width="157dp"
             android:layout_height="42dp"
@@ -127,7 +148,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.961" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

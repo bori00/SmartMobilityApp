@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentHomeBinding
 import com.uid.smartmobilityapp.ui.home.travel_now.TravelNowActivity
@@ -34,7 +35,7 @@ class HomeFragment : Fragment() {
 
         val travelNowButton: Button = binding.travelNowButtonId
         travelNowButton.setOnClickListener {
-            val intent = Intent(this, TravelNowActivity::class.java)
+            val intent = Intent(MainActivity.context, TravelNowActivity::class.java)
             startActivity(intent)
         }
 
