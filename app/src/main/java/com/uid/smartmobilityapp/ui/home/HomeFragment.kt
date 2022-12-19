@@ -33,6 +33,10 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val travelNowButton: Button = binding.travelNowButtonId
+        travelNowButton.setOnClickListener {
+            val intent = Intent(this, TravelNowActivity::class.java)
+            startActivity(intent)
+        }
 
         viewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
