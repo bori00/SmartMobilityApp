@@ -45,6 +45,7 @@
             android:ems="10"
             android:hint="@string/name"
             android:inputType="textPersonName"
+            android:backgroundTint="@color/purple_100"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addBookmarkFragmentTitleTextView" />
@@ -56,17 +57,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/bookmarkNameTextInputLayout">
 
-        <EditText
-            android:id="@+id/bookmarkAddressEditText"
+        <SearchView
+            android:id="@+id/bookmarkAddressSearchView"
+            android:queryHint="Address"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/address"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bookmarkNameEditText"
-            android:autofillHints="address" />
+            android:layout_height="match_parent"
+            android:background="@color/purple_100"
+            android:backgroundTint="@color/purple_100" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,6 +88,7 @@
         app:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="Approve" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
