@@ -28,7 +28,7 @@ class TravelNowActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(intent)
         }
 
-        val addressTF = findViewById<TextView>(R.id.addressTextId)
+//        val addressTF = findViewById<TextView>(R.id.addressTextId)
 
 //        val mapFragment = supportFragmentManager
 //            .findFragmentById(R.id.map) as SupportMapFragment
