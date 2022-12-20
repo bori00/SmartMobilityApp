@@ -25,6 +25,8 @@ import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.VehicleListActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
+import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
+import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import java.io.IOException
 
 class AddLocationFragment : Fragment(), OnMapReadyCallback {
@@ -63,6 +65,13 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
 //            binding.root.findNavController().navigate(R.id.action_nav_home_to_travel_now)
 
         }
+
+        val summaryButton: Button = binding.include.editRouteButtonId
+        summaryButton.setOnClickListener {
+            binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
+        }
+
+
 
         setupMap(savedInstanceState)
         setupViewModel()
@@ -108,6 +117,12 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             _viewModel.selectedAddress.value = addressList[0]
+                            _viewModel.locations.value?.add(
+                                Location(
+                                    query
+                            )
+                            //TODO to change in route summary
+                            )
                         } else {
                             Toast.makeText(
                                 MainActivity.context,

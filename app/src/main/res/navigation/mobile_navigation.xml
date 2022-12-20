@@ -14,11 +14,23 @@
         android:id="@+id/action_nav_home_to_travel_now"
         app:destination="@id/travel_now" />
     </fragment>
+
     <fragment
         android:id="@+id/travel_now"
         android:name="com.uid.smartmobilityapp.ui.travel_now.AddLocationFragment"
         android:label="Add Location"
-        tools:layout="@layout/fragment_add_location" />
+        tools:layout="@layout/fragment_add_location">
+        <action
+            android:id="@+id/action_travel_now_to_locations"
+            app:destination="@id/locations"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/locations"
+        android:name="com.uid.smartmobilityapp.ui.travel_now.LocationsFragment"
+        android:label="Locations"
+        tools:layout="@layout/fragment_locations"
+        />
 
     <fragment
         android:id="@+id/nav_flexible_intents"
