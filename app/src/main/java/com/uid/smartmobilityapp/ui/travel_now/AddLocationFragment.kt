@@ -120,7 +120,8 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                             _viewModel.selectedAddress.value = addressList[0]
                             _viewModel.locations.value?.add(
                                 Location(
-                                    query
+                                    query,
+                                    (_viewModel.locations.value!!.lastIndex+2).toString()
                             )
                             )
                             val nextStop: TextView = binding.include.nextStopTextFieldId
