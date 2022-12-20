@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -121,8 +122,9 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                                 Location(
                                     query
                             )
-                            //TODO to change in route summary
                             )
+                            val nextStop: TextView = binding.include.nextStopTextFieldId
+                            nextStop.text = query
                         } else {
                             Toast.makeText(
                                 MainActivity.context,

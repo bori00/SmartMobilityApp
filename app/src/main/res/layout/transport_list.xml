@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/include"
@@ -19,24 +19,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="420dp"
-        android:layout_height="707dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="408dp"
+        android:layout_height="553dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include">
+        app:layout_constraintTop_toBottomOf="@+id/include">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/transportRecyclerViewList"
-            android:layout_width="409dp"
-            android:layout_height="729dp"
-            android:layout_marginTop="81dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintEnd_toEndOf="parent"
+            />
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
