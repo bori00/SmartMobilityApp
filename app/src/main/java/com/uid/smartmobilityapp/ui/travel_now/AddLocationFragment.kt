@@ -19,19 +19,17 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.MainActivity
-import com.uid.smartmobilityapp.databinding.ActivityTravelNowBinding
+import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
 import java.io.IOException
 
 class AddLocationFragment : Fragment(), OnMapReadyCallback {
 
-    private var _binding: ActivityTravelNowBinding? = null
-//    private lateinit var mMap: GoogleMap
-
+    private var _binding: FragmentAddLocationBinding? = null
     lateinit private var _viewModel: LocationsViewModel;
 
-    private var _mMap: GoogleMap? = null
     private var _mMapView: MapView? = null
     private val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
+    private var _mMap: GoogleMap? = null
 
     private lateinit var _searchView: SearchView
 
@@ -50,16 +48,22 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         _viewModel =
             ViewModelProvider(this).get(LocationsViewModel::class.java)
 
-        _binding = ActivityTravelNowBinding.inflate(inflater, container, false)
+        _binding = FragmentAddLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         setupMap(savedInstanceState)
         setupViewModel()
 
-//        val saveBookmarkFAB = binding.saveBookmarkFAB
-//        saveBookmarkFAB.setOnClickListener { saveBookmark() }
-
         return root
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        _mMap = map
+    }
+
+    override fun onResume() {
+        _mMapView?.onResume()
+        super.onResume()
     }
 
     private fun setupMap(savedInstanceState: Bundle?) {
@@ -77,17 +81,6 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
 
         _mMapView!!.getMapAsync(this)
     }
-
-//    override fun onMapReady(googleMap: GoogleMap) {
-//        mMap = googleMap
-//
-//        //Add a marker in Sydney and move the camera
-//        val bucharest = LatLng(44.4, 26.09)
-//        mMap.addMarker(MarkerOptions().position(bucharest).title("Marker in bucharest"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(bucharest))
-//
-//
-//    }
 
     private fun setupMapSearch() {
         // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
@@ -155,8 +148,4 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-
-    override fun onMapReady(map: GoogleMap) {
-        _mMap = map
-    }
 }

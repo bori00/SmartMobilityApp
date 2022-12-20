@@ -9,7 +9,16 @@
         android:id="@+id/nav_home"
         android:name="com.uid.smartmobilityapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+         <action
+        android:id="@+id/action_nav_home_to_travel_now"
+        app:destination="@id/travel_now" />
+    </fragment>
+    <fragment
+        android:id="@+id/travel_now"
+        android:name="com.uid.smartmobilityapp.ui.travel_now.AddLocationFragment"
+        android:label="Add Location"
+        tools:layout="@layout/fragment_add_location" />
 
     <fragment
         android:id="@+id/nav_flexible_intents"
@@ -54,4 +63,5 @@
             android:id="@+id/action_nav_add_bookmark_to_nav_bookmarks2"
             app:destination="@id/nav_bookmarks" />
     </fragment>
+
 </navigation>
