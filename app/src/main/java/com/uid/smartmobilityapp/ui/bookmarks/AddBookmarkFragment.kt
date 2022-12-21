@@ -83,6 +83,10 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
             Toast.makeText(MainActivity.context, "Please select a name for the Bookmark", Toast.LENGTH_SHORT).show()
             return
         }
+        if (_viewModel.bookmarks.value?.find { b -> b.name.equals(selectedName)} != null) {
+            Toast.makeText(MainActivity.context, "You already have a name with this bookmark. Please select another name!", Toast.LENGTH_SHORT).show()
+            return
+        }
         _viewModel.bookmarks.value?.add(Bookmark(
             selectedName,
             _viewModel.selectedAddress.value!!
@@ -109,6 +113,7 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
     private fun setupMapSearch() {
         // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
         _searchView = binding.bookmarkAddressSearchView
+        _searchView.onActionViewExpanded()
         _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 val location = _searchView.query.toString()
