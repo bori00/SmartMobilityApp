@@ -16,7 +16,14 @@ class VehicleRouteAdapter(
 ) : RecyclerView.Adapter<VehicleRouteAdapter.VehicleRouteViewHolder>() {
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+    private lateinit var listener: OnItemClickListener
 
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleRouteViewHolder {
         // interpret the XML file and create Kotlin internal structure
         val view = inflater.inflate(viewType, parent, false)
@@ -66,6 +73,9 @@ class VehicleRouteAdapter(
             clockImageRef.setImageResource(R.drawable.clock);
             hourRef.text = data.hour
             departureRef.text = data.departureTime
+            view.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
         }
     }
 }
