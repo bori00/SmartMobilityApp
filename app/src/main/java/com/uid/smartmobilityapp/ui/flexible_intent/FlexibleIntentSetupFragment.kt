@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSetupBinding
+import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
+import com.uid.smartmobilityapp.ui.flexible_intent.model.FlexibleIntent
 import java.util.*
 
 
@@ -28,7 +30,7 @@ class FlexibleIntentSetupFragment : Fragment() {
     private var minute : Int = 0
     private var selectedDay : String = ""
 
-    private lateinit var viewModel: FlexibleIntentSetupViewModel
+    private lateinit var viewModel: FlexibleIntentViewModel
     private var _binding: FragmentFlexibleIntentSetupBinding ? = null
     lateinit private var _root : View;
 
@@ -40,7 +42,7 @@ class FlexibleIntentSetupFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(FlexibleIntentSetupViewModel::class.java)
+        viewModel = FlexibleIntentViewModel
 
         _binding = FragmentFlexibleIntentSetupBinding.inflate(inflater, container, false)
         _root = binding.root
@@ -62,9 +64,6 @@ class FlexibleIntentSetupFragment : Fragment() {
         toHourButton = _root.findViewById(R.id.toHourButton)
 
         selectDestinationButton = _root.findViewById(R.id.selectDestinationButton)
-        selectDestinationButton.setOnClickListener {view ->
-            view.findNavController().navigate(R.id.action_nav_flexible_intent_setup_to_nav_flexible_intent_select_transport)
-        }
         selectDestinationButton.isEnabled = false
 
         val tw: TextWatcher = object : TextWatcher {
@@ -89,6 +88,14 @@ class FlexibleIntentSetupFragment : Fragment() {
 
         toHourButton.setOnClickListener {
             popTimePicker(toHourButton)
+        }
+
+        selectDestinationButton.setOnClickListener {view ->
+            viewModel.selectedName.value = editTextIntentName.text.toString()
+            viewModel.selectedDay.value = editTextIntentName.text.toString()
+            viewModel.selectedFromHour.value = editTextIntentName.text.toString()
+            viewModel.selectedToHour.value = editTextIntentName.text.toString()
+            view.findNavController().navigate(R.id.action_nav_flexible_intent_setup_to_nav_flexible_intent_select_transport)
         }
     }
 

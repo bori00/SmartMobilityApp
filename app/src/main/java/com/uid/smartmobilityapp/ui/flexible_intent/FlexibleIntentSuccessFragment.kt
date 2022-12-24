@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSelectOptimizationBinding
@@ -16,7 +17,7 @@ import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSuccessBinding
 
 class FlexibleIntentSuccessFragment : Fragment() {
 
-    private lateinit var viewModel: FlexibleIntentSuccessViewModel
+    private lateinit var viewModel: FlexibleIntentViewModel
     private var _binding: FragmentFlexibleIntentSuccessBinding? = null
     lateinit private var _root : View;
 
@@ -28,7 +29,7 @@ class FlexibleIntentSuccessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(FlexibleIntentSuccessViewModel::class.java)
+        viewModel = FlexibleIntentViewModel
 
         _binding = FragmentFlexibleIntentSuccessBinding.inflate(inflater, container, false)
         _root = binding.root
@@ -43,6 +44,14 @@ class FlexibleIntentSuccessFragment : Fragment() {
         nextButtonClick.setOnClickListener {view ->
             view.findNavController().navigate(R.id.action_nav_flexible_intent_success_to_nav_home)
         }
+
+        val successMessage = _root.findViewById<TextView>(R.id.successMessage)
+        successMessage.text =
+            buildString {
+                append("Your trip for \"")
+                append(viewModel.selectedName.value)
+                append("\" flexible intent has been scheduled")
+            }
     }
 
 }

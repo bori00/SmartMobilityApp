@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:width="@dimen/default_width"
-        android:text="Select the accepted means of transport for &quot;Get groceries&quot;"
+        android:text="TextView"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
