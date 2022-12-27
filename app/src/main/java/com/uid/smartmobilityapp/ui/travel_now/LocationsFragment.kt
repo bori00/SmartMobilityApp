@@ -42,10 +42,8 @@ class LocationsFragment : Fragment() {
         _root = binding.root
 
         setupLocationsRecyclerView()
-        setupDeleteLocationButton()
         setupSearchRoutesButton()
         setupAddNewStopButton()
-//        setupAddNewBookmarkButton()
 //
 
         return _root
@@ -64,13 +62,6 @@ class LocationsFragment : Fragment() {
             val intent = Intent(MainActivity.context, VehicleListActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    private fun setupDeleteLocationButton() {
-//        val addBookmarkFAB: FloatingActionButton = binding.locationsRecyclerViewId
-//        addBookmarkFAB.setOnClickListener { view ->
-//            view.findNavController().navigate(R.id.action_nav_bookmarks_to_nav_add_bookmark)
-//        }
     }
 
     override fun onDestroyView() {
@@ -92,13 +83,6 @@ class LocationsFragment : Fragment() {
         bookmarksRecyclerView.adapter = adapter
         addMessageDividers(bookmarksRecyclerView, layoutManager)
     }
-
-//    private fun setupAddNewBookmarkButton() {
-//        val addBookmarkFAB: FloatingActionButton = binding.addNewBookmarkFAB
-//        addBookmarkFAB.setOnClickListener { view ->
-//            view.findNavController().navigate(R.id.action_nav_bookmarks_to_nav_add_bookmark)
-//        }
-//    }
 
     private fun addMessageDividers(
         recyclerView: RecyclerView,

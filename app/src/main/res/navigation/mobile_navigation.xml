@@ -32,8 +32,15 @@
         tools:layout="@layout/fragment_locations">
         <action
             android:id="@+id/action_locations_to_travel_now"
-            app:destination="@id/travel_now"/>
-        />
+            app:destination="@id/travel_now">
+            <argument
+                android:name="position"
+                app:argType="integer"
+                android:defaultValue="-1" />
+        </action>
+        <action
+            android:id="@+id/action_locations_to_locations"
+            app:destination="@id/locations"/>
     </fragment>
 
 

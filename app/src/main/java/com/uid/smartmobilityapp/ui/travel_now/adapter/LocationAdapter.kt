@@ -1,11 +1,19 @@
 package com.uid.smartmobilityapp.ui.travel_now.adapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View.GONE
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.ui.travel_now.AddLocationFragment
+import com.uid.smartmobilityapp.ui.travel_now.LocationsFragment
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
+
 
 class LocationAdapter (
     private val context: Context,
@@ -27,6 +35,18 @@ class LocationAdapter (
         override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
             // binds the view holder with the data
             holder.bindData (dataSource[position])
+            if(position==0){
+                holder.deleteButtonRef.visibility=GONE
+            }
+            holder.deleteButtonRef.setOnClickListener {
+                dataSource.removeAt(position)
+                it.findNavController().navigate(R.id.action_locations_to_locations)
+            }
+
+            holder.editButtonRef.setOnClickListener { view ->
+                val bundle = Bundle()
+                bundle.putInt("position", position)
+                view.findNavController().navigate(R.id.action_locations_to_travel_now,bundle)}
         }
 
         override fun getItemViewType ( position: Int ) : Int {

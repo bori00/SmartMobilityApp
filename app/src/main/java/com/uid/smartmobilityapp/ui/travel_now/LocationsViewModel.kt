@@ -14,6 +14,10 @@ class LocationsViewModel: ViewModel() {
         value = null
     }
 
+    val editStop:  MutableLiveData<String> = MutableLiveData<String>().apply {
+        value = null
+    }
+
     val locations : LiveData<ArrayList<Location>> = MutableLiveData<ArrayList<Location>>().apply {
         value = MyLocations.locations
     }

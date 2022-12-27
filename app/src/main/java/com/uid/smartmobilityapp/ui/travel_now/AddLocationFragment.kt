@@ -26,7 +26,6 @@ import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.VehicleListActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
-import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations.locations
 import java.io.IOException
@@ -119,6 +118,12 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         _searchView = binding.getLocationSearchView
         _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                val bundle: Bundle? = arguments
+                var i=-1
+                if (bundle != null) {
+                    i = bundle.getInt("position", -1)
+                }
+                Log.d("BUNDLE",i.toString())
                 val location = _searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
@@ -127,12 +132,20 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             _viewModel.selectedAddress.value = addressList[0]
-                            _viewModel.locations.value?.add(
-                                Location(
+                            if(i!=-1){
+                                _viewModel.locations.value?.set(i, Location(
                                     query,
                                     (_viewModel.locations.value!!.lastIndex + 2).toString()
+                                ))
+
+                            }else{
+                                _viewModel.locations.value?.add(
+                                    Location(
+                                        query,
+                                        (_viewModel.locations.value!!.lastIndex + 2).toString()
+                                    )
                                 )
-                            )
+                            }
                             val nextStop: TextView = binding.include.nextStopTextFieldId
                             var text: String = "Current location"
                             for (loc: Location in locations) {
