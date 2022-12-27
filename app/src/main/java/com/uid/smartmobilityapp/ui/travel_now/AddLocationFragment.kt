@@ -28,6 +28,7 @@ import com.uid.smartmobilityapp.VehicleListActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
 import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
+import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations.locations
 import java.io.IOException
 
 class AddLocationFragment : Fragment(), OnMapReadyCallback {
@@ -72,7 +73,15 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
         }
 
-
+        val nextStop: TextView = binding.include.nextStopTextFieldId
+        var text: String = "Current location"
+        for (loc: Location in locations) {
+            if (loc.indexNo.toInt() > 1) {
+                val addition = "➔${loc.name}"
+                text += addition
+            }
+        }
+        nextStop.text = text
 
         setupMap(savedInstanceState)
         setupViewModel()
@@ -121,11 +130,18 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                             _viewModel.locations.value?.add(
                                 Location(
                                     query,
-                                    (_viewModel.locations.value!!.lastIndex+2).toString()
-                            )
+                                    (_viewModel.locations.value!!.lastIndex + 2).toString()
+                                )
                             )
                             val nextStop: TextView = binding.include.nextStopTextFieldId
-                            nextStop.text = query
+                            var text: String = "Current location"
+                            for (loc: Location in locations) {
+                                if (loc.indexNo.toInt() > 1) {
+                                    val addition = "➔${loc.name}"
+                                    text += addition
+                                }
+                            }
+                            nextStop.text = text
                         } else {
                             Toast.makeText(
                                 MainActivity.context,

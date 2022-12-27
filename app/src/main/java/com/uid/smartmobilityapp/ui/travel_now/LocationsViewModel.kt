@@ -17,4 +17,5 @@ class LocationsViewModel: ViewModel() {
     val locations : LiveData<ArrayList<Location>> = MutableLiveData<ArrayList<Location>>().apply {
         value = MyLocations.locations
     }
+
 }
