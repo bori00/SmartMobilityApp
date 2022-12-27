@@ -123,7 +123,6 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 if (bundle != null) {
                     i = bundle.getInt("position", -1)
                 }
-                Log.d("BUNDLE",i.toString())
                 val location = _searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
@@ -135,14 +134,16 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                             if(i!=-1){
                                 _viewModel.locations.value?.set(i, Location(
                                     query,
-                                    (_viewModel.locations.value!!.lastIndex + 2).toString()
+                                    (_viewModel.locations.value!!.lastIndex + 2).toString(),
+                                    _viewModel.selectedAddress.value!!
                                 ))
 
                             }else{
                                 _viewModel.locations.value?.add(
                                     Location(
                                         query,
-                                        (_viewModel.locations.value!!.lastIndex + 2).toString()
+                                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
+                                        _viewModel.selectedAddress.value!!
                                     )
                                 )
                             }
