@@ -16,6 +16,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/view_vehicles"
+        android:name="com.uid.smartmobilityapp.ui.travel_now.ViewVehiclesFragment"
+        android:label="@string/route_summary"
+        tools:layout="@layout/transport_list">
+    </fragment>
+
+    <fragment
         android:id="@+id/travel_now"
         android:name="com.uid.smartmobilityapp.ui.travel_now.AddLocationFragment"
         android:label="Add Location"
@@ -23,6 +30,9 @@
         <action
             android:id="@+id/action_travel_now_to_locations"
             app:destination="@id/locations"/>
+        <action
+            android:id="@+id/action_travel_now_to_vehicle_list"
+            app:destination="@id/view_vehicles"/>
     </fragment>
 
     <fragment
@@ -41,6 +51,9 @@
         <action
             android:id="@+id/action_locations_to_locations"
             app:destination="@id/locations"/>
+        <action
+            android:id="@+id/action_locations_to_vehicle_list"
+            app:destination="@id/view_vehicles"/>
     </fragment>
 
 

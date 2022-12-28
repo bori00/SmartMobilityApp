@@ -1,6 +1,5 @@
 package com.uid.smartmobilityapp.ui.travel_now
 
-import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
@@ -24,7 +23,6 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.VehicleListActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations.locations
@@ -59,18 +57,15 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         _binding = FragmentAddLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val travelNowButton: Button = binding.searchRoutesButtonId
-        travelNowButton.setOnClickListener {
-            val intent = Intent(MainActivity.context, VehicleListActivity::class.java)
-            startActivity(intent)
-//            binding.root.findNavController().navigate(R.id.action_nav_home_to_travel_now)
+        val searchRoutesButton: Button = binding.searchRoutesButtonId
+        searchRoutesButton.setOnClickListener {
+        binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
 
         }
 
         val summaryButton: Button = binding.include.editRouteButtonId
         summaryButton.setOnClickListener {
-            binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
-        }
+            binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)   }
 
         val nextStop: TextView = binding.include.nextStopTextFieldId
         var text: String = "Current location"

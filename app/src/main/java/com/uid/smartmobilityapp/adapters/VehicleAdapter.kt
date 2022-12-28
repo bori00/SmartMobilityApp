@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.models.VehicleListItem
+import com.uid.smartmobilityapp.ui.travel_now.model.VehicleListItem
 import com.uid.smartmobilityapp.models.VehicleRouteListItem
 
 class VehicleAdapter(

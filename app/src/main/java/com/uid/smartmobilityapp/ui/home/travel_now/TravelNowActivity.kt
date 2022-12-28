@@ -24,8 +24,8 @@ class TravelNowActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val button = findViewById<Button>(R.id.searchRoutesButtonId)
         button.setOnClickListener {
-            val intent = Intent(this, VehicleListActivity::class.java)
-            startActivity(intent)
+        //    val intent = Intent(this, VehicleListActivity::class.java)
+       //     startActivity(intent)
         }
 
 //        val addressTF = findViewById<TextView>(R.id.addressTextId)

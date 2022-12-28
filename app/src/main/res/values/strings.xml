@@ -16,6 +16,8 @@
 
     <string name="task_add_bookmark">Add bookmark</string>
 
+    <string name="route_summary">Route summary</string>
+
     <string name="missing_text">TextView</string>
     <string name="my_bookmarks_fragment_title">My Bookmarks</string>
     <string name="name">Name</string>

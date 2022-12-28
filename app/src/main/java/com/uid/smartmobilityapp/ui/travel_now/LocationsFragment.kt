@@ -59,8 +59,7 @@ class LocationsFragment : Fragment() {
     private fun setupSearchRoutesButton() {
         val searchRoutesButton: Button = binding.searchRoutesButton2Id
         searchRoutesButton.setOnClickListener { view ->
-            val intent = Intent(MainActivity.context, VehicleListActivity::class.java)
-            startActivity(intent)
+            binding.root.findNavController().navigate(R.id.action_locations_to_vehicle_list)
         }
     }
 
