@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
 
@@ -32,6 +36,12 @@ class HomeFragment : Fragment() {
         viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        val scheduleFlexibleIntentButtonClick = root.findViewById<Button>(R.id.scheduleFlexibleIntentButton)
+        scheduleFlexibleIntentButtonClick.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_nav_home_to_nav_flexible_intent_setup)
+        }
+
         return root
     }
 
