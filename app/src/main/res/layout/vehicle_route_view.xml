@@ -8,14 +8,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/black"
+        app:cardBackgroundColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -23,85 +23,69 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/location2TextViewID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="116dp"
-                    android:layout_marginTop="32dp"
-                    android:text="TextView"
-                    android:textColor="#FFFFFF"
-                    app:layout_constraintStart_toEndOf="@+id/redDotImageID"
-                    app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
 
                 <ImageView
-                    android:id="@+id/clockHourImageID"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
-                    android:layout_marginStart="56dp"
-                    android:layout_marginTop="64dp"
+                    android:id="@+id/rouetImageViewID"
+                    android:layout_width="105dp"
+                    android:layout_height="39dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@android:drawable/checkbox_off_background" />
+                    tools:srcCompat="@tools:sample/avatars" />
 
-                <ImageView
-                    android:id="@+id/arrowImageID"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                <TextView
+                    android:id="@+id/intervalTextViewID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintStart_toEndOf="@+id/location1TextViewID"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@android:drawable/checkbox_off_background" />
+                    android:layout_marginTop="12dp"
+                    android:text="TextView"
+                    android:textColor="@color/grey"
+                    app:layout_constraintStart_toStartOf="@+id/rouetImageViewID"
+                    app:layout_constraintTop_toBottomOf="@+id/rouetImageViewID" />
 
-                <ImageView
-                    android:id="@+id/redDotImageID"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                <ImageButton
+                    android:id="@+id/startRouteButtonID"
+                    android:layout_width="44dp"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginEnd="64dp"
+                    android:backgroundTint="#6750A3"
+                    android:src="@drawable/ic_arrow_upward"
+                    app:cornerRadius="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/durationTextViewID"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@android:drawable/checkbox_off_background" />
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
-                    android:id="@+id/hourTextAreaRouteID"
+                    android:id="@+id/durationTextViewID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="Hour"
-                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="64dp"
+                    android:text="TextView"
+                    android:textColor="@color/grey"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/location1TextViewID"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/detailsTextViewID"
+                    android:layout_width="112dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingExtra="5dp"
+                    android:singleLine="false"
                     android:text="TextView"
-                    android:textColor="#FFFFFF"
-                    app:layout_constraintStart_toEndOf="@+id/redDotImageID"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/departureTimeTextViewID"
-                    android:layout_width="59dp"
-                    android:layout_height="22dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="sans-serif"
-                    android:text="TextView"
-                    android:textColor="#FFFFFF"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/clockHourImageID"
-                    app:layout_constraintTop_toBottomOf="@+id/location1TextViewID" />
+                    android:textColor="@color/grey"
+                    app:layout_constraintStart_toStartOf="@+id/intervalTextViewID"
+                    app:layout_constraintTop_toBottomOf="@+id/intervalTextViewID" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

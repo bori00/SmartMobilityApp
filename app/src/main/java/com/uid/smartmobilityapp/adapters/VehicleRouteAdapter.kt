@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -48,32 +50,25 @@ class VehicleRouteAdapter(
     }
 
     inner class VehicleRouteViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        private lateinit var redDotImageRef: ImageView
-        private lateinit var locationOneRef: TextView
-        private lateinit var locationTwoRef: TextView
-        private lateinit var middleImageRef: ImageView
-        private lateinit var clockImageRef: ImageView
-        private lateinit var hourRef: TextView
-        private lateinit var departureRef: TextView
+        private lateinit var routeImageRef: ImageView
+        private lateinit var intervalRef: TextView
+        private lateinit var detailsRef: TextView
+        private lateinit var goButtonRef: ImageButton
+        private lateinit var durationRef: TextView
         init {
-            redDotImageRef = view.findViewById(R.id.redDotImageID)
-            locationOneRef = view.findViewById(R.id.location2TextViewID)
-            locationTwoRef = view.findViewById(R.id.location1TextViewID)
-            middleImageRef = view.findViewById(R.id.arrowImageID)
-            clockImageRef = view.findViewById(R.id.clockHourImageID)
-            hourRef = view.findViewById(R.id.hourTextAreaRouteID)
-            departureRef = view.findViewById(R.id.departureTimeTextViewID)
+            routeImageRef = view.findViewById(R.id.rouetImageViewID)
+            intervalRef = view.findViewById(R.id.intervalTextViewID)
+            detailsRef = view.findViewById(R.id.detailsTextViewID)
+            goButtonRef = view.findViewById(R.id.startRouteButtonID)
+            durationRef = view.findViewById(R.id.durationTextViewID)
         }
 
         fun bindData(data: VehicleRouteListItem) {
-            redDotImageRef.setImageResource(R.drawable.reddot);
-            locationOneRef.text = data.locationOne
-            locationTwoRef.text = data.locationTwo
-            middleImageRef.setImageResource(R.drawable.arrow);
-            clockImageRef.setImageResource(R.drawable.clock);
-            hourRef.text = data.hour
-            departureRef.text = data.departureTime
-            view.setOnClickListener {
+            routeImageRef.setImageResource(data.routeImage);
+            intervalRef.text = data.interval
+            detailsRef.text = data.details
+            durationRef.text = data.duration
+            goButtonRef.setOnClickListener {
                 listener.onItemClick(adapterPosition)
             }
         }

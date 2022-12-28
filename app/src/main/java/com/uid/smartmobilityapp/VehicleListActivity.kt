@@ -20,7 +20,7 @@ class VehicleListActivity : AppCompatActivity() {
             VehicleListItem(
                 "Bus",
                 "09:56",
-                "43B",
+                "",
                 R.drawable.bus,
                 false,
                 false,
@@ -31,7 +31,7 @@ class VehicleListActivity : AppCompatActivity() {
             VehicleListItem(
                 "Bike",
                 "09:56",
-                "43B",
+                "",
                 R.drawable.bike,
                 false,
                 false,
@@ -42,21 +42,10 @@ class VehicleListActivity : AppCompatActivity() {
             VehicleListItem(
                 "Walk",
                 "09:56",
-                "43B",
+                "",
                 R.drawable.walk,
                 true,
-                false,
-                false
-            )
-        )
-        vehicleList.add(
-            VehicleListItem(
-                "Car",
-                "09:50",
-                "Personal car",
-                R.drawable.car,
-                false,
-                false,
+                true,
                 false
             )
         )

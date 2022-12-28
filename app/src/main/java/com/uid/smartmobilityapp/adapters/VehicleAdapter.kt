@@ -48,20 +48,10 @@ class VehicleAdapter(
     inner class VehicleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val vehicleRouteList: ArrayList<VehicleRouteListItem> = arrayListOf(
             VehicleRouteListItem(
-                "Grigorescu",
-                "Belgrad",
-                "9:43",
-                0,
-                0,
-                "10:00"
-            ),
-            VehicleRouteListItem(
-                "Donath",
-                "Malmo",
-                "9:53",
-                0,
-                0,
-                "10:06"
+                R.drawable.route,
+                "9:56-10:05",
+                "Scheduled at 9:58 from SINTEROM NORD",
+                "20 min"
             )
         )
         private var innerRecyclerView: RecyclerView =
@@ -74,9 +64,8 @@ class VehicleAdapter(
         private lateinit var descriptionRef: TextView
         private lateinit var iconRef: ImageView
         private lateinit var listRef: RecyclerView
-        private lateinit var routeRef: TextView
-        //   private lateinit var carbonRef?: ImageView
-        //   private lateinit var cheapRef?: ImageView
+        private lateinit var carbonRef: ImageView
+        private lateinit var cheapRef: ImageView
 
         init {
             innerRecyclerView.adapter = innerAdapter
@@ -86,6 +75,8 @@ class VehicleAdapter(
             iconRef = view.findViewById(R.id.redDotImageID)
             descriptionRef = view.findViewById(R.id.routeTextAreaID)
             listRef = view.findViewById(R.id.vehicleRouteRecyclerViewID)
+            carbonRef = view.findViewById(R.id.carbonImageViewID)
+            cheapRef = view.findViewById(R.id.costImageViewID)
         }
 
         fun bindData(data: VehicleListItem, position: Int) {
@@ -100,6 +91,18 @@ class VehicleAdapter(
             } else {
                 listRef.visibility = View.GONE;
             }
+            if(data.isCheap) {
+                cheapRef.setImageResource(R.drawable.dollar)
+            } else {
+                cheapRef.visibility = View.INVISIBLE;
+            }
+
+            if(data.isEcologic) {
+                carbonRef.setImageResource(R.drawable.leaf)
+            } else {
+                carbonRef.visibility = View.INVISIBLE;
+            }
+
             this.iconRef.setOnClickListener {
                 data.isExpanded = !data.isExpanded
                 notifyItemChanged(position)
