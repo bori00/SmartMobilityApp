@@ -15,4 +15,6 @@
     <dimen name="recyclerview_top_margin">16dp</dimen>
     <dimen name="fragment_icon_size">48dp</dimen>
     <dimen name="subtitle_size">20sp</dimen>
+    <dimen name="location_view_circle_size">52dp</dimen>
+    <dimen name="location_view_height">60dp</dimen>
 </resources>
