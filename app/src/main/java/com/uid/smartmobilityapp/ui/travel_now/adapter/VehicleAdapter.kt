@@ -50,9 +50,9 @@ class VehicleAdapter(
         private val vehicleRouteList: ArrayList<VehicleRouteListItem> = arrayListOf(
             VehicleRouteListItem(
                 R.drawable.route,
-                "9:56-10:05",
+                "9:56-10:19",
                 "Scheduled at 9:58 from SINTEROM NORD",
-                "20 min"
+                "23 min"
             )
         )
         private var innerRecyclerView: RecyclerView =
