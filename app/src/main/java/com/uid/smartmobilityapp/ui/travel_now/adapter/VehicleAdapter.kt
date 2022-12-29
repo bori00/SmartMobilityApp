@@ -1,4 +1,4 @@
-package com.uid.smartmobilityapp.adapters
+package com.uid.smartmobilityapp.ui.travel_now.adapter
 
 import android.content.Context
 import android.util.Log
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
@@ -43,6 +44,7 @@ class VehicleAdapter(
 
         holder.bindData(dataSource.get(position), position)
     }
+
 
     inner class VehicleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val vehicleRouteList: ArrayList<VehicleRouteListItem> = arrayListOf(
@@ -90,13 +92,13 @@ class VehicleAdapter(
             } else {
                 listRef.visibility = View.GONE;
             }
-            if(data.isCheap) {
+            if (data.isCheap) {
                 cheapRef.setImageResource(R.drawable.dollar)
             } else {
                 cheapRef.visibility = View.INVISIBLE;
             }
 
-            if(data.isEcologic) {
+            if (data.isEcologic) {
                 carbonRef.setImageResource(R.drawable.leaf)
             } else {
                 carbonRef.visibility = View.INVISIBLE;

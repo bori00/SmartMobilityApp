@@ -1,13 +1,13 @@
-package com.uid.smartmobilityapp.adapters
+package com.uid.smartmobilityapp.ui.travel_now.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.models.VehicleRouteListItem
@@ -47,13 +47,16 @@ class VehicleRouteAdapter(
     override fun onBindViewHolder(holder: VehicleRouteViewHolder, position: Int) {
 
         holder.bindData(dataSource.get(position))
+        holder.goButtonRef.setOnClickListener{
+            it.findNavController().navigate(R.id.action_view_vehicles_to_final_route)
+        }
     }
 
     inner class VehicleRouteViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var routeImageRef: ImageView
         private lateinit var intervalRef: TextView
         private lateinit var detailsRef: TextView
-        private lateinit var goButtonRef: ImageButton
+        public lateinit var goButtonRef: ImageButton
         private lateinit var durationRef: TextView
         init {
             routeImageRef = view.findViewById(R.id.rouetImageViewID)
@@ -68,9 +71,6 @@ class VehicleRouteAdapter(
             intervalRef.text = data.interval
             detailsRef.text = data.details
             durationRef.text = data.duration
-            goButtonRef.setOnClickListener {
-                listener.onItemClick(adapterPosition)
-            }
         }
     }
 }

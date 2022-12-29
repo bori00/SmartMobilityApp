@@ -10,12 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.MainActivity
-import com.uid.smartmobilityapp.adapters.VehicleAdapter
+import com.uid.smartmobilityapp.ui.travel_now.adapter.VehicleAdapter
 import com.uid.smartmobilityapp.databinding.TransportListBinding
 
 class ViewVehiclesFragment: Fragment() {
-    private var _binding: TransportListBinding? = null // ce xml ai pt fragment
-    lateinit private var _viewModel: ViewVehiclesModel; //Clasa unde pui date pe care le poti shareui intre fragmente
+    private var _binding: TransportListBinding? = null
+    lateinit private var _viewModel: ViewVehiclesModel
     lateinit private var _root: View;
 
     private val binding get() = _binding!!
@@ -25,7 +25,6 @@ class ViewVehiclesFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d("MainActivity", "Open Bookmarks Fragment")
         _viewModel =
             ViewModelProvider(this).get(ViewVehiclesModel::class.java)
 
@@ -40,7 +39,6 @@ class ViewVehiclesFragment: Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 
     private fun setupVehiclesRecyclerView() {
         val vehiclesRecyclerView: RecyclerView = binding.transportRecyclerViewList

@@ -51,9 +51,9 @@
 
                 <ImageButton
                     android:id="@+id/startRouteButtonID"
-                    android:layout_width="44dp"
-                    android:layout_height="47dp"
-                    android:layout_marginTop="64dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="52dp"
                     android:layout_marginEnd="64dp"
                     android:backgroundTint="#6750A3"
                     android:src="@drawable/ic_arrow_upward"

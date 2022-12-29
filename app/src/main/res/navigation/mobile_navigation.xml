@@ -20,6 +20,19 @@
         android:name="com.uid.smartmobilityapp.ui.travel_now.ViewVehiclesFragment"
         android:label="@string/route_summary"
         tools:layout="@layout/transport_list">
+        <action
+            android:id="@+id/action_view_vehicles_to_final_route"
+            app:destination="@id/view_final_route" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/view_final_route"
+        android:name="com.uid.smartmobilityapp.ui.travel_now.ViewFinalRouteFragment"
+        android:label="@string/route_summary"
+        tools:layout="@layout/fragment_view_route">
+        <action
+            android:id="@+id/action_view_route_to_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment
