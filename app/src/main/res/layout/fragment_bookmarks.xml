@@ -28,7 +28,7 @@
         android:contentDescription="Add Bookmark"
         android:src="@drawable/ic_baseline_add_24"
         app:tint="@android:color/white"
-        app:backgroundTint="@color/purple_500"
+        app:backgroundTint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
