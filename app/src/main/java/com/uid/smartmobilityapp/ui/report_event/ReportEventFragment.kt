@@ -46,23 +46,19 @@ class ReportEventFragment : Fragment() {
         val endDatePickerButton : Button = binding.btnDate2
         endDatePickerButton.setOnClickListener{selectEndDate()}
 
-        setupEventTypeSpinner()
+        setupEventTypeDropDown()
         return root
     }
 
-    private fun setupEventTypeSpinner() {
-        val eventTypeSpinner = binding.eventTypeSpinner
+    private fun setupEventTypeDropDown() {
+        val eventTypeDropDown = binding.selectEventTypeAutoComplete
 
-        ArrayAdapter.createFromResource(
+        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
             MainActivity.context,
-            R.array.event_types_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            eventTypeSpinner.adapter = adapter
-        }
+            android.R.layout.simple_dropdown_item_1line,
+            resources.getStringArray(R.array.event_types_array)
+        )
+        eventTypeDropDown.setAdapter(adapter)
     }
 
     private fun selectDateTime(callback : Consumer<LocalDateTime>) {
