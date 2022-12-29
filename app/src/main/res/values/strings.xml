@@ -13,6 +13,9 @@
     <string name="menu_report_an_event">Report an Event</string>
     <string name="menu_rate_a_ride">Rate a ride</string>
     <string name="menu_bookmarks">Bookmarks</string>
+    <string name="schedule_a_flexible_trip">Schedule a flexible trip</string>
+    <string name="select_day">Select day</string>
+    <string name="optimize">Optimize</string>
 
     <string name="task_add_bookmark">Add bookmark</string>
 
@@ -20,6 +23,11 @@
 
     <string name="missing_text">TextView</string>
     <string name="my_bookmarks_fragment_title">My Bookmarks</string>
+    <string name="_00_00">00:00</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
     <string name="name">Name</string>
     <string name="address">Address</string>
     <string name="label">app_label</string>

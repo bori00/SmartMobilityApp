@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentHomeBinding
 
+
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -32,14 +33,12 @@ class HomeFragment : Fragment() {
 
         val travelNowButton: Button = binding.travelNowButtonId
         travelNowButton.setOnClickListener {
-//            val intent = Intent(MainActivity.context, TravelNowActivity::class.java)
-//            startActivity(intent)
             binding.root.findNavController().navigate(R.id.action_nav_home_to_travel_now)
-
         }
 
-        viewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
+        val scheduleFlexibleIntentButtonClick: Button = binding.scheduleFlexibleIntentButton
+        scheduleFlexibleIntentButtonClick.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_nav_home_to_nav_flexible_intent_setup)
         }
 
         return root

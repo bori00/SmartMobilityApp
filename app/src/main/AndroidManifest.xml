@@ -12,13 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMobilityApp"
         tools:targetApi="31">
-        <activity
-            android:name=".TravelNowActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -41,15 +35,6 @@
 
         <activity
             android:name=".MapsActivity"
-            android:exported="true"
-            android:label="@string/title_activity_maps" />
-        <activity
-            android:name=".VehicleListActivity"
-            android:exported="true"
-            android:label="@string/title_activity_maps" />
-
-        <activity
-            android:name=".ui.home.travel_now.TravelNowActivity"
             android:exported="true"
             android:label="@string/title_activity_maps" />
     </application>
