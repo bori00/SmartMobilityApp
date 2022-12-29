@@ -9,10 +9,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.uid.smartmobilityapp.MainActivity
+import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentReportEventBinding
 import java.time.LocalDateTime
 import java.util.*
@@ -43,7 +45,24 @@ class ReportEventFragment : Fragment() {
 
         val endDatePickerButton : Button = binding.btnDate2
         endDatePickerButton.setOnClickListener{selectEndDate()}
+
+        setupEventTypeSpinner()
         return root
+    }
+
+    private fun setupEventTypeSpinner() {
+        val eventTypeSpinner = binding.eventTypeSpinner
+
+        ArrayAdapter.createFromResource(
+            MainActivity.context,
+            R.array.event_types_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            eventTypeSpinner.adapter = adapter
+        }
     }
 
     private fun selectDateTime(callback : Consumer<LocalDateTime>) {
