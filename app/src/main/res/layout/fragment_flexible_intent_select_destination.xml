@@ -1,13 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FDF2FF"
     tools:context=".ui.flexible_intent.FlexibleIntentSelectDestinationFragment">
 
-    <TextView
+    <include
+        android:id="@+id/include"
+        layout="@layout/route_summary"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:cardCornerRadius="30dp"
+        app:circularflow_radiusInDP="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/getLocationSearchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-</FrameLayout>
+
+    <SearchView
+        android:id="@+id/getLocationSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:queryHint="Address"
+        app:layout_constraintStart_toStartOf="@id/include"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/locationMapView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getLocationSearchView"/>
+
+    <Button
+        android:id="@+id/confirmDestinationButtonId"
+        android:layout_width="157dp"
+        android:layout_height="42dp"
+        android:text="Confirm destination"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.961" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

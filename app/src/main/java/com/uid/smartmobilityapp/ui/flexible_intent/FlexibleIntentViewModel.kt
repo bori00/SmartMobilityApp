@@ -1,5 +1,6 @@
 package com.uid.smartmobilityapp.ui.flexible_intent
 
+import android.location.Address
 import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,5 +20,8 @@ object FlexibleIntentViewModel : ViewModel() {
     val selectedFromHour: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val selectedToHour: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
 
+    val selectedAddress: MutableLiveData<Address> = MutableLiveData<Address>().apply {
+        value = null
+    }
 
 }

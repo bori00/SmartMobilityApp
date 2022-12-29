@@ -95,7 +95,7 @@ class FlexibleIntentSetupFragment : Fragment() {
             viewModel.selectedDay.value = editTextIntentName.text.toString()
             viewModel.selectedFromHour.value = editTextIntentName.text.toString()
             viewModel.selectedToHour.value = editTextIntentName.text.toString()
-            view.findNavController().navigate(R.id.action_nav_flexible_intent_setup_to_nav_flexible_intent_select_transport)
+            view.findNavController().navigate(R.id.action_nav_flexible_intent_setup_to_nav_flexible_intent_select_destination)
         }
     }
 

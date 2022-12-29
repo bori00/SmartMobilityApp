@@ -128,8 +128,21 @@
         android:label="@string/schedule_a_flexible_trip"
         tools:layout="@layout/fragment_flexible_intent_setup">
         <action
-            android:id="@+id/action_nav_flexible_intent_setup_to_nav_flexible_intent_select_transport"
-            app:destination="@id/nav_flexible_intent_select_transport" />
+            android:id="@+id/action_nav_flexible_intent_setup_to_nav_flexible_intent_select_destination"
+            app:destination="@id/nav_flexible_intent_select_destination" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_flexible_intent_select_destination"
+        android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSelectDestinationFragment"
+        android:label="@string/selectDestination"
+        tools:layout="@layout/fragment_add_location">
+        <action
+            android:id="@+id/action_nav_flexible_intent_select_destination_to_nav_flexible_intent_select_transport"
+            app:destination="@id/nav_flexible_intent_select_transport"/>
+        <action
+            android:id="@+id/action_nav_flexible_intent_select_destination_to_locations"
+            app:destination="@id/locations" />
     </fragment>
 
     <fragment
