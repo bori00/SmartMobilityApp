@@ -1,6 +1,5 @@
 package com.uid.smartmobilityapp.ui.travel_now
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.VehicleListActivity
 import com.uid.smartmobilityapp.databinding.FragmentLocationsBinding
 import com.uid.smartmobilityapp.ui.travel_now.adapter.LocationAdapter
 

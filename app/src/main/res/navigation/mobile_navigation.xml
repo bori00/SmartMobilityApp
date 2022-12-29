@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_view_vehicles_to_final_route"
             app:destination="@id/view_final_route" />
+        <action
+            android:id="@+id/action_view_vehicles_to_locations"
+            app:destination="@id/locations" />
     </fragment>
 
     <fragment
@@ -36,6 +39,9 @@
         <action
             android:id="@+id/action_view_route_to_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_final_route_to_locations"
+            app:destination="@id/locations" />
     </fragment>
 
     <fragment

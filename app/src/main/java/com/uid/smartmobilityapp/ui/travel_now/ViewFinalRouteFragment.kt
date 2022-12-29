@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentViewRouteBinding
+import com.uid.smartmobilityapp.ui.travel_now.model.Location
+import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 
 class ViewFinalRouteFragment : Fragment() {
 
@@ -31,7 +34,9 @@ class ViewFinalRouteFragment : Fragment() {
 
         _binding = FragmentViewRouteBinding.inflate(inflater, container, false)
         _root = binding.root
+        setupSearchRoutesButton()
         setupHomeButton()
+        setupLocationSummary()
         setupRouteImage()
         return _root
     }
@@ -40,6 +45,25 @@ class ViewFinalRouteFragment : Fragment() {
         val homeButton: Button = binding.homeButtonID
         homeButton.setOnClickListener { view ->
             binding.root.findNavController().navigate(R.id.action_view_route_to_home)
+        }
+    }
+
+    private fun setupLocationSummary() {
+        val nextStop: TextView = binding.include.nextStopTextFieldId
+        var text: String = "Current location"
+        for (loc: Location in MyLocations.locations) {
+            if (loc.indexNo.toInt() > 1) {
+                val addition = "➔${loc.name}"
+                text += addition
+            }
+        }
+        nextStop.text = text
+    }
+
+    private fun setupSearchRoutesButton() {
+        val searchRoutesButton: Button = binding.include.editRouteButtonId
+        searchRoutesButton.setOnClickListener { view ->
+            binding.root.findNavController().navigate(R.id.action_final_route_to_locations)
         }
     }
 
