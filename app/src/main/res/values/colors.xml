@@ -5,6 +5,7 @@
     <color name="purple_100">#F9F4FF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey">#333138</color>
     <color name="light_gray">#EEE8F4</color>
     <color name="background_color">#FDF2FF</color>
 </resources>

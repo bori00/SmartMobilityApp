@@ -9,10 +9,73 @@
         android:id="@+id/nav_home"
         android:name="com.uid.smartmobilityapp.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_nav_flexible_intent_setup"
             app:destination="@id/nav_flexible_intent_setup" />
+        <action
+            android:id="@+id/action_nav_home_to_travel_now"
+            app:destination="@id/travel_now" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/view_vehicles"
+        android:name="com.uid.smartmobilityapp.ui.travel_now.ViewVehiclesFragment"
+        android:label="@string/route_summary"
+        tools:layout="@layout/transport_list">
+        <action
+            android:id="@+id/action_view_vehicles_to_final_route"
+            app:destination="@id/view_final_route" />
+        <action
+            android:id="@+id/action_view_vehicles_to_locations"
+            app:destination="@id/locations" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/view_final_route"
+        android:name="com.uid.smartmobilityapp.ui.travel_now.ViewFinalRouteFragment"
+        android:label="@string/route_summary"
+        tools:layout="@layout/fragment_view_route">
+        <action
+            android:id="@+id/action_view_route_to_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_final_route_to_locations"
+            app:destination="@id/locations" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/travel_now"
+        android:name="com.uid.smartmobilityapp.ui.travel_now.AddLocationFragment"
+        android:label="Add Location"
+        tools:layout="@layout/fragment_add_location">
+        <action
+            android:id="@+id/action_travel_now_to_locations"
+            app:destination="@id/locations" />
+        <action
+            android:id="@+id/action_travel_now_to_vehicle_list"
+            app:destination="@id/view_vehicles" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locations"
+        android:name="com.uid.smartmobilityapp.ui.travel_now.LocationsFragment"
+        android:label="Locations"
+        tools:layout="@layout/fragment_locations">
+        <action
+            android:id="@+id/action_locations_to_travel_now"
+            app:destination="@id/travel_now">
+            <argument
+                android:name="position"
+                android:defaultValue="-1"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/action_locations_to_locations"
+            app:destination="@id/locations" />
+        <action
+            android:id="@+id/action_locations_to_vehicle_list"
+            app:destination="@id/view_vehicles" />
     </fragment>
 
     <fragment
@@ -43,7 +106,7 @@
         android:id="@+id/nav_bookmarks"
         android:name="com.uid.smartmobilityapp.ui.bookmarks.BookmarksFragment"
         android:label="@string/menu_bookmarks"
-        tools:layout="@layout/fragment_bookmarks" >
+        tools:layout="@layout/fragment_bookmarks">
         <action
             android:id="@+id/action_nav_bookmarks_to_nav_add_bookmark"
             app:destination="@id/nav_add_bookmark" />
@@ -53,7 +116,7 @@
         android:id="@+id/nav_add_bookmark"
         android:name="com.uid.smartmobilityapp.ui.bookmarks.AddBookmarkFragment"
         android:label="@string/task_add_bookmark"
-        tools:layout="@layout/fragment_add_bookmark" >
+        tools:layout="@layout/fragment_add_bookmark">
         <action
             android:id="@+id/action_nav_add_bookmark_to_nav_bookmarks2"
             app:destination="@id/nav_bookmarks" />
@@ -63,7 +126,7 @@
         android:id="@+id/nav_flexible_intent_setup"
         android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSetupFragment"
         android:label="@string/schedule_a_flexible_trip"
-        tools:layout="@layout/fragment_flexible_intent_setup" >
+        tools:layout="@layout/fragment_flexible_intent_setup">
         <action
             android:id="@+id/action_nav_flexible_intent_setup_to_nav_flexible_intent_select_transport"
             app:destination="@id/nav_flexible_intent_select_transport" />
@@ -73,7 +136,7 @@
         android:id="@+id/nav_flexible_intent_select_transport"
         android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSelectTransportFragment"
         android:label="@string/next"
-        tools:layout="@layout/fragment_flexible_intent_select_transport" >
+        tools:layout="@layout/fragment_flexible_intent_select_transport">
         <action
             android:id="@+id/action_nav_flexible_intent_select_transport_to_nav_flexible_intent_select_optimization"
             app:destination="@id/nav_flexible_intent_select_optimization" />
@@ -83,7 +146,7 @@
         android:id="@+id/nav_flexible_intent_select_optimization"
         android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSelectOptimizationFragment"
         android:label="@string/next"
-        tools:layout="@layout/fragment_flexible_intent_select_optimization" >
+        tools:layout="@layout/fragment_flexible_intent_select_optimization">
         <action
             android:id="@+id/action_nav_flexible_intent_select_optimization_to_nav_flexible_intent_success"
             app:destination="@id/nav_flexible_intent_success" />
@@ -93,7 +156,7 @@
         android:id="@+id/nav_flexible_intent_success"
         android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSuccessFragment"
         android:label="@string/next"
-        tools:layout="@layout/fragment_flexible_intent_success" >
+        tools:layout="@layout/fragment_flexible_intent_success">
         <action
             android:id="@+id/action_nav_flexible_intent_success_to_nav_home"
             app:destination="@id/nav_home" />

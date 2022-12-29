@@ -6,29 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/homeTitleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/travelNowButtonId"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="216dp"
+        android:capitalize="none"
+        android:text="Travel Now"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:cornerRadius="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/scheduleFlexibleIntentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_700"
-        android:text="@string/schedule_a_flexible_trip"
+        android:id="@+id/button2"
+        android:layout_width="154dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:text="Schedule regular trip"
         android:textAllCaps="false"
-        app:cornerRadius="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTitleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/travelNowButtonId" />
+
+    <Button
+        android:id="@+id/scheduleFlexibleIntentButton"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:capitalize="none"
+        android:text="Schedule flexible trip"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:cornerRadius="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
