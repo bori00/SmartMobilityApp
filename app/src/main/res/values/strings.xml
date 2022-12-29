@@ -15,6 +15,7 @@
     <string name="menu_bookmarks">Bookmarks</string>
     <string name="schedule_a_flexible_trip">Schedule a flexible trip</string>
     <string name="select_day">Select day</string>
+    <string name="select_intent">Select intent</string>
     <string name="optimize">Optimize</string>
 
     <string name="task_add_bookmark">Add bookmark</string>
