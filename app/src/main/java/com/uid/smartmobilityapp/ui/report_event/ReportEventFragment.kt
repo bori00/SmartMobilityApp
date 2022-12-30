@@ -4,14 +4,20 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
+import android.content.DialogInterface
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
@@ -29,25 +35,66 @@ class ReportEventFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var viewModel : ReportEventViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel =
+        viewModel =
             ViewModelProvider(this)[ReportEventViewModel::class.java]
 
         _binding = FragmentReportEventBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        setupDateTimePickers()
+        setupEventTypeDropDown()
+        setupLocationView()
+
+        return root
+    }
+
+    private fun setupDateTimePickers() {
         val startDatePickerButton : Button = binding.btnDate
         startDatePickerButton.setOnClickListener{selectStartDate()}
+        viewModel.selectedStartDate.observe(viewLifecycleOwner) {selectedStartDate ->
+            if (selectedStartDate != null) {
+                binding.startDateEditText1.setText(
+                    getDateString(
+                        selectedStartDate.dayOfMonth,
+                        selectedStartDate.monthValue,
+                        selectedStartDate.year,
+                        selectedStartDate.hour,
+                        selectedStartDate.minute))
+            } else {
+                binding.startDateEditText1.setText("")
+            }
+        }
 
         val endDatePickerButton : Button = binding.btnDate2
         endDatePickerButton.setOnClickListener{selectEndDate()}
+        viewModel.selectedEndDate.observe(viewLifecycleOwner) {selectedEndDate ->
+            if (selectedEndDate != null) {
+                binding.endDateEditText.setText(
+                    getDateString(
+                        selectedEndDate.dayOfMonth,
+                        selectedEndDate.monthValue,
+                        selectedEndDate.year,
+                        selectedEndDate.hour,
+                        selectedEndDate.minute))
+            } else {
+                binding.endDateEditText.setText("")
+            }
+        }
+    }
 
-        setupEventTypeDropDown()
-        return root
+    private fun setupLocationView() {
+        val locationView = binding.eventLocationView
+
+        locationView.locationNoId.visibility = GONE
+        locationView.locationIcon.visibility = VISIBLE
+        locationView.deleteLocationButtonId.visibility = GONE
     }
 
     private fun setupEventTypeDropDown() {
@@ -59,9 +106,15 @@ class ReportEventFragment : Fragment() {
             resources.getStringArray(R.array.event_types_array)
         )
         eventTypeDropDown.setAdapter(adapter)
+
+        eventTypeDropDown.setOnItemClickListener {parent: AdapterView<*>, view: View, position: Int, id: Long -> onEventTypeSelectedListener(adapter.getItem(position))}
     }
 
-    private fun selectDateTime(callback : Consumer<LocalDateTime>) {
+    private fun onEventTypeSelectedListener(eventType: String?) {
+        viewModel.selectedEventType.value = eventType
+    }
+
+    private fun selectDateTime(callback : Consumer<LocalDateTime?>) {
         val c: Calendar = Calendar.getInstance()
         val mYear = c.get(Calendar.YEAR)
         val mMonth = c.get(Calendar.MONTH)
@@ -85,6 +138,10 @@ class ReportEventFragment : Fragment() {
                         mMinute,
                         false
                     )
+                    timePickerDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, "Clear"
+                    ) { dialog, which -> callback.accept(null) }
+                    timePickerDialog.setButton(DatePickerDialog.BUTTON_NEUTRAL, "Discard"
+                    ) { dialog, which -> {} }
                     timePickerDialog.show()
                 }
             },
@@ -92,6 +149,10 @@ class ReportEventFragment : Fragment() {
             mMonth,
             mDay
         )
+        datePickerDialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, "Clear"
+        ) { dialog, which -> callback.accept(null) }
+        datePickerDialog.setButton(DatePickerDialog.BUTTON_NEUTRAL, "Discard"
+        ) { dialog, which -> {} }
         datePickerDialog.show()
     }
 
@@ -99,18 +160,10 @@ class ReportEventFragment : Fragment() {
 
         Log.d("ReportEventFragment", "Select Start Date")
 
-        val onDateSelected = Consumer { localDateTime: LocalDateTime ->
+        val onDateSelected = Consumer { localDateTime: LocalDateTime? ->
             run {
                 Log.d("ReportEventFragment", "Selected Start Date: " + localDateTime.toString())
-                binding.startDateEditText1.setText(
-                    getDateString(
-                        localDateTime.dayOfMonth,
-                        localDateTime.monthValue,
-                        localDateTime.year,
-                        localDateTime.hour,
-                        localDateTime.minute
-                    )
-                )
+                viewModel.selectedStartDate.value = localDateTime
             }
         }
 
@@ -120,18 +173,10 @@ class ReportEventFragment : Fragment() {
     private fun selectEndDate() {
         Log.d("ReportEventFragment", "Select End Date")
 
-        val onDateSelected = Consumer { localDateTime: LocalDateTime ->
+        val onDateSelected = Consumer { localDateTime: LocalDateTime? ->
             run {
                 Log.d("ReportEventFragment", "Selected End Date: " + localDateTime.toString())
-                binding.endDateEditText.setText(
-                    getDateString(
-                        localDateTime.dayOfMonth,
-                        localDateTime.monthValue,
-                        localDateTime.year,
-                        localDateTime.hour,
-                        localDateTime.minute
-                    )
-                )
+                viewModel.selectedEndDate.value = localDateTime
             }
         }
 

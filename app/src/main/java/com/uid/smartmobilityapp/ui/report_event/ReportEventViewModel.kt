@@ -1,13 +1,20 @@
 package com.uid.smartmobilityapp.ui.report_event
 
+import android.location.Address
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.time.LocalDateTime
 
 class ReportEventViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is the 'Report event' Fragment"
+    val selectedStartDate: MutableLiveData<LocalDateTime> = MutableLiveData<LocalDateTime>().apply {
+        LocalDateTime.now()
     }
-    val text: LiveData<String> = _text
+
+    val selectedEndDate: MutableLiveData<LocalDateTime> = MutableLiveData<LocalDateTime>().apply {
+        LocalDateTime.now().plusDays(1)
+    }
+
+    val selectedEventType : MutableLiveData<String?> = MutableLiveData<String?>().apply { null }
 }
