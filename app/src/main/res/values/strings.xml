@@ -31,6 +31,7 @@
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
     <string name="select">Select</string>
+    <string name="report_action">Report</string>
 
     <string-array name="event_types_array">
         <item>Accident</item>

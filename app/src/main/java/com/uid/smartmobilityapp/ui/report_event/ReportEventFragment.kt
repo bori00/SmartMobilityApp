@@ -16,9 +16,11 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentReportEventBinding
@@ -51,8 +53,27 @@ class ReportEventFragment : Fragment() {
         setupDateTimePickers()
         setupEventTypeDropDown()
         setupLocationView()
+        setupReportEventButton()
 
         return root
+    }
+
+    private fun setupReportEventButton() {
+        val reportEventButton = binding.reportEventButton
+
+        reportEventButton.setOnClickListener {onReportEventClick()}
+    }
+
+    private fun onReportEventClick() {
+        if (viewModel.selectedEventType.value == null) {
+            Toast.makeText(MainActivity.context, "Please select an event type", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (viewModel.selectedLocation.value == null) {
+            Toast.makeText(MainActivity.context, "Please select a location", Toast.LENGTH_SHORT).show()
+            return
+        }
+        binding.root.findNavController().navigate(R.id.action_nav_report_event_to_nav_report_event_success)
     }
 
     private fun setupDateTimePickers() {

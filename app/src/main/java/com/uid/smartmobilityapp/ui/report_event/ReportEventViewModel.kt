@@ -17,4 +17,8 @@ class ReportEventViewModel : ViewModel() {
     }
 
     val selectedEventType : MutableLiveData<String?> = MutableLiveData<String?>().apply { null }
+
+    val selectedLocation: MutableLiveData<Address> = MutableLiveData<Address>().apply {
+        value = null
+    }
 }
