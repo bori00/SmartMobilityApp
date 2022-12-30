@@ -7,6 +7,6 @@ import com.uid.smartmobilityapp.MainActivity
 class DeviceLocationProviderService {
     fun getCurrentLocation() : Address {
         return Geocoder(MainActivity.context).getFromLocationName(
-            "Technical University of Cluj-Napoca - Faculty of Automotive, Mechatronics and Mechanical Engineering", 1).get(0)
+            "UTCN - Facultatea de Autovehicule Rutiere Bd Muncii", 1).get(0)
     }
 }

@@ -27,6 +27,7 @@ import com.uid.smartmobilityapp.databinding.FragmentReportEventBinding
 import com.uid.smartmobilityapp.databinding.FragmentReportEventSuccessBinding
 import com.uid.smartmobilityapp.databinding.FragmentSelectLocationBinding
 import com.uid.smartmobilityapp.models.AddressWithName
+import com.uid.smartmobilityapp.services.DeviceLocationProviderService
 import java.io.IOException
 import java.time.LocalDateTime
 import java.util.*
@@ -56,15 +57,16 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View {
         viewModel = ReportEventViewModel
-        viewModel.newlySelectedLocation.value = viewModel.selectedLocation.value
 
         _binding = FragmentSelectLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         binding.discardLocationChangesButton.setOnClickListener{onDiscardLocationChanges()}
         binding.saveLocationChangesButton.setOnClickListener{onSaveLocationChanges()}
+        binding.setLocationToCurrentLocationButton.setOnClickListener{onSetLocationToCurrentLocation()}
         setupMap(savedInstanceState)
-        setupViewModel()
+
+        viewModel.newlySelectedLocation.value = viewModel.selectedLocation.value
 
         return root
     }
@@ -79,8 +81,13 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
         binding.root.findNavController().navigate(R.id.action_nav_report_event_select_location_to_nav_report_event)
     }
 
+    private fun onSetLocationToCurrentLocation() {
+        viewModel.newlySelectedLocation.value = AddressWithName(DeviceLocationProviderService().getCurrentLocation(), "CurrentLocation")
+    }
+
     override fun onMapReady(map: GoogleMap) {
         _mMap = map
+        setupViewModel()
     }
 
     override fun onResume() {
@@ -140,6 +147,7 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
     private fun setupViewModel() {
         // Address selection
         viewModel.newlySelectedLocation.observe(viewLifecycleOwner) {
+            Log.d("ReportEventSelectLocatoionFragment","Updating Newly selected address marker: " + it)
             if (it != null && _mMap != null) {
                 val latLng = LatLng(it.address.latitude, it.address.longitude)
                 if (_selectedAddressMarker == null) {

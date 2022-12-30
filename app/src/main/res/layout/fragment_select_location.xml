@@ -17,9 +17,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/purple_100"
-            android:backgroundTint="@color/purple_100" />
+            android:backgroundTint="@color/purple_100" >
+        </SearchView>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/setLocationToCurrentLocationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        app:fabSize="mini"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_my_location_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/locationMapView"
