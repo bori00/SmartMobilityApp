@@ -34,7 +34,7 @@ object ReportEventViewModel : ViewModel() {
         selectedStartDate.value = null;
         selectedEndDate.value = null;
         selectedEventType.value = null;
-        selectedLocation.value = AddressWithName(DeviceLocationProviderService().getCurrentLocation(), DeviceLocationProviderService().getCurrentLocation().getAddressLine(0))
+        selectedLocation.value = null
         newlySelectedLocation.value = selectedLocation.value
     }
 }
