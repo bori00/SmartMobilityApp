@@ -1,8 +1,11 @@
 package com.uid.smartmobilityapp.ui.report_event
 
+import android.app.SearchManager
+import android.database.MatrixCursor
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.provider.BaseColumns
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,10 +31,12 @@ import com.uid.smartmobilityapp.databinding.FragmentReportEventSuccessBinding
 import com.uid.smartmobilityapp.databinding.FragmentSelectLocationBinding
 import com.uid.smartmobilityapp.models.AddressWithName
 import com.uid.smartmobilityapp.services.DeviceLocationProviderService
+import com.uid.smartmobilityapp.ui.bookmarks.model.MyBookmarks
 import java.io.IOException
 import java.time.LocalDateTime
 import java.util.*
 import java.util.function.Consumer
+import java.util.stream.Collectors
 
 
 class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
@@ -115,6 +120,13 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
         // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
         _searchView = binding.locationSearchView
         _searchView.onActionViewExpanded()
+
+        val from = arrayOf(SearchManager.SUGGEST_COLUMN_TEXT_1)
+        val to = intArrayOf(android.R.id.text1)
+        val cursorAdapter = SimpleCursorAdapter(context, android.R.layout.simple_list_item_1, null, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER)
+        val availableBookmarkNames = MyBookmarks.bookmarks.stream().map { bookmark -> bookmark.name }.collect(Collectors.toList())
+
+        _searchView.suggestionsAdapter = cursorAdapter
         _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 val location = _searchView.query.toString()
@@ -138,10 +150,23 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
                 return false
             }
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
+            override fun onQueryTextChange(query: String?): Boolean {
+                val cursor = MatrixCursor(arrayOf(BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1))
+
+                query?.let {
+                    availableBookmarkNames.forEachIndexed { index, suggestion ->
+                        if (suggestion.contains(query, true)) {
+                            cursor.addRow(arrayOf(index, suggestion))
+                        }
+                    }
+                }
+
+                cursorAdapter.changeCursor(cursor)
+                cursorAdapter.notifyDataSetChanged()
+                return true
             }
         })
+
     }
 
     private fun setupViewModel() {
