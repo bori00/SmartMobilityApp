@@ -34,7 +34,9 @@ import com.uid.smartmobilityapp.databinding.FragmentReportEventSuccessBinding
 import com.uid.smartmobilityapp.databinding.FragmentSelectLocationBinding
 import com.uid.smartmobilityapp.models.AddressWithName
 import com.uid.smartmobilityapp.services.DeviceLocationProviderService
+import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import com.uid.smartmobilityapp.ui.bookmarks.model.MyBookmarks
+import com.uid.smartmobilityapp.ui.utils.MapSearchUtils
 import java.io.IOException
 import java.time.LocalDateTime
 import java.util.*
@@ -55,7 +57,6 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
     private var _mMapView: MapView? = null
     private val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
     private var _mMap: GoogleMap? = null
-    private lateinit var _searchView: SearchView
 
     private var _selectedAddressMarker : Marker? = null
 
@@ -96,6 +97,7 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         _mMap = map
         setupViewModel()
+        setupMapSearch()
     }
 
     override fun onResume() {
@@ -114,84 +116,15 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
         _mMapView = binding.locationMapView
         _mMapView!!.onCreate(mapViewBundle)
 
-        setupMapSearch()
-
         _mMapView!!.getMapAsync(this)
     }
 
     private fun setupMapSearch() {
-        // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
-        _searchView = binding.locationSearchView
-        _searchView.onActionViewExpanded()
 
-        val from = arrayOf(SearchManager.SUGGEST_COLUMN_TEXT_1)
-        val to = intArrayOf(android.R.id.text1)
-        val cursorAdapter = SimpleCursorAdapter(context, android.R.layout.simple_list_item_1, null, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER)
-        val availableBookmarkNames = MyBookmarks.bookmarks.stream().map { bookmark -> bookmark.name }.collect(Collectors.toList())
-
-        _searchView.suggestionsAdapter = cursorAdapter
-        _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                val location = _searchView.query.toString()
-                var addressList: List<Address>? = null
-                if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(MainActivity.context)
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1)
-                        if (!addressList.isEmpty()) {
-                            viewModel.newlySelectedLocation.value = AddressWithName(addressList[0], addressList[0].getAddressLine(0)) // TODO: bookmark name...
-                        } else {
-                            Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
-                        }
-                    } catch (e: IOException) {
-                        Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
-                        e.printStackTrace()
-                    }
-                } else {
-                    Toast.makeText(MainActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(query: String?): Boolean {
-                val cursor = MatrixCursor(arrayOf(BaseColumns._ID, SearchManager.SUGGEST_COLUMN_TEXT_1))
-
-                query?.let {
-                    availableBookmarkNames.forEachIndexed { index, suggestion ->
-                        if (suggestion.contains(query, true)) {
-                            cursor.addRow(arrayOf(index, suggestion))
-                        }
-                    }
-                }
-
-                cursorAdapter.changeCursor(cursor)
-                cursorAdapter.notifyDataSetChanged()
-                return true
-            }
-        })
-
-        _searchView.setOnSuggestionListener(object: SearchView.OnSuggestionListener {
-            override fun onSuggestionSelect(position: Int): Boolean {
-                return false
-            }
-
-            @SuppressLint("RestrictedApi", "Range")
-            override fun onSuggestionClick(position: Int): Boolean {
-                hideKeyboard(view!!)
-                val cursor = _searchView.suggestionsAdapter.getItem(position) as Cursor
-                val selection = cursor.getString(cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1))
-                _searchView.setQuery(selection, false)
-
-                val bookmark = MyBookmarks.bookmarks.stream().filter({bookmark -> bookmark.name.equals(selection)}).collect(Collectors.toList()).get(0)
-                viewModel.newlySelectedLocation.value = AddressWithName(
-                    bookmark.address,
-                    bookmark.name
-                )
-
-                return true
-            }
-        })
-
+        MapSearchUtils().setupMapSearchWithBookmarkSuggestions(binding.locationSearchView, requireContext(), requireView(),
+            {addressWithName : AddressWithName -> viewModel.newlySelectedLocation.value = addressWithName},
+            {bookmark : Bookmark -> viewModel.newlySelectedLocation.value = AddressWithName(bookmark.address, bookmark.name)}
+        )
     }
 
     private fun setupViewModel() {

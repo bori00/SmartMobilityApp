@@ -23,7 +23,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentAddBookmarkBinding
+import com.uid.smartmobilityapp.models.AddressWithName
 import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
+import com.uid.smartmobilityapp.ui.utils.MapSearchUtils
 import java.io.IOException
 
 
@@ -66,6 +68,7 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(map: GoogleMap) {
         _mMap = map
+        setupMapSearch()
     }
 
     override fun onResume() {
@@ -105,45 +108,14 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
         _mMapView = binding.bookmarkMapView
         _mMapView!!.onCreate(mapViewBundle)
 
-        setupMapSearch()
-
         _mMapView!!.getMapAsync(this)
     }
 
     private fun setupMapSearch() {
 
-
-
-        // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
-        _searchView = binding.bookmarkAddressSearchView
-        _searchView.onActionViewExpanded()
-        _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                val location = _searchView.query.toString()
-                var addressList: List<Address>? = null
-                if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(MainActivity.context)
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1)
-                        if (!addressList.isEmpty()) {
-                            _viewModel.selectedAddress.value = addressList[0]
-                        } else {
-                            Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
-                        }
-                    } catch (e: IOException) {
-                        Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
-                        e.printStackTrace()
-                    }
-                } else {
-                    Toast.makeText(MainActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-        })
+        MapSearchUtils().setupMapSearchWithNoBookmarkSuggestions(binding.bookmarkAddressSearchView,
+            {addressWithName : AddressWithName -> _viewModel.selectedAddress.value = addressWithName.address}
+        )
     }
 
     private fun setupViewModel() {
