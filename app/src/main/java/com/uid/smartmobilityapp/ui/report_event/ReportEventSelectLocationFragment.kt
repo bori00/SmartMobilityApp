@@ -1,6 +1,8 @@
 package com.uid.smartmobilityapp.ui.report_event
 
+import android.annotation.SuppressLint
 import android.app.SearchManager
+import android.database.Cursor
 import android.database.MatrixCursor
 import android.location.Address
 import android.location.Geocoder
@@ -24,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentReportEventBinding
@@ -167,12 +170,29 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
             }
         })
 
+        _searchView.setOnSuggestionListener(object: SearchView.OnSuggestionListener {
+            override fun onSuggestionSelect(position: Int): Boolean {
+                return false
+            }
+
+            @SuppressLint("RestrictedApi", "Range")
+            override fun onSuggestionClick(position: Int): Boolean {
+                hideKeyboard(view!!)
+                val cursor = _searchView.suggestionsAdapter.getItem(position) as Cursor
+                val selection = cursor.getString(cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1))
+                _searchView.setQuery(selection, false)
+
+                // Do something with selection
+                return true
+            }
+        })
+
     }
 
     private fun setupViewModel() {
         // Address selection
         viewModel.newlySelectedLocation.observe(viewLifecycleOwner) {
-            Log.d("ReportEventSelectLocatoionFragment","Updating Newly selected address marker: " + it)
+            Log.d("ReportEventSelectLocationFragment","Updating Newly selected address marker: " + it)
             if (it != null && _mMap != null) {
                 val latLng = LatLng(it.address.latitude, it.address.longitude)
                 if (_selectedAddressMarker == null) {
