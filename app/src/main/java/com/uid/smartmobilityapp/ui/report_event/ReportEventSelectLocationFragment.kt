@@ -82,7 +82,7 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun onSetLocationToCurrentLocation() {
-        viewModel.newlySelectedLocation.value = AddressWithName(DeviceLocationProviderService().getCurrentLocation(), "CurrentLocation")
+        viewModel.newlySelectedLocation.value = AddressWithName(DeviceLocationProviderService().getCurrentLocation(), "Current Location")
     }
 
     override fun onMapReady(map: GoogleMap) {
