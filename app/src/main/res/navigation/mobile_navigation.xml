@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_nav_report_event_to_nav_report_event_success"
             app:destination="@id/nav_report_event_success" />
+        <action
+            android:id="@+id/action_nav_report_event_to_nav_report_event_select_location"
+            app:destination="@id/nav_report_event_select_location" />
     </fragment>
 
     <fragment
@@ -174,5 +177,15 @@
         <action
             android:id="@+id/action_nav_report_event_success_to_nav_home"
             app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_report_event_select_location"
+        android:name="com.uid.smartmobilityapp.ui.report_event.ReportEventSelectLocationFragment"
+        android:label="Select Event Location"
+        tools:layout="@layout/fragment_select_location" >
+        <action
+            android:id="@+id/action_nav_report_event_select_location_to_nav_report_event"
+            app:destination="@id/nav_report_event" />
     </fragment>
 </navigation>

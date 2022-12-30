@@ -21,6 +21,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentReportEventBinding
@@ -44,8 +47,7 @@ class ReportEventFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel =
-            ViewModelProvider(this)[ReportEventViewModel::class.java]
+        viewModel = ReportEventViewModel
 
         _binding = FragmentReportEventBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -54,6 +56,7 @@ class ReportEventFragment : Fragment() {
         setupEventTypeDropDown()
         setupLocationView()
         setupReportEventButton()
+        setupViewModel()
 
         return root
     }
@@ -116,6 +119,13 @@ class ReportEventFragment : Fragment() {
         locationView.locationNoId.visibility = GONE
         locationView.locationIcon.visibility = VISIBLE
         locationView.deleteLocationButtonId.visibility = GONE
+
+        val editLocationButton = binding.eventLocationView.editLocationButtonId
+        editLocationButton.setOnClickListener {onEditLocationButtonClick()}
+    }
+
+    private fun onEditLocationButtonClick() {
+        binding.root.findNavController().navigate(R.id.action_nav_report_event_to_nav_report_event_select_location)
     }
 
     private fun setupEventTypeDropDown() {
@@ -205,11 +215,23 @@ class ReportEventFragment : Fragment() {
     }
 
     private fun getDateString(dayOfMonth : Int, month : Int, year : Int, hourOfDay : Int, minute : Int) : String {
-        return dayOfMonth.toString() + "-" + month+ "-" + year + " " + hourOfDay + ":" + minute
+        return "$dayOfMonth-$month-$year $hourOfDay:$minute"
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupViewModel() {
+        // Address selection
+        viewModel.selectedLocation.observe(viewLifecycleOwner) {
+            Log.d("ReportEventFragment", "Updated selected location: $it")
+            if (it == null) {
+                binding.eventLocationView.LocationNameTFId.setText("Unknown")
+            } else {
+                binding.eventLocationView.LocationNameTFId.setText(it.name)
+            }
+        }
     }
 }
