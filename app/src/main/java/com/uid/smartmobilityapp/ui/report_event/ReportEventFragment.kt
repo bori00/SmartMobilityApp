@@ -137,8 +137,11 @@ class ReportEventFragment : Fragment() {
             resources.getStringArray(R.array.event_types_array)
         )
         eventTypeDropDown.setAdapter(adapter)
+        if (viewModel.selectedEventType.value != null) {
+            eventTypeDropDown.setText(adapter.getItem(adapter.getPosition(viewModel.selectedEventType.value)).toString(), false)
+        }
 
-        eventTypeDropDown.setOnItemClickListener {parent: AdapterView<*>, view: View, position: Int, id: Long -> onEventTypeSelectedListener(adapter.getItem(position))}
+        eventTypeDropDown.setOnItemClickListener { _: AdapterView<*>, _: View, position: Int, _: Long -> onEventTypeSelectedListener(adapter.getItem(position))}
     }
 
     private fun onEventTypeSelectedListener(eventType: String?) {
