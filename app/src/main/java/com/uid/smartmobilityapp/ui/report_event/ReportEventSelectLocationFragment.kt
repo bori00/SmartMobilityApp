@@ -182,7 +182,12 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
                 val selection = cursor.getString(cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1))
                 _searchView.setQuery(selection, false)
 
-                // Do something with selection
+                val bookmark = MyBookmarks.bookmarks.stream().filter({bookmark -> bookmark.name.equals(selection)}).collect(Collectors.toList()).get(0)
+                viewModel.newlySelectedLocation.value = AddressWithName(
+                    bookmark.address,
+                    bookmark.name
+                )
+
                 return true
             }
         })
