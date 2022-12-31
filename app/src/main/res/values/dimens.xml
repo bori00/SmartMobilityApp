@@ -14,4 +14,5 @@
     <dimen name="fragment_title_size">34sp</dimen>
     <dimen name="recyclerview_top_margin">16dp</dimen>
     <dimen name="fragment_icon_size">48dp</dimen>
+    <dimen name="seek_bar_thickness">4dp</dimen>
 </resources>

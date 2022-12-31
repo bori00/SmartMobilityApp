@@ -82,7 +82,19 @@
         android:id="@+id/nav_flexible_intents"
         android:name="com.uid.smartmobilityapp.ui.my_flexible_intents.MyFlexibleIntentsFragment"
         android:label="@string/menu_flexible_intents"
-        tools:layout="@layout/fragment_my_flexible_intents" />
+        tools:layout="@layout/fragment_my_flexible_intents">
+        <action
+            android:id="@+id/action_flexible_intents_to_optimal_route"
+            app:destination="@id/getOptimalRoute" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/getOptimalRoute"
+        android:name="com.uid.smartmobilityapp.ui.my_flexible_intents.GetOptimalRouteFragment"
+        android:label="Optimal route"
+        tools:layout="@layout/fragment_optimal_route"
+        >
+    </fragment>
 
     <fragment
         android:id="@+id/nav_regular_intents"

@@ -1,18 +1,14 @@
 package com.uid.smartmobilityapp.ui.flexible_intent
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSelectOptimizationBinding
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSuccessBinding
 
 class FlexibleIntentSuccessFragment : Fragment() {
@@ -49,7 +45,7 @@ class FlexibleIntentSuccessFragment : Fragment() {
         successMessage.text =
             buildString {
                 append("Your trip for \"")
-                append(viewModel.selectedName.value)
+                append(FlexibleIntentViewModel.selectedName.value)
                 append("\" flexible intent has been scheduled")
             }
     }
