@@ -59,7 +59,7 @@
             android:layout_height="match_parent"
             android:enabled="false"
             android:hint="@string/start_date"
-            android:inputType="none"></EditText>
+            android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

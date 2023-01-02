@@ -28,10 +28,10 @@ class RateRideFragment : Fragment() {
         _binding = FragmentRateRideBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.rateRideTitleTextView
-        viewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.rateRideTitleTextView
+//        viewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 
