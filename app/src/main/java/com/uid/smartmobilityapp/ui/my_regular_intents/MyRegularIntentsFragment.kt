@@ -20,8 +20,9 @@ import com.uid.smartmobilityapp.databinding.FragmentMyRegularIntentsBinding
 class MyRegularIntentsFragment : Fragment() {
 
     private var _binding: FragmentMyRegularIntentsBinding? = null
-    lateinit private var _viewModel: MyRegularIntentsViewModel;
-
+    lateinit private var _viewModel: MyRegularIntentsViewModel
+    private var intentSelected = false
+    private var dateSelected = false
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,9 +43,15 @@ class MyRegularIntentsFragment : Fragment() {
 
     private fun setNextButton() {
         val nextButton: Button = binding.nextButtonID
+        nextButton.isEnabled = false
         nextButton.setOnClickListener {
             binding.root.findNavController().navigate(R.id.view_final_route_regular)
         }
+    }
+
+    private fun enableButton() {
+        val nextButton: Button = binding.nextButtonID
+        nextButton.isEnabled = true
     }
 
     private fun setIntentDropDown() {
@@ -64,22 +71,21 @@ class MyRegularIntentsFragment : Fragment() {
 
         dropdown.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
-                val selectedWord: String = parent.getItemAtPosition(position).toString()
-                val selectedDay = selectedWord
+                intentSelected = true
+                if(dateSelected) enableButton()
             }
     }
 
     private fun setDayDropDown() {
-        val tommorrowCalendar = Calendar.getInstance()
-        tommorrowCalendar.add(Calendar.DATE, 1)
+        val tomorrowCalendar = Calendar.getInstance()
+        tomorrowCalendar.add(Calendar.DATE, 1)
 
         val dateFormat = SimpleDateFormat("EEEE, dd.MM.yyyy")
         val currentDate = Date()
         val today = dateFormat.format(currentDate)
-        val tomorrow = dateFormat.format(tommorrowCalendar.time)
-        tommorrowCalendar.add(Calendar.DATE, 1)
-        val dayAfterTomorrow = dateFormat.format(tommorrowCalendar.time)
-
+        val tomorrow = dateFormat.format(tomorrowCalendar.time)
+        tomorrowCalendar.add(Calendar.DATE, 1)
+        val dayAfterTomorrow = dateFormat.format(tomorrowCalendar.time)
 
         val dropdown = binding.selectDayAutoCompleteID
         val items = arrayOf(
@@ -101,8 +107,8 @@ class MyRegularIntentsFragment : Fragment() {
 
         dropdown.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
-                val selectedWord: String = parent.getItemAtPosition(position).toString()
-                val selectedDay = selectedWord
+                dateSelected = true
+                if(intentSelected) enableButton()
             }
     }
 
