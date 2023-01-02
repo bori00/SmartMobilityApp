@@ -6,4 +6,6 @@ val day: String?,
 val fromHour: String?,
 val toHour: String?,
 val destination:String?,
+val vehicleChosen:String?,
+val estimatedTime:Int?,
 )
