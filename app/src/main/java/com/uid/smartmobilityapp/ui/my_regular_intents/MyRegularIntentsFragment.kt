@@ -20,17 +20,15 @@ import com.uid.smartmobilityapp.databinding.FragmentMyRegularIntentsBinding
 class MyRegularIntentsFragment : Fragment() {
 
     private var _binding: FragmentMyRegularIntentsBinding? = null
+    lateinit private var _viewModel: MyRegularIntentsViewModel;
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel =
+        _viewModel =
             ViewModelProvider(this).get(MyRegularIntentsViewModel::class.java)
 
         _binding = FragmentMyRegularIntentsBinding.inflate(inflater, container, false)
@@ -48,9 +46,10 @@ class MyRegularIntentsFragment : Fragment() {
             binding.root.findNavController().navigate(R.id.view_final_route_regular)
         }
     }
+
     private fun setIntentDropDown() {
         val dropdown = binding.selectIntentAutoCompleteID
-        val items = arrayOf("Supermarket trip", "Uni", "Gym")
+        val items = ArrayList(_viewModel.intents.value!!)
         val adapter =
             activity?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, items) }
         dropdown.setAdapter(adapter)
@@ -78,14 +77,16 @@ class MyRegularIntentsFragment : Fragment() {
         val currentDate = Date()
         val today = dateFormat.format(currentDate)
         val tomorrow = dateFormat.format(tommorrowCalendar.time)
-        tommorrowCalendar.add(Calendar.DATE, 2)
+        tommorrowCalendar.add(Calendar.DATE, 1)
         val dayAfterTomorrow = dateFormat.format(tommorrowCalendar.time)
 
 
         val dropdown = binding.selectDayAutoCompleteID
-        val items = arrayOf(today,
+        val items = arrayOf(
+            today,
             tomorrow,
-            dayAfterTomorrow)
+            dayAfterTomorrow
+        )
         val adapter =
             activity?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, items) }
         dropdown.setAdapter(adapter)
