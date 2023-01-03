@@ -30,6 +30,21 @@
     <string name="back">Back</string>
     <string name="name">Name</string>
     <string name="address">Address</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="select">Select</string>
+    <string name="report_action">Report</string>
+
+    <string-array name="event_types_array">
+        <item>Accident</item>
+        <item>Redirected Traffic</item>
+        <item>Construction Work</item>
+        <item>Other</item>
+    </string-array>
+
     <string name="label">app_label</string>
     <string name="hint">hint</string>
+    <string name="action_save">Save</string>
+    <string name="action_discard">Discard</string>
+    >>>>>>> main
 </resources>
