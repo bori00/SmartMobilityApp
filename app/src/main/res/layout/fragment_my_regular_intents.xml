@@ -6,105 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".ui.flexible_intent.FlexibleIntentSetupFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/selectIntentInputID"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="285dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="96dp"
-        android:hint="@string/select_intent"
-        app:boxStrokeColor="@color/purple_700"
-        app:hintTextColor="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/label2"
-        app:layout_constraintTop_toBottomOf="@+id/label2">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <AutoCompleteTextView
-            android:id="@+id/selectIntentAutoCompleteID"
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/label2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:layout_marginTop="60dp"
+            android:text="@string/specify_intent_name"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/selectIntentInputID"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="285dp"
+            android:layout_height="63dp"
+            android:layout_marginVertical="20dp"
+            android:hint="@string/select_intent"
+            app:boxStrokeColor="@color/purple_700"
+            app:hintTextColor="@color/purple_700">
 
-    <TextView
-        android:id="@+id/label2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/specify_intent_name"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <AutoCompleteTextView
+                android:id="@+id/selectIntentAutoCompleteID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
 
-    <TextView
-        android:id="@+id/specifyTheDayNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:text="@string/specify_the_day"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label2" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/selectDayInputID"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="@dimen/default_width"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/select_day"
-        app:boxStrokeColor="@color/purple_700"
-        app:hintTextColor="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintStart_toStartOf="@+id/specifyTheDayNameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/specifyTheDayNameLabel">
-
-        <AutoCompleteTextView
-            android:id="@+id/selectDayAutoCompleteID"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/specifyTheDayNameLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:layout_marginTop="90dp"
+            android:text="@string/specify_the_day"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/selectDayInputID"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="285dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="20dp"
+            android:hint="@string/select_day"
+            app:boxStrokeColor="@color/purple_700"
+            app:hintTextColor="@color/purple_700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.119"
+            app:layout_constraintStart_toStartOf="@+id/specifyTheDayNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/specifyTheDayNameLabel">
+
+            <AutoCompleteTextView
+                android:id="@+id/selectDayAutoCompleteID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
-        android:id="@+id/nextButtonID"
-        android:layout_width="157dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="28dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="@string/next"
-        android:textAllCaps="false"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/nextButtonID"
+            android:layout_width="157dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="60dp"
+            android:backgroundTint="@color/purple_700"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            app:cornerRadius="20dp" />
 
-    <Button
-        android:id="@+id/addNewIntentButtonID"
-        android:layout_width="157dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/add_new_intent"
-        android:textAllCaps="false"
-        app:cornerRadius="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/nextButtonID"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        <Button
+            android:id="@+id/addNewIntentButtonID"
+            android:layout_width="159dp"
+            android:layout_height="51dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/add_new_intent"
+            android:textAllCaps="false"
+            app:cornerRadius="25dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
