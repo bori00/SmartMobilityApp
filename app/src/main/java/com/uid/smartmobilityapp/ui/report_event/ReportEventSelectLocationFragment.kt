@@ -1,8 +1,13 @@
 package com.uid.smartmobilityapp.ui.report_event
 
+import android.annotation.SuppressLint
+import android.app.SearchManager
+import android.database.Cursor
+import android.database.MatrixCursor
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.provider.BaseColumns
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentReportEventBinding
@@ -28,10 +34,14 @@ import com.uid.smartmobilityapp.databinding.FragmentReportEventSuccessBinding
 import com.uid.smartmobilityapp.databinding.FragmentSelectLocationBinding
 import com.uid.smartmobilityapp.models.AddressWithName
 import com.uid.smartmobilityapp.services.DeviceLocationProviderService
+import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
+import com.uid.smartmobilityapp.ui.bookmarks.model.MyBookmarks
+import com.uid.smartmobilityapp.ui.utils.MapSearchUtils
 import java.io.IOException
 import java.time.LocalDateTime
 import java.util.*
 import java.util.function.Consumer
+import java.util.stream.Collectors
 
 
 class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
@@ -47,7 +57,6 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
     private var _mMapView: MapView? = null
     private val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
     private var _mMap: GoogleMap? = null
-    private lateinit var _searchView: SearchView
 
     private var _selectedAddressMarker : Marker? = null
 
@@ -88,6 +97,7 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         _mMap = map
         setupViewModel()
+        setupMapSearch()
     }
 
     override fun onResume() {
@@ -106,48 +116,21 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
         _mMapView = binding.locationMapView
         _mMapView!!.onCreate(mapViewBundle)
 
-        setupMapSearch()
-
         _mMapView!!.getMapAsync(this)
     }
 
     private fun setupMapSearch() {
-        // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
-        _searchView = binding.locationSearchView
-        _searchView.onActionViewExpanded()
-        _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                val location = _searchView.query.toString()
-                var addressList: List<Address>? = null
-                if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(MainActivity.context)
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1)
-                        if (!addressList.isEmpty()) {
-                            viewModel.newlySelectedLocation.value = AddressWithName(addressList[0], addressList[0].getAddressLine(0)) // TODO: bookmark name...
-                        } else {
-                            Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
-                        }
-                    } catch (e: IOException) {
-                        Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
-                        e.printStackTrace()
-                    }
-                } else {
-                    Toast.makeText(MainActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
-                }
-                return false
-            }
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-        })
+        MapSearchUtils().setupMapSearchWithBookmarkSuggestions(binding.locationSearchView, requireContext(), requireView(),
+            {addressWithName : AddressWithName -> viewModel.newlySelectedLocation.value = addressWithName},
+            {bookmark : Bookmark -> viewModel.newlySelectedLocation.value = AddressWithName(bookmark.address, bookmark.name)}
+        )
     }
 
     private fun setupViewModel() {
         // Address selection
         viewModel.newlySelectedLocation.observe(viewLifecycleOwner) {
-            Log.d("ReportEventSelectLocatoionFragment","Updating Newly selected address marker: " + it)
+            Log.d("ReportEventSelectLocationFragment","Updating Newly selected address marker: " + it)
             if (it != null && _mMap != null) {
                 val latLng = LatLng(it.address.latitude, it.address.longitude)
                 if (_selectedAddressMarker == null) {
