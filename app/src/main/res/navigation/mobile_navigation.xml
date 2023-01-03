@@ -107,7 +107,11 @@
         android:id="@+id/nav_rate_ride"
         android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideFragment"
         android:label="@string/menu_rate_a_ride"
-        tools:layout="@layout/fragment_rate_ride" />
+        tools:layout="@layout/fragment_rate_ride" >
+        <action
+            android:id="@+id/action_nav_rate_ride_to_nav_rate_ride_success"
+            app:destination="@id/nav_rate_ride_success" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_bookmarks"
@@ -187,5 +191,15 @@
         <action
             android:id="@+id/action_nav_report_event_select_location_to_nav_report_event"
             app:destination="@id/nav_report_event" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_rate_ride_success"
+        android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideSuccessFragment"
+        android:label="Successfully Rated Ride"
+        tools:layout="@layout/fragment_rate_ride_success" >
+        <action
+            android:id="@+id/action_nav_rate_ride_success_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 </navigation>

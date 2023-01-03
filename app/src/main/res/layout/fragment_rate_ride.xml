@@ -119,6 +119,7 @@
                     android:id="@+id/selectRideAutoComplete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
                     android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,7 +168,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <EditText
-                android:id="@+id/rateEventNotesEditText"
+                android:id="@+id/rateRideNotesEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -179,17 +180,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <Button
-                android:id="@+id/reportEventButton"
+                android:id="@+id/rateRideButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
-                android:text="@string/report_action"
+                android:text="@string/action_rate"
                 app:cornerRadius="@dimen/button_corner_radius"
+                android:enabled="false"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rateEventNotesEditText" />
+                app:layout_constraintTop_toBottomOf="@id/rateRideNotesEditText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

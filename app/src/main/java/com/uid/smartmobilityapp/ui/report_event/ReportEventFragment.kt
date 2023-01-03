@@ -141,7 +141,9 @@ class ReportEventFragment : Fragment() {
             eventTypeDropDown.setText(adapter.getItem(adapter.getPosition(viewModel.selectedEventType.value)).toString(), false)
         }
 
-        eventTypeDropDown.setOnItemClickListener { _: AdapterView<*>, _: View, position: Int, _: Long -> onEventTypeSelectedListener(adapter.getItem(position))}
+        eventTypeDropDown.setOnItemClickListener { adapterView: AdapterView<*>, _: View, position: Int, _: Long -> onEventTypeSelectedListener(
+            adapterView.getItemAtPosition(position) as String?
+        )}
     }
 
     private fun onEventTypeSelectedListener(eventType: String?) {
