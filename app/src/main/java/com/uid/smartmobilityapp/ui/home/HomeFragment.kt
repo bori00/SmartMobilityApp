@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentHomeBinding
+import com.uid.smartmobilityapp.ui.travel_now.LocationsViewModel
 
 
 class HomeFragment : Fragment() {
@@ -19,6 +20,8 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var viewModelForLocations: LocationsViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +30,8 @@ class HomeFragment : Fragment() {
     ): View {
         val viewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModelForLocations = LocationsViewModel
+        viewModelForLocations.selectedIntent.value = ""
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
