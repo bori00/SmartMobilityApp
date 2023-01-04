@@ -31,14 +31,46 @@
         app:layout_constraintStart_toStartOf="@id/include"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
+    <LinearLayout
+        android:layout_width="113dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border_radius_shape"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getLocationSearchView">
+
+        <EditText
+            android:id="@+id/editTextID"
+            android:layout_width="57dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="1"
+            android:textColor="#FFFFFF"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/groupButtonID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/users"
+            android:scaleType="centerCrop"
+            app:cornerRadius="200dp"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
     <com.google.android.gms.maps.MapView
         android:id="@+id/locationMapView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getLocationSearchView"/>
+        app:layout_constraintTop_toBottomOf="@+id/getLocationSearchView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/searchRoutesButtonId"
@@ -54,16 +86,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.961" />
-
-    <Button
-        android:id="@+id/groupButtonID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getLocationSearchView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
