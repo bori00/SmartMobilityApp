@@ -15,6 +15,7 @@
     <string name="menu_bookmarks">Bookmarks</string>
     <string name="schedule_a_flexible_trip">Schedule a flexible trip</string>
     <string name="select_day">Select day</string>
+    <string name="select_intent">Select intent</string>
     <string name="optimize">Optimize</string>
 
     <string name="task_add_bookmark">Add bookmark</string>
@@ -30,7 +31,28 @@
     <string name="back">Back</string>
     <string name="name">Name</string>
     <string name="address">Address</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="select">Select</string>
+    <string name="report_action">Report</string>
+
+    <string-array name="event_types_array">
+        <item>Accident</item>
+        <item>Redirected Traffic</item>
+        <item>Construction Work</item>
+        <item>Other</item>
+    </string-array>
+
     <string name="label">app_label</string>
     <string name="hint">hint</string>
     <string name="selectDestination">Select a destination</string>
+    <string name="add_new_intent">Add New Intent</string>
+    <string name="specify_the_day">Specify the day:</string>
+    <string name="specify_intent_name">Specify intent name:</string>
+    <string name="action_save">Save</string>
+    <string name="action_discard">Discard</string>
+    <string name="action_select_the_date">Select the Date</string>
+    <string name="action_select_the_ride">Select the ride</string>
+    <string name="action_tell_us_what_you_think">Tell us what you think!</string>
+    <string name="action_rate">Submit Rating</string>
 </resources>

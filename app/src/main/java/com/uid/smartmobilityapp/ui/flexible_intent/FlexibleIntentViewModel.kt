@@ -1,12 +1,9 @@
 package com.uid.smartmobilityapp.ui.flexible_intent
 
 import android.location.Address
-import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
-import com.uid.smartmobilityapp.ui.bookmarks.model.MyBookmarks
 import com.uid.smartmobilityapp.ui.flexible_intent.model.FlexibleIntent
 import com.uid.smartmobilityapp.ui.flexible_intent.model.MyFlexibleIntents
 
