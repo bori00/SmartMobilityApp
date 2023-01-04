@@ -100,7 +100,14 @@
         android:id="@+id/nav_report_event"
         android:name="com.uid.smartmobilityapp.ui.report_event.ReportEventFragment"
         android:label="@string/menu_report_an_event"
-        tools:layout="@layout/fragment_report_event" />
+        tools:layout="@layout/fragment_report_event" >
+        <action
+            android:id="@+id/action_nav_report_event_to_nav_report_event_success"
+            app:destination="@id/nav_report_event_success" />
+        <action
+            android:id="@+id/action_nav_report_event_to_nav_report_event_select_location"
+            app:destination="@id/nav_report_event_select_location" />
+    </fragment>
 
     <fragment
         android:id="@+id/final_regular_intent_view"
@@ -117,7 +124,11 @@
         android:id="@+id/nav_rate_ride"
         android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideFragment"
         android:label="@string/menu_rate_a_ride"
-        tools:layout="@layout/fragment_rate_ride" />
+        tools:layout="@layout/fragment_rate_ride" >
+        <action
+            android:id="@+id/action_nav_rate_ride_to_nav_rate_ride_success"
+            app:destination="@id/nav_rate_ride_success" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_bookmarks"
@@ -176,6 +187,36 @@
         tools:layout="@layout/fragment_flexible_intent_success">
         <action
             android:id="@+id/action_nav_flexible_intent_success_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_report_event_success"
+        android:name="com.uid.smartmobilityapp.ui.report_event.ReportEventSuccessFragment"
+        android:label="Successfully Reported Event"
+        tools:layout="@layout/fragment_report_event_success" >
+        <action
+            android:id="@+id/action_nav_report_event_success_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_report_event_select_location"
+        android:name="com.uid.smartmobilityapp.ui.report_event.ReportEventSelectLocationFragment"
+        android:label="Select Event Location"
+        tools:layout="@layout/fragment_select_location" >
+        <action
+            android:id="@+id/action_nav_report_event_select_location_to_nav_report_event"
+            app:destination="@id/nav_report_event" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_rate_ride_success"
+        android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideSuccessFragment"
+        android:label="Successfully Rated Ride"
+        tools:layout="@layout/fragment_rate_ride_success" >
+        <action
+            android:id="@+id/action_nav_rate_ride_success_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
 </navigation>
