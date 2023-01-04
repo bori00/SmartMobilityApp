@@ -33,8 +33,7 @@ class LocationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         Log.d("MainActivity", "Open Bookmarks Fragment")
-        _viewModel =
-            ViewModelProvider(this).get(LocationsViewModel::class.java)
+        _viewModel = LocationsViewModel
 
         _binding = FragmentLocationsBinding.inflate(inflater, container, false)
         _root = binding.root
@@ -56,8 +55,14 @@ class LocationsFragment : Fragment() {
 
     private fun setupSearchRoutesButton() {
         val searchRoutesButton: Button = binding.searchRoutesButton2Id
-        searchRoutesButton.setOnClickListener { view ->
-            binding.root.findNavController().navigate(R.id.action_locations_to_vehicle_list)
+        if(_viewModel.selectedIntent.value === "Flexible Intent") {
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
+            }
+        } else {
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
+            }
         }
     }
 

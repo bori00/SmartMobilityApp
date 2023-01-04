@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_travel_now_to_vehicle_list"
             app:destination="@id/view_vehicles" />
+        <action
+            android:id="@+id/action_travel_now_to_flexible_intent_select_transport"
+            app:destination="@id/nav_flexible_intent_select_transport" />
     </fragment>
 
     <fragment
@@ -76,6 +79,9 @@
         <action
             android:id="@+id/action_locations_to_vehicle_list"
             app:destination="@id/view_vehicles" />
+        <action
+            android:id="@+id/action_travel_now_to_flexible_intent_select_transport"
+            app:destination="@id/nav_flexible_intent_select_transport" />
     </fragment>
 
     <fragment
@@ -128,8 +134,8 @@
         android:label="@string/schedule_a_flexible_trip"
         tools:layout="@layout/fragment_flexible_intent_setup">
         <action
-            android:id="@+id/action_nav_flexible_intent_setup_to_nav_flexible_intent_select_destination"
-            app:destination="@id/nav_flexible_intent_select_destination" />
+            android:id="@+id/action_nav_flexible_intent_setup_to_nav_travel_now"
+            app:destination="@id/travel_now" />
     </fragment>
 
     <fragment
