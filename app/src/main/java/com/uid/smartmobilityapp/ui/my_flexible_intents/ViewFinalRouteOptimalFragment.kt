@@ -46,7 +46,7 @@ class ViewFinalRouteOptimalFragment : Fragment() {
         val okButton: Button = binding.onButtonId
         okButton.setOnClickListener { view ->
             binding.root.findNavController()
-                .navigate(R.id.action_view_final_route_to_get_optimal_route)
+                .navigate(R.id.action_view_final_route_to_home)
         }
 
         return _root
