@@ -88,7 +88,13 @@
         android:id="@+id/nav_regular_intents"
         android:name="com.uid.smartmobilityapp.ui.my_regular_intents.MyRegularIntentsFragment"
         android:label="@string/menu_regular_intents"
-        tools:layout="@layout/fragment_my_regular_intents" />
+        tools:layout="@layout/fragment_my_regular_intents">
+        <action
+            android:id="@+id/view_final_route_regular"
+            app:destination="@id/final_regular_intent_view">
+
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_report_event"
@@ -101,6 +107,17 @@
         <action
             android:id="@+id/action_nav_report_event_to_nav_report_event_select_location"
             app:destination="@id/nav_report_event_select_location" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/final_regular_intent_view"
+        android:name="com.uid.smartmobilityapp.ui.my_regular_intents.ViewFinalRegularIntentRoute"
+        tools:layout="@layout/fragment_final_regular_intent_route">
+        <action
+            android:id="@+id/go_home"
+            app:destination="@id/nav_home">
+
+        </action>
     </fragment>
 
     <fragment
