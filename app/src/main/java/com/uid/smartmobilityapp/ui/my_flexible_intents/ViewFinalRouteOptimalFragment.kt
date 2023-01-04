@@ -5,15 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentViewFinalRouteBinding
-import com.uid.smartmobilityapp.databinding.FragmentViewRouteBinding
-import com.uid.smartmobilityapp.ui.travel_now.ViewVehiclesModel
 
-class ViewFinalRouteOptimalFragment: Fragment() {
+class ViewFinalRouteOptimalFragment : Fragment() {
 
     private var _binding: FragmentViewFinalRouteBinding? = null
     lateinit private var _viewModel: MyFlexibleIntentsViewModel;
@@ -33,14 +33,22 @@ class ViewFinalRouteOptimalFragment: Fragment() {
         _root = binding.root
 
         val bundle: Bundle? = arguments
-        var i=-1
+        var i = -1
         if (bundle != null) {
             i = bundle.getInt("image", -1)
         }
-        Log.d("TAG",i.toString())
+        Log.d("TAG", i.toString())
         val img: ImageView = binding.imageView6
-        if(i!=-1)
-        img.setImageResource(i)
+        if (i != -1) {
+            img.setImageResource(i)
+        }
+
+        val okButton: Button = binding.onButtonId
+        okButton.setOnClickListener { view ->
+            binding.root.findNavController()
+                .navigate(R.id.action_view_final_route_to_get_optimal_route)
+        }
 
         return _root
-    }}
+    }
+}

@@ -110,6 +110,9 @@
         android:label="Final route"
         tools:layout="@layout/fragment_view_final_route"
         >
+        <action
+        android:id="@+id/action_view_final_route_to_get_optimal_route"
+        app:destination="@id/getOptimalRoute" />
     </fragment>
 
     <fragment

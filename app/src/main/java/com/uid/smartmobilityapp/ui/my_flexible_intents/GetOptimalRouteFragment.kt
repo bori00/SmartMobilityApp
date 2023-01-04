@@ -1,8 +1,6 @@
 package com.uid.smartmobilityapp.ui.my_flexible_intents
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +8,11 @@ import android.widget.Button
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-//import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentOptimalRouteBinding
@@ -44,6 +40,12 @@ class GetOptimalRouteFragment : Fragment() {
 
         bundle.putInt("image", R.drawable.car_future_intent)
 
+        val sb: SeekBar = binding.seekBar
+        val progressTV: TextView = binding.progressSeekBarId
+
+        progressTV.text = "12:20"
+        sb.progress = 20
+
         setupDetails()
         setupRecyclerView()
         setupSeekBar()
@@ -55,19 +57,20 @@ class GetOptimalRouteFragment : Fragment() {
     private fun setupSearchRouteButton() {
         val searchRouteBtn: Button = binding.showRouteBtnID
         searchRouteBtn.setOnClickListener { view ->
-            binding.root.findNavController().navigate(R.id.action_optimal_route_to_view_final_route,bundle)
+            binding.root.findNavController()
+                .navigate(R.id.action_optimal_route_to_view_final_route, bundle)
         }
     }
 
     private fun setupSeekBar() {
         val sb: SeekBar = binding.seekBar
-        val progressTV : TextView = binding.progressSeekBarId
+        val progressTV: TextView = binding.progressSeekBarId
 
         sb.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 val builderseek = StringBuilder()
                 builderseek.append("13:00")
-                progressTV.text = builderseek.toString()
+                progressTV.text = "13:00"
                 sb.progress = 60
 
                 val recyclerView: RecyclerView = binding.recyclerView
@@ -103,8 +106,8 @@ class GetOptimalRouteFragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // TODO Auto-generated method stub
                 val builder_seek = StringBuilder()
-                val h: Int = 12+ progress/60
-                val m: Int = progress%60
+                val h: Int = 12 + progress / 60
+                val m: Int = progress % 60
                 builder_seek.append(h.toString()).append(":").append(m.toString())
                 progressTV.text = builder_seek.toString()
 
@@ -129,6 +132,12 @@ class GetOptimalRouteFragment : Fragment() {
     }
 
     private fun setupDetails() {
+        val sb: SeekBar = binding.seekBar
+        val progressTV: TextView = binding.progressSeekBarId
+
+        progressTV.text = "12:20"
+        sb.progress = 20
+
         val titleTV = _binding!!.optimalRouteTitleTVId
         val builder = StringBuilder()
         builder.append("Get optimal route for ")
@@ -154,18 +163,12 @@ class GetOptimalRouteFragment : Fragment() {
             .append(" min")
         estimatedTimeTF.text = builder3
 
-        val sb: SeekBar = binding.seekBar
-        val progressTV : TextView = binding.progressSeekBarId
-        progressTV.text ="12:20"
-        sb.progress = 20
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 
 
 }
