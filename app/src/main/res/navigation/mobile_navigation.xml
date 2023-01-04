@@ -94,6 +94,22 @@
         android:label="Optimal route"
         tools:layout="@layout/fragment_optimal_route"
         >
+        <action
+            android:id="@+id/action_optimal_route_to_view_final_route"
+            app:destination="@id/viewFinalRoute">
+            <argument
+                android:name="image"
+                android:defaultValue="-1"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewFinalRoute"
+        android:name="com.uid.smartmobilityapp.ui.my_flexible_intents.ViewFinalRouteOptimalFragment"
+        android:label="Final route"
+        tools:layout="@layout/fragment_view_final_route"
+        >
     </fragment>
 
     <fragment

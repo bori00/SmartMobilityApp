@@ -6,12 +6,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 //import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -24,6 +26,8 @@ import com.uid.smartmobilityapp.ui.my_flexible_intents.adapter.TransportationAda
 class GetOptimalRouteFragment : Fragment() {
     private var _binding: FragmentOptimalRouteBinding? = null
     lateinit private var _viewModel: MyFlexibleIntentsViewModel;
+    lateinit private var _root: View;
+    var bundle = Bundle()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -38,11 +42,21 @@ class GetOptimalRouteFragment : Fragment() {
             ViewModelProvider(this).get(MyFlexibleIntentsViewModel::class.java)
         _binding = FragmentOptimalRouteBinding.inflate(inflater, container, false)
 
+        bundle.putInt("image", R.drawable.car_future_intent)
+
         setupDetails()
         setupRecyclerView()
         setupSeekBar()
+        setupSearchRouteButton()
 
         return binding.root
+    }
+
+    private fun setupSearchRouteButton() {
+        val searchRouteBtn: Button = binding.showRouteBtnID
+        searchRouteBtn.setOnClickListener { view ->
+            binding.root.findNavController().navigate(R.id.action_optimal_route_to_view_final_route,bundle)
+        }
     }
 
     private fun setupSeekBar() {
@@ -52,7 +66,7 @@ class GetOptimalRouteFragment : Fragment() {
         sb.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 val builderseek = StringBuilder()
-                builderseek.append("13 : 00").append(" ")
+                builderseek.append("13:00")
                 progressTV.text = builderseek.toString()
                 sb.progress = 60
 
@@ -79,6 +93,8 @@ class GetOptimalRouteFragment : Fragment() {
                 builder7.append("Estimated time: 0 hours 20 min")
 //                    .append(_viewModel.vehicles.value?.get(0)?.estimatedTime)
                 estimatedTimeTF.text = builder7
+
+                bundle.putInt("image", R.drawable.bus_future_intent)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -137,6 +153,11 @@ class GetOptimalRouteFragment : Fragment() {
             .append(_viewModel.flexibleIntents.value?.get(0)?.estimatedTime)
             .append(" min")
         estimatedTimeTF.text = builder3
+
+        val sb: SeekBar = binding.seekBar
+        val progressTV : TextView = binding.progressSeekBarId
+        progressTV.text ="12:20"
+        sb.progress = 20
     }
 
     override fun onDestroyView() {
