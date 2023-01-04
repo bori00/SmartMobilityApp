@@ -139,19 +139,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_flexible_intent_select_destination"
-        android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSelectDestinationFragment"
-        android:label="@string/selectDestination"
-        tools:layout="@layout/fragment_add_location">
-        <action
-            android:id="@+id/action_nav_flexible_intent_select_destination_to_nav_flexible_intent_select_transport"
-            app:destination="@id/nav_flexible_intent_select_transport"/>
-        <action
-            android:id="@+id/action_nav_flexible_intent_select_destination_to_locations"
-            app:destination="@id/locations" />
-    </fragment>
-
-    <fragment
         android:id="@+id/nav_flexible_intent_select_transport"
         android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSelectTransportFragment"
         android:label="@string/next"
