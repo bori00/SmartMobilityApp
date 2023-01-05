@@ -4,13 +4,13 @@ import java.util.*
 
 object MyUser {
 
-    var user: UserModel = UserModel(
-        hasDrivingLicense = true,
-        hasPublicTransportPass = true,
+    var defaultUser: UserModel = UserModel(
+        hasDrivingLicense = false,
+        hasPublicTransportPass = false,
         expiryDate = Date(),
-        canRideBike = true,
+        canRideBike = false,
         canRideScooter = false,
-        maxWalkingDistance = "5000",
+        maxWalkingDistance = "0",
         vehicleList = arrayListOf("Car", "Bike")
     )
 }
