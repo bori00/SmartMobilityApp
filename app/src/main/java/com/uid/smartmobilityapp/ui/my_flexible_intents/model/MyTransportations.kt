@@ -8,15 +8,15 @@ object MyTransportations {
             R.drawable.bus1,
             "Bus",
             "10 min",
-            "13:00-13:10",
-            "departs at 13:00 from Observator Nord",
+            "13:10-13:20",
+            "departs at 13:10 from Observator Nord",
         ),
         Transportation(
             R.drawable.bus2,
             "Bus",
             "10 min",
-            "13:10-13:20",
-            "departs at 13:10 from Maresal C-tin Prezan",
+            "13:20-13:30",
+            "departs at 13:20 from Maresal C-tin Prezan",
         )
     )
 
