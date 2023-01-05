@@ -79,6 +79,14 @@
     </fragment>
 
     <fragment
+        android:id="@+id/profile_setup"
+        android:name="com.uid.smartmobilityapp.ui.profile_setup.ProfileSetupFragment"
+        android:label="Profile setup"
+        tools:layout="@layout/fragment_profile_setup">
+
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_flexible_intents"
         android:name="com.uid.smartmobilityapp.ui.my_flexible_intents.MyFlexibleIntentsFragment"
         android:label="@string/menu_flexible_intents"
