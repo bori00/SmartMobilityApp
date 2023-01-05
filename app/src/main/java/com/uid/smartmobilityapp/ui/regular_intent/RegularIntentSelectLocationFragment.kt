@@ -18,15 +18,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSetupBinding
-import com.uid.smartmobilityapp.databinding.FragmentRegularIntentSelectLocationBinding
-import com.uid.smartmobilityapp.databinding.FragmentRegularIntentSetupBinding
+
 import com.uid.smartmobilityapp.databinding.FragmentSelectLocationBinding
 import com.uid.smartmobilityapp.models.AddressWithName
 import com.uid.smartmobilityapp.services.DeviceLocationProviderService
 import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
-import com.uid.smartmobilityapp.ui.regular_intent.model.RegularIntentLocation
-import com.uid.smartmobilityapp.ui.travel_now.LocationsViewModel
 import com.uid.smartmobilityapp.ui.utils.MapSearchUtils
 
 class RegularIntentSelectLocationFragment : Fragment(), OnMapReadyCallback {
