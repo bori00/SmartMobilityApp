@@ -45,6 +45,7 @@ class FlexibleIntentSuccessFragment : Fragment() {
                 Geocoder(MainActivity.context).getFromLocationName(
                     "Str. Donath 15, Cluj-Napoca", 1).get(0))
         )
+        viewModelForLocations.locations.value = MyLocations.locations
 
         _binding = FragmentFlexibleIntentSuccessBinding.inflate(inflater, container, false)
         _root = binding.root

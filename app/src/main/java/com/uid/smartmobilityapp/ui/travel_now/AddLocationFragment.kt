@@ -25,6 +25,7 @@ import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
+import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations.locations
 import java.io.IOException
 

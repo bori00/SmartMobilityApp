@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -41,27 +42,39 @@ class LocationsFragment : Fragment() {
         setupLocationsRecyclerView()
         setupSearchRoutesButton()
         setupAddNewStopButton()
-//
 
         return _root
     }
 
     private fun setupAddNewStopButton() {
         val addNewStopButton: Button = binding.addNewStopButtonId
-        addNewStopButton.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.action_locations_to_travel_now)
+        if(_viewModel.selectedIntent.value === "Flexible Intent") {
+            addNewStopButton.isVisible = false
+        } else {
+            addNewStopButton.setOnClickListener { view ->
+                view.findNavController().navigate(R.id.action_locations_to_travel_now)
+            }
         }
+
     }
 
     private fun setupSearchRoutesButton() {
         val searchRoutesButton: Button = binding.searchRoutesButton2Id
-        if(_viewModel.selectedIntent.value === "Flexible Intent") {
-            searchRoutesButton.setOnClickListener {
-                binding.root.findNavController().navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
-            }
+        val locations = _viewModel.locations
+        if(locations.value?.size!! <= 1) {
+            searchRoutesButton.isEnabled = false
         } else {
-            searchRoutesButton.setOnClickListener {
-                binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
+            searchRoutesButton.isEnabled = true
+            if (_viewModel.selectedIntent.value === "Flexible Intent") {
+                searchRoutesButton.setOnClickListener {
+                    binding.root.findNavController()
+                        .navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
+                }
+            } else {
+                searchRoutesButton.setOnClickListener {
+                    binding.root.findNavController()
+                        .navigate(R.id.action_locations_to_vehicle_list)
+                }
             }
         }
     }
