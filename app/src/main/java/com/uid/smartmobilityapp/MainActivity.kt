@@ -2,6 +2,7 @@ package com.uid.smartmobilityapp
 
 import android.app.Activity
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -49,12 +50,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_bookmarks
             ), drawerLayout
         )
+        val setUpProfileButton: Button = binding.appBarMain.viewProfileButtonID
+        setUpProfileButton.setOnClickListener {
+            navController.navigate(R.id.action_nav_home_to_profile_setup)
+        }
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         NotificationsScheduler().scheduleNotifications()
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)

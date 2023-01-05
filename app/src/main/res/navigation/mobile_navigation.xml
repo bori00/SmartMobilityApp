@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_nav_home_to_travel_now"
             app:destination="@id/travel_now" />
+        <action
+            android:id="@+id/action_nav_home_to_profile_setup"
+            app:destination="@id/profile_setup" />
     </fragment>
 
     <fragment
