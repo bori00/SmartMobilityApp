@@ -99,10 +99,12 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         val groupButton: Button = binding.groupButtonID
         groupButton.text = size
         groupButton.setOnClickListener {
-            if (editText.visibility == View.VISIBLE) {
-                editText.visibility = View.GONE
-            } else {
+            val number = editText.text.toString().toIntOrNull()
+            if (editText.visibility == View.GONE) {
                 editText.visibility = View.VISIBLE
+            } else {
+                if (number != null || editText.text.isEmpty())
+                    editText.visibility = View.GONE
             }
             size = "1"
             vehicles = arrayListOf(
@@ -127,21 +129,26 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             )
 
             if (editText.text.isNotEmpty()) {
-                size = editText.text.toString()
-                groupButton.text = editText.text
+                if (number == null) {
+                    editText.error = "Please enter a valid number"
+                } else {
+                    editText.error = null
+                    size = editText.text.toString()
+                    groupButton.text = editText.text
 
-                if (groupButton.text.toString() == "1") {
-                    vehicles.add(
-                        VehicleListItem(
-                            "Bike",
-                            "",
-                            R.drawable.bike,
-                            "9:51",
-                            true,
-                            true,
-                            false
+                    if (groupButton.text.toString() == "1") {
+                        vehicles.add(
+                            VehicleListItem(
+                                "Bike",
+                                "",
+                                R.drawable.bike,
+                                "9:51",
+                                true,
+                                true,
+                                false
+                            )
                         )
-                    )
+                    }
                 }
             } else {
                 groupButton.text = size
