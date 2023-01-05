@@ -1,8 +1,8 @@
 package com.uid.smartmobilityapp.ui.profile_setup
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentProfileSetupBinding
+import java.time.LocalDateTime
 import java.util.*
 import java.util.function.Consumer
 
@@ -46,12 +47,13 @@ class ProfileSetupFragment : Fragment() {
     }
 
     private fun selectStartDate() {
-
-        val onDateSelected = Consumer { localDateTime: Date? ->
+        val onDateSelected = Consumer { localDateTime: LocalDateTime? ->
             run {
                 if (localDateTime != null) {
-                    Log.d("date picked", localDateTime.toString())
                     _viewModel.user.value!!.expiryDate = localDateTime
+                    binding.expiryDayTextID.setText(
+                        _viewModel.user.value!!.expiryDate.toString(),
+                    )
                 }
             }
         }
@@ -59,16 +61,44 @@ class ProfileSetupFragment : Fragment() {
         selectDateTime(onDateSelected)
     }
 
-    private fun selectDateTime(callback: Consumer<Date?>) {
+    private fun selectDateTime(callback: Consumer<LocalDateTime?>) {
         val c: Calendar = Calendar.getInstance()
         val mYear = c.get(Calendar.YEAR)
         val mMonth = c.get(Calendar.MONTH)
         val mDay = c.get(Calendar.DAY_OF_MONTH)
-
+        val mHour = c.get(Calendar.HOUR_OF_DAY);
+        val mMinute = c.get(Calendar.MINUTE);
 
         val datePickerDialog = DatePickerDialog(
             MainActivity.context,
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                run {
+
+                    val timePickerDialog = TimePickerDialog(
+                        MainActivity.context,
+                        TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+
+                            val selectedDateTime = LocalDateTime.of(
+                                year,
+                                monthOfYear + 1,
+                                dayOfMonth,
+                                hourOfDay,
+                                minute
+                            )
+                            callback.accept(selectedDateTime)
+                        },
+                        mHour,
+                        mMinute,
+                        false
+                    )
+                    timePickerDialog.setButton(
+                        DatePickerDialog.BUTTON_NEGATIVE, "Clear"
+                    ) { dialog, which -> callback.accept(null) }
+                    timePickerDialog.setButton(
+                        DatePickerDialog.BUTTON_NEUTRAL, "Discard"
+                    ) { dialog, which -> {} }
+                    timePickerDialog.show()
+                }
             },
             mYear,
             mMonth,
@@ -87,16 +117,6 @@ class ProfileSetupFragment : Fragment() {
         val expiryDatePickerButton: Button = binding.selectDateButtonID
 
         expiryDatePickerButton.setOnClickListener { selectStartDate() }
-        _viewModel.user.observe(viewLifecycleOwner) { user ->
-            if (user.expiryDate != null) {
-                binding.expiryDayTextID.setText(
-                    user.expiryDate.toString(),
-                )
-            } else {
-                binding.expiryDayTextID.setText("")
-            }
-        }
-
     }
 
 

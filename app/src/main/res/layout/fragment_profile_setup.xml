@@ -5,6 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RadioGroup
+        android:id="@+id/radio_group_1"
+        android:layout_width="127dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+        <RadioButton
+            android:id="@+id/scooterYesID"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/scooterNoID"
+            android:layout_width="71dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:text="No" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radio_group_2"
+        android:layout_width="127dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+        <RadioButton
+            android:id="@+id/bikeYesID"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/bikeNoID"
+            android:layout_width="71dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:text="No" />
+
+    </RadioGroup>
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
@@ -40,7 +86,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="76dp"
         android:text="Know how to ride a bike"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -51,7 +97,7 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="72dp"
         android:text="Know how to ride an electric scooter"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -62,7 +108,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="68dp"
         android:text="Maximum walking distance"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -95,12 +141,12 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:text="Expiry date:"
         android:textColor="#000000"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/busYesID"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintBottom_toBottomOf="@+id/expiryDayTextID"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/expiryDayTextID" />
 
     <Button
         android:id="@+id/cancelButtonID"
@@ -134,59 +180,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-    <CheckBox
-        android:id="@+id/carYesID"
-        android:layout_width="67dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/yes"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <CheckBox
-        android:id="@+id/carNoID"
-        android:layout_width="77dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/no"
-        app:layout_constraintStart_toEndOf="@+id/carYesID"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <CheckBox
-        android:id="@+id/bikeYesID"
-        android:layout_width="73dp"
-        android:layout_height="29dp"
-        android:text="@string/yes"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <CheckBox
-        android:id="@+id/bikeNoID"
-        android:layout_width="68dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="2dp"
-        android:text="@string/no"
-        app:layout_constraintStart_toStartOf="@+id/carNoID"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <CheckBox
-        android:id="@+id/scooterYesID"
-        android:layout_width="74dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/yes"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <CheckBox
-        android:id="@+id/scooterNoID"
-        android:layout_width="75dp"
-        android:layout_height="34dp"
-        android:text="@string/no"
-        app:layout_constraintStart_toStartOf="@+id/bikeNoID"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/maximumDistEditTextID"
@@ -217,31 +210,12 @@
         android:layout_width="168dp"
         android:layout_height="34dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="28dp"
         android:inputType="none"
         android:text="Date"
         android:textColor="#000000"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/busNoID" />
-
-    <CheckBox
-        android:id="@+id/busYesID"
-        android:layout_width="68dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="7dp"
-        android:text="@string/yes"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-    <CheckBox
-        android:id="@+id/busNoID"
-        android:layout_width="62dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/no"
-        app:layout_constraintStart_toStartOf="@+id/scooterNoID"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <CheckBox
@@ -257,28 +231,55 @@
         android:id="@+id/checkBox10"
         android:layout_width="95dp"
         android:layout_height="29dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:text="Bike"
-        app:layout_constraintStart_toStartOf="@+id/checkBox9"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox9" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox9"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <CheckBox
         android:id="@+id/checkBox11"
         android:layout_width="92dp"
         android:layout_height="31dp"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:text="Scooter"
-        app:layout_constraintStart_toStartOf="@+id/checkBox10"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox10" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox10"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <Button
         android:id="@+id/selectDateButtonID"
         android:layout_width="47dp"
         android:layout_height="44dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
         android:drawableTop="@drawable/ic_baseline_calendar_month_24"
         android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/expiryDayTextID"
         app:layout_constraintStart_toEndOf="@+id/expiryDayTextID"
-        app:layout_constraintTop_toBottomOf="@+id/busNoID" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_3"
+        android:layout_width="127dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <RadioButton
+            android:id="@+id/carYesID"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/carNoID"
+            android:layout_width="71dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:text="No" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
