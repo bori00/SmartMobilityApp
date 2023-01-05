@@ -10,12 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSetupBinding
-import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
-import com.uid.smartmobilityapp.ui.flexible_intent.model.FlexibleIntent
 import java.util.*
 
 
@@ -91,10 +88,10 @@ class FlexibleIntentSetupFragment : Fragment() {
         }
 
         selectDestinationButton.setOnClickListener {view ->
-            viewModel.selectedName.value = editTextIntentName.text.toString()
-            viewModel.selectedDay.value = editTextIntentName.text.toString()
-            viewModel.selectedFromHour.value = editTextIntentName.text.toString()
-            viewModel.selectedToHour.value = editTextIntentName.text.toString()
+            FlexibleIntentViewModel.selectedName.value = editTextIntentName.text.toString()
+            FlexibleIntentViewModel.selectedDay.value = editTextIntentName.text.toString()
+            FlexibleIntentViewModel.selectedFromHour.value = editTextIntentName.text.toString()
+            FlexibleIntentViewModel.selectedToHour.value = editTextIntentName.text.toString()
             view.findNavController().navigate(R.id.action_nav_flexible_intent_setup_to_nav_flexible_intent_select_transport)
         }
     }
