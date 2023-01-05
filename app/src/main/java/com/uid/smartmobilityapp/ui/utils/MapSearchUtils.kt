@@ -62,6 +62,7 @@ class MapSearchUtils {
                 } else {
                     Toast.makeText(MainActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
                 }
+                searchView.clearFocus()
                 return false
             }
 
@@ -131,6 +132,7 @@ class MapSearchUtils {
                 } else {
                     Toast.makeText(MainActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
                 }
+                searchView.clearFocus()
                 return false
             }
 
