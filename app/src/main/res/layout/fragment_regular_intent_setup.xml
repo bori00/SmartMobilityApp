@@ -7,6 +7,19 @@
     tools:context=".ui.regular_intent.RegularIntentSetupFragment">
 
     <TextView
+        android:id="@+id/specifyADayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Specify the days"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationsRecyclerViewId" />
+
+    <TextView
         android:id="@+id/RegularIntentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,6 +67,62 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/editTextIntentName" />
 
+    <TextView
+        android:id="@+id/arrivalTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="32dp"
+        android:text="Arrival time"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationsRecyclerViewId" />
+
+    <Button
+        android:id="@+id/arrivalTimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/_00_00"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/arrivalTimeLabel"
+        app:layout_constraintStart_toEndOf="@+id/arrivalTimeLabel"
+        app:layout_constraintTop_toTopOf="@+id/arrivalTimeLabel" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/selectDaysTextInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="@dimen/default_width"
+        android:layout_height="wrap_content"
+        android:hint="@string/days"
+        app:boxStrokeColor="@color/purple_700"
+        app:hintTextColor="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specifyADayLabel">
+
+        <AutoCompleteTextView
+            android:id="@+id/selectDaysAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:backgroundTint="@color/purple_700"
+        android:text="@string/continueButton"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectDaysTextInput" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

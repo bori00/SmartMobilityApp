@@ -241,9 +241,9 @@
 
     <fragment
         android:id="@+id/nav_regular_intent_select_location"
-        android:name="com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentSetupFragment"
+        android:name="com.uid.smartmobilityapp.ui.regular_intent.RegularIntentSelectLocationFragment"
         android:label="@string/schedule_a_regular_trip"
-        tools:layout="@layout/fragment_regular_intent_select_location">
+        tools:layout="@layout/fragment_select_location">
         <action
             android:id="@+id/action_nav_regular_intent_select_location_nav_regular_intent_setup"
             app:destination="@id/nav_regular_intent_setup" />
