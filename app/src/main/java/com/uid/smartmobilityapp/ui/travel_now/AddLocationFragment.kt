@@ -103,7 +103,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             if (editText.visibility == View.GONE) {
                 editText.visibility = View.VISIBLE
             } else {
-                if (number != null || editText.text.isEmpty())
+                if ((number != null && number > 0) || editText.text.isEmpty() )
                     editText.visibility = View.GONE
             }
             size = "1"
@@ -129,7 +129,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             )
 
             if (editText.text.isNotEmpty()) {
-                if (number == null) {
+                if (number == null || number <= 0) {
                     editText.error = "Please enter a valid number"
                 } else {
                     editText.error = null
