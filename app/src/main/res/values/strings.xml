@@ -55,4 +55,5 @@
     <string name="action_select_the_ride">Select the ride</string>
     <string name="action_tell_us_what_you_think">Tell us what you think!</string>
     <string name="action_rate">Submit Rating</string>
+    <string name="schedule_a_regular_trip">Schedule a regular trip</string>
 </resources>

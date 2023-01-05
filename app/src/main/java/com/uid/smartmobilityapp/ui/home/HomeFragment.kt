@@ -46,6 +46,11 @@ class HomeFragment : Fragment() {
             binding.root.findNavController().navigate(R.id.action_nav_home_to_travel_now)
         }
 
+        val scheduleRegularIntentButton: Button = binding.scheduleRegularIntentButton
+        scheduleRegularIntentButton.setOnClickListener {
+            binding.root.findNavController().navigate(R.id.action_nav_home_to_regular_intent_setup)
+        }
+
         val scheduleFlexibleIntentButtonClick: Button = binding.scheduleFlexibleIntentButton
         scheduleFlexibleIntentButtonClick.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_nav_home_to_nav_flexible_intent_setup)
