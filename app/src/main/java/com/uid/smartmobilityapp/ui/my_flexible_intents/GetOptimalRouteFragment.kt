@@ -70,7 +70,7 @@ class GetOptimalRouteFragment : Fragment() {
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 val builderseek = StringBuilder()
                 builderseek.append("13:00")
-                progressTV.text = "13:00"
+                progressTV.text = "13:000"
                 sb.progress = 60
 
                 val recyclerView: RecyclerView = binding.recyclerView

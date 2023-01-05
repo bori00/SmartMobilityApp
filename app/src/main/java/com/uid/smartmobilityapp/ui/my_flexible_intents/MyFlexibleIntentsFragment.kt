@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.databinding.FragmentMyFlexibleIntentsBinding
+import com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentViewModel
 import com.uid.smartmobilityapp.ui.flexible_intent.model.FlexibleIntent
 import com.uid.smartmobilityapp.ui.flexible_intent.model.MyFlexibleIntents
 import com.uid.smartmobilityapp.ui.my_flexible_intents.model.FlexibleIntention
@@ -39,9 +40,15 @@ class MyFlexibleIntentsFragment : Fragment() {
 
         val spinner: Spinner = binding.spinner
         val futureIntentsNames= ArrayList<String>()
-        for (loc: FlexibleIntention in MyFlexibleIntentions.flexibleIntents) {
+
+//        for (loc: FlexibleIntention in MyFlexibleIntentions.flexibleIntents) {
+//            futureIntentsNames.add(loc.name)
+//        }
+
+        for (loc: FlexibleIntent in FlexibleIntentViewModel.flexibleIntents.value!!) {
             futureIntentsNames.add(loc.name)
         }
+
         val arrayAdapter = ArrayAdapter(MainActivity.context, R.layout.simple_spinner_item, futureIntentsNames)
         spinner.adapter = arrayAdapter
 
