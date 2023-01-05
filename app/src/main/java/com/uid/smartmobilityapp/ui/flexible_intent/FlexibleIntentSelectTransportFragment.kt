@@ -56,7 +56,7 @@ class FlexibleIntentSelectTransportFragment : Fragment() {
         selectTransportLabel.text =
             buildString {
                 append("Select the accepted means of transport for \"")
-                append(viewModel.selectedName.value)
+                append(FlexibleIntentViewModel.selectedName.value)
                 append("\"")
             }
 
