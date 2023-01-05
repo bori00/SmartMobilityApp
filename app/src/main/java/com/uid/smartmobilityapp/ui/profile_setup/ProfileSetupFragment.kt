@@ -18,7 +18,6 @@ import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentProfileSetupBinding
 import com.uid.smartmobilityapp.ui.profile_setup.model.MyUser
-import com.uid.smartmobilityapp.ui.profile_setup.model.UserModel
 import java.time.LocalDateTime
 import java.time.Month
 import java.util.*
@@ -32,11 +31,14 @@ class ProfileSetupFragment : Fragment() {
 
     private val binding get() = _binding!!
 
+    lateinit private var initialVehicleList: MutableCollection<String>
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        initialVehicleList = MyUser.defaultUser.vehicleList.toMutableList()
         _viewModel =
             ViewModelProvider(this).get(ProfileSetupViewModel::class.java)
 
@@ -137,8 +139,6 @@ class ProfileSetupFragment : Fragment() {
     }
 
     private fun setupFields() {
-
-
         val bikeYes = binding.bikeYesID
         val bikeNo = binding.bikeNoID
 
@@ -177,40 +177,21 @@ class ProfileSetupFragment : Fragment() {
             expDate.setText("")
         }
 
-        if (_viewModel.user.value!!.vehicleList.contains("Car")) {
-            car.isChecked = true
-        }
-        if (_viewModel.user.value!!.vehicleList.contains("Bike")) {
-            bike.isChecked = true
-        }
-        if (_viewModel.user.value!!.vehicleList.contains("Scooter")) {
-            scooter.isChecked = true
-        }
-        if (_viewModel.user.value!!.canRideScooter) {
-            scooterYes.isChecked = true
-        } else {
-            scooterNo.isChecked = true
-        }
+        car.isChecked = _viewModel.user.value!!.vehicleList.contains("Car")
+        bike.isChecked = _viewModel.user.value!!.vehicleList.contains("Bike")
+        scooter.isChecked = _viewModel.user.value!!.vehicleList.contains("Scooter")
 
-        if (_viewModel.user.value!!.canRideBike) {
-            bikeYes.isChecked = true
-        } else {
-            bikeNo.isChecked = true
-        }
+        scooterYes.isChecked = _viewModel.user.value!!.canRideScooter
+        scooterNo.isChecked = !_viewModel.user.value!!.canRideScooter
 
-        if (_viewModel.user.value!!.hasPublicTransportPass) {
-            busYes.isChecked = true
-        } else {
-            busNo.isChecked = true
-        }
+        bikeYes.isChecked = _viewModel.user.value!!.canRideBike
+        bikeNo.isChecked = !_viewModel.user.value!!.canRideBike
 
-        if (_viewModel.user.value!!.hasDrivingLicense) {
-            carYes.isChecked = true
-        } else {
-            carNo.isChecked = true
-        }
+        busYes.isChecked = _viewModel.user.value!!.hasPublicTransportPass
+        busNo.isChecked = !_viewModel.user.value!!.hasPublicTransportPass
 
-
+        carYes.isChecked = _viewModel.user.value!!.hasDrivingLicense
+        carNo.isChecked = !_viewModel.user.value!!.hasDrivingLicense
     }
 
     private fun setupSaveButton() {
@@ -243,16 +224,13 @@ class ProfileSetupFragment : Fragment() {
 
     private fun updateModelState(value: CheckBox) {
         val valueOfCheckBox = value.text.toString()
+        var list = MyUser.defaultUser.vehicleList
         if (value.isChecked) {
-            var list = MyUser.defaultUser.vehicleList
             list += valueOfCheckBox
-            MyUser.defaultUser.vehicleList = list.toSet().toMutableList() as ArrayList<String>
         } else {
-            var list = MyUser.defaultUser.vehicleList
             list -= valueOfCheckBox
-            MyUser.defaultUser.vehicleList = list.toSet().toMutableList() as ArrayList<String>
-
         }
+        MyUser.defaultUser.vehicleList = list.toSet().toMutableList() as ArrayList<String>
     }
 
     private fun checkWalkingDistance(): Boolean {
@@ -269,6 +247,7 @@ class ProfileSetupFragment : Fragment() {
     private fun setupCancelButton() {
         val cancelButton: Button = binding.cancelButtonID
         cancelButton.setOnClickListener {
+            MyUser.defaultUser.vehicleList = initialVehicleList.toMutableList() as ArrayList<String>
             binding.root.findNavController().navigate(R.id.action_setup_profile_to_home)
         }
     }
