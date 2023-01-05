@@ -7,7 +7,7 @@ import com.uid.smartmobilityapp.ui.profile_setup.model.MyUser
 import com.uid.smartmobilityapp.ui.profile_setup.model.UserModel
 
 class ProfileSetupViewModel : ViewModel() {
-    val user: LiveData<UserModel> =
+    var user: LiveData<UserModel> =
         MutableLiveData<UserModel>().apply {
             value = MyUser.defaultUser
         }

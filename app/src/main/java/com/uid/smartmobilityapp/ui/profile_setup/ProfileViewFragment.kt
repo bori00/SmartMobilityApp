@@ -57,6 +57,9 @@ class ProfileViewFragment : Fragment() {
         val expiryDate = binding.expiryDateTextViewID
 
         maxDist.text = _viewModel.user.value?.maxWalkingDistance
+        if (_viewModel.user.value?.vehicleList!!.size == 0) {
+            vehicle.setPadding(0, 0, 0, 0)
+        }
         vehicle.text = _viewModel.user.value?.vehicleList!!.joinToString()
 
         if (_viewModel.user.value?.hasDrivingLicense == true) {

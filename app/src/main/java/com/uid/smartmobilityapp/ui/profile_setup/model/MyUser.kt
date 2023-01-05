@@ -1,9 +1,7 @@
 package com.uid.smartmobilityapp.ui.profile_setup.model
 
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.Month
-import java.util.*
 
 object MyUser {
 

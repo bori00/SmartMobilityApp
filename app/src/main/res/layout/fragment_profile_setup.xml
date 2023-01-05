@@ -6,6 +6,29 @@
     android:layout_height="match_parent">
 
     <RadioGroup
+        android:id="@+id/radio_group_4"
+        android:layout_width="127dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+        <RadioButton
+            android:id="@+id/busYesID"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/busNoID"
+            android:layout_width="71dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:text="No" />
+
+    </RadioGroup>
+
+    <RadioGroup
         android:id="@+id/radio_group_1"
         android:layout_width="127dp"
         android:layout_height="57dp"
@@ -53,8 +76,8 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="102dp"
+        android:layout_width="406dp"
+        android:layout_height="73dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -62,7 +85,7 @@
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -75,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="4dp"
         android:text="Car driving license"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -130,7 +153,7 @@
         android:id="@+id/textView13"
         android:layout_width="122dp"
         android:layout_height="25dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="132dp"
         android:text="Possess a vehicle"
         android:textColor="#000000"
         android:textStyle="bold"
@@ -146,7 +169,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/expiryDayTextID"
         app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="@+id/expiryDayTextID" />
+        app:layout_constraintTop_toTopOf="@+id/expiryDayTextID"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/cancelButtonID"
@@ -172,14 +196,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cancelButtonID" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="#6750A3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
 
     <EditText
         android:id="@+id/maximumDistEditTextID"
@@ -187,8 +203,8 @@
         android:layout_height="34dp"
         android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="@string/maximum_walking_distance"
         android:inputType="textPersonName"
-        android:text="Maximum distance"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -209,17 +225,16 @@
         android:id="@+id/expiryDayTextID"
         android:layout_width="168dp"
         android:layout_height="34dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
         android:inputType="none"
-        android:text="Date"
         android:textColor="#000000"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <CheckBox
-        android:id="@+id/checkBox9"
+        android:id="@+id/carCheckID"
         android:layout_width="92dp"
         android:layout_height="32dp"
         android:layout_marginTop="10dp"
@@ -228,23 +243,23 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <CheckBox
-        android:id="@+id/checkBox10"
+        android:id="@+id/bikeCheckID"
         android:layout_width="95dp"
         android:layout_height="29dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:text="Bike"
-        app:layout_constraintStart_toEndOf="@+id/checkBox9"
+        app:layout_constraintStart_toEndOf="@+id/carCheckID"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <CheckBox
-        android:id="@+id/checkBox11"
+        android:id="@+id/scooterCheckID"
         android:layout_width="92dp"
         android:layout_height="31dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:text="Scooter"
-        app:layout_constraintStart_toEndOf="@+id/checkBox10"
+        app:layout_constraintStart_toEndOf="@+id/bikeCheckID"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <Button
@@ -252,12 +267,11 @@
         android:layout_width="47dp"
         android:layout_height="44dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
         android:drawableTop="@drawable/ic_baseline_calendar_month_24"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/expiryDayTextID"
         app:layout_constraintStart_toEndOf="@+id/expiryDayTextID"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toTopOf="@+id/expiryDayTextID" />
 
     <RadioGroup
         android:id="@+id/radio_group_3"
@@ -281,5 +295,12 @@
             android:text="No" />
 
     </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#6750A3"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="73dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
