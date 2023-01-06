@@ -32,6 +32,14 @@
     </fragment>
 
     <fragment
+        android:id="@+id/add_input_bike"
+        android:name="com.uid.smartmobilityapp.input_bikes"
+        android:label="Add input bike"
+        tools:layout="@layout/fragment_add_input_bikes">
+
+    </fragment>
+
+    <fragment
         android:id="@+id/view_vehicles"
         android:name="com.uid.smartmobilityapp.ui.travel_now.ViewVehiclesFragment"
         android:label="@string/route_summary"
