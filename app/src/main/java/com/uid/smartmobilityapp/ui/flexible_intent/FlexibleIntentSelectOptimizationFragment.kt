@@ -1,6 +1,5 @@
 package com.uid.smartmobilityapp.ui.flexible_intent
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import android.widget.*
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSelectOptimizationBinding
-import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import com.uid.smartmobilityapp.ui.flexible_intent.model.FlexibleIntent
 
 class FlexibleIntentSelectOptimizationFragment : Fragment() {
@@ -48,9 +46,9 @@ class FlexibleIntentSelectOptimizationFragment : Fragment() {
 
         nextButton = _root.findViewById<Button>(R.id.saveFlexibleButton)
         nextButton.setOnClickListener {view ->
-            viewModel.flexibleIntents.value?.add(
+            FlexibleIntentViewModel.flexibleIntents.value?.add(
                 FlexibleIntent(
-                    viewModel.selectedName.value!!,
+                    FlexibleIntentViewModel.selectedName.value!!,
                     null,
                     null,
                     null,
@@ -71,7 +69,7 @@ class FlexibleIntentSelectOptimizationFragment : Fragment() {
         oneLastThingLabel.text =
             buildString {
                 append("One last thing for \"")
-                append(viewModel.selectedName.value)
+                append(FlexibleIntentViewModel.selectedName.value)
                 append("\"")
             }
     }
