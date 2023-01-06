@@ -16,6 +16,19 @@
         <action
             android:id="@+id/action_nav_home_to_travel_now"
             app:destination="@id/travel_now" />
+<!--        TODO to delete this action-->
+        <action
+            android:id="@+id/action_nav_home_to_input_bike_locations"
+            app:destination="@id/input_bike_locations" />
+    </fragment>
+
+<!--    TODO modify path-->
+    <fragment
+        android:id="@+id/input_bike_locations"
+        android:name="com.uid.smartmobilityapp.input_bikes.InputBikeLocationFragment"
+        android:label="Input Bike Locations"
+        tools:layout="@layout/fragment_input_bike_location">
+
     </fragment>
 
     <fragment
