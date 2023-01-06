@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/company_navigation"
+    app:startDestination="@+id/nav_company_home">
+
+    <fragment
+        android:id="@+id/nav_company_home"
+        android:name="com.uid.smartmobilityapp.ui.company.CompanyHomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_company_home">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_company_specifications"
+        android:name="com.uid.smartmobilityapp.ui.company.CompanySpecificationsFragment"
+        android:label="Company specifications"
+        tools:layout="@layout/fragment_company_specifications">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.uid.smartmobilityapp.ui.logout.LogoutFragment"
+        android:label="Logout"
+        tools:layout="@layout/fragment_logout">
+    </fragment>
+
+
+</navigation>

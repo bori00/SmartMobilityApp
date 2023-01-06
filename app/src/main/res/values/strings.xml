@@ -54,4 +54,16 @@
     <string name="action_select_the_ride">Select the ride</string>
     <string name="action_tell_us_what_you_think">Tell us what you think!</string>
     <string name="action_rate">Submit Rating</string>
+    <string name="userActivity">User Activity</string>
+
+    <string name="username_error_string">Username cannot be empty!</string>
+    <string name="password_error_string">Password cannot be empty!</string>
+    <string name="username_short_error_string">Username is too short!</string>
+    <string name="password_short_error_string">Password is too short!</string>
+    <string name="authentication_failed_string">Login failed. Username or password are incorrect!</string>
+    <string name="authentication_success_string">Login successful!</string>
+    <string name="company_specifications">Company specifications</string>
+    <string name="home">Home</string>
+    <string name="companyActivity">Company Activity</string>
+    <string name="logout">Logout</string>
 </resources>

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.ui.travel_now.adapter.VehicleAdapter
 import com.uid.smartmobilityapp.databinding.TransportListBinding
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
@@ -71,10 +72,10 @@ class ViewVehiclesFragment : Fragment() {
     private fun setupVehiclesRecyclerView() {
         val vehiclesRecyclerView: RecyclerView = binding.transportRecyclerViewList
         val layoutManager =
-            LinearLayoutManager(MainActivity.context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(UserActivity.context, LinearLayoutManager.VERTICAL, false)
         val adapter = _viewModel.vehicles.value?.let {
             VehicleAdapter(
-                MainActivity.context,
+                UserActivity.context,
                 it
             )
         }

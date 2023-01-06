@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentOptimalRouteBinding
 import com.uid.smartmobilityapp.ui.my_flexible_intents.adapter.TransportationAdapter
 
@@ -79,10 +80,10 @@ class GetOptimalRouteFragment : Fragment() {
 
                 val recyclerView: RecyclerView = binding.recyclerView
                 val layoutManager =
-                    LinearLayoutManager(MainActivity.context, LinearLayoutManager.VERTICAL, false)
+                    LinearLayoutManager(UserActivity.context, LinearLayoutManager.VERTICAL, false)
                 val adapter = _viewModel.vehicles.value?.let {
                     TransportationAdapter(
-                        MainActivity.context,
+                        UserActivity.context,
                         it
                     )
                 }
@@ -124,10 +125,10 @@ class GetOptimalRouteFragment : Fragment() {
     private fun setupRecyclerView() {
         val recyclerView: RecyclerView = binding.recyclerView
         val layoutManager =
-            LinearLayoutManager(MainActivity.context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(UserActivity.context, LinearLayoutManager.VERTICAL, false)
         val adapter = _viewModel.car.value?.let {
             TransportationAdapter(
-                MainActivity.context,
+                UserActivity.context,
                 it
             )
         }

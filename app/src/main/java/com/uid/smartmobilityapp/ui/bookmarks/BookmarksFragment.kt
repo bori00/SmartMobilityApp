@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentBookmarksBinding
 import com.uid.smartmobilityapp.ui.bookmarks.adapters.MyBookmarksRecyclerViewAdapter
 
@@ -56,9 +57,9 @@ class BookmarksFragment : Fragment() {
 
     private fun setupBookmarksRecyclerView() {
         val bookmarksRecyclerView: RecyclerView = binding.myBookmarksRecyclerView
-        val layoutManager = LinearLayoutManager ( MainActivity.context, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager ( UserActivity.context, LinearLayoutManager.VERTICAL, false)
         val adapter = _viewModel.bookmarks.value?.let {
-            MyBookmarksRecyclerViewAdapter(MainActivity.context,
+            MyBookmarksRecyclerViewAdapter(UserActivity.context,
                 it
             )
         }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentLocationsBinding
 import com.uid.smartmobilityapp.ui.travel_now.adapter.LocationAdapter
 
@@ -69,10 +70,10 @@ class LocationsFragment : Fragment() {
     private fun setupLocationsRecyclerView() {
         val bookmarksRecyclerView: RecyclerView = binding.locationsRecyclerViewId
         val layoutManager =
-            LinearLayoutManager(MainActivity.context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(UserActivity.context, LinearLayoutManager.VERTICAL, false)
         val adapter = _viewModel.locations.value?.let {
             LocationAdapter(
-                MainActivity.context,
+                UserActivity.context,
                 it
             )
         }
