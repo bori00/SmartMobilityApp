@@ -71,7 +71,6 @@ class RegularIntentSetupFragment : Fragment() {
         editTextIntentName.setText(viewModel.selectedName.value)
         arrivalTimeButton.text = viewModel.selectedArrivalTime.value
         dropdown.setText(viewModel.selectedDay.value, false)
-        //dropdown.setText(viewModel.selectedDay.value)
 
         setupLocationsRecyclerView()
 
@@ -96,12 +95,12 @@ class RegularIntentSetupFragment : Fragment() {
             popTimePicker(arrivalTimeButton)
         }
 
-        continueButton.setOnClickListener {view ->
-            //view.findNavController().navigate(R.id.action_nav_flexible_intent_setup_to_nav_travel_now)
+        continueButton.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_nav_regular_intent_setup_to_nav_regular_intent_select_transport)
         }
     }
 
-    private fun setupLocationsRecyclerView() {
+     fun setupLocationsRecyclerView() {
         val bookmarksRecyclerView: RecyclerView = binding.locationsRecyclerViewId
         val layoutManager =
             LinearLayoutManager(MainActivity.context, LinearLayoutManager.VERTICAL, false)

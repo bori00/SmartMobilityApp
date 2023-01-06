@@ -237,6 +237,9 @@
         <action
             android:id="@+id/action_nav_regular_intent_setup_to_nav_regular_intent_select_location"
             app:destination="@id/nav_regular_intent_select_location" />
+        <action
+            android:id="@+id/action_nav_regular_intent_setup_to_nav_regular_intent_select_transport"
+            app:destination="@id/nav_regular_intent_select_transport" />
     </fragment>
 
     <fragment
@@ -247,5 +250,25 @@
         <action
             android:id="@+id/action_nav_regular_intent_select_location_nav_regular_intent_setup"
             app:destination="@id/nav_regular_intent_setup" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_regular_intent_select_transport"
+        android:name="com.uid.smartmobilityapp.ui.regular_intent.RegularIntentSelectTransportFragment"
+        android:label="@string/schedule_a_regular_trip"
+        tools:layout="@layout/fragment_flexible_intent_select_transport">
+        <action
+            android:id="@+id/action_nav_regular_intent_select_transport_nav_regular_intent_success"
+            app:destination="@id/nav_regular_intent_success" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_regular_intent_success"
+        android:name="com.uid.smartmobilityapp.ui.regular_intent.RegularIntentSuccessFragment"
+        android:label="@string/schedule_a_regular_trip"
+        tools:layout="@layout/fragment_flexible_intent_success">
+        <action
+            android:id="@+id/action_nav_regular_intent_success_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 </navigation>

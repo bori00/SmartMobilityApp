@@ -60,22 +60,19 @@ class LocationsFragment : Fragment() {
     private fun setupSearchRoutesButton() {
         val searchRoutesButton: Button = binding.searchRoutesButton2Id
         val locations = _viewModel.locations
-        if(locations.value?.size!! <= 1) {
-            searchRoutesButton.isEnabled = false
+        if (_viewModel.selectedIntent.value === "Flexible Intent") {
+            searchRoutesButton.text = "Confirm destination"
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
+            }
         } else {
-            searchRoutesButton.isEnabled = true
-            if (_viewModel.selectedIntent.value === "Flexible Intent") {
-                searchRoutesButton.setOnClickListener {
-                    binding.root.findNavController()
-                        .navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
-                }
-            } else {
-                searchRoutesButton.setOnClickListener {
-                    binding.root.findNavController()
-                        .navigate(R.id.action_locations_to_vehicle_list)
-                }
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController()
+                    .navigate(R.id.action_locations_to_vehicle_list)
             }
         }
+        searchRoutesButton.isEnabled = locations.value?.size!! > 1
     }
 
     override fun onDestroyView() {
