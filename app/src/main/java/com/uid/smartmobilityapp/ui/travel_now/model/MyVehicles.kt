@@ -3,7 +3,8 @@ package com.uid.smartmobilityapp.ui.travel_now.model
 import com.uid.smartmobilityapp.R
 
 object MyVehicles {
-    val vehicles : ArrayList<VehicleListItem> = arrayListOf(
+
+    var vehicles : ArrayList<VehicleListItem> = arrayListOf(
         VehicleListItem(
             "Bus",
             "",

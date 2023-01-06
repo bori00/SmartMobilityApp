@@ -1,20 +1,16 @@
 package com.uid.smartmobilityapp.ui.flexible_intent
 
 import android.location.Geocoder
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSelectOptimizationBinding
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSuccessBinding
 import com.uid.smartmobilityapp.ui.travel_now.LocationsViewModel
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
@@ -65,7 +61,7 @@ class FlexibleIntentSuccessFragment : Fragment() {
         successMessage.text =
             buildString {
                 append("Your trip for \"")
-                append(viewModel.selectedName.value)
+                append(FlexibleIntentViewModel.selectedName.value)
                 append("\" flexible intent has been scheduled")
             }
     }

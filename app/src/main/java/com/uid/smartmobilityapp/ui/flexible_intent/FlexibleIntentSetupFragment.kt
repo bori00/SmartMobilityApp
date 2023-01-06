@@ -10,13 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSetupBinding
-import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
-import com.uid.smartmobilityapp.ui.flexible_intent.model.FlexibleIntent
+
 import com.uid.smartmobilityapp.ui.travel_now.LocationsViewModel
+
 import java.util.*
 
 
