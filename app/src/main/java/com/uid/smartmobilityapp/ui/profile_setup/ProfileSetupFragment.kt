@@ -235,7 +235,7 @@ class ProfileSetupFragment : Fragment() {
 
     private fun checkWalkingDistance(): Boolean {
         val walkingDistance: EditText = binding.maximumDistEditTextID
-        val number = walkingDistance.text.toString().toIntOrNull()
+        val number = walkingDistance.text.toString().toFloatOrNull()
         if (number == null || number <= 0) {
             walkingDistance.error = "Please enter a valid number"
             return false
