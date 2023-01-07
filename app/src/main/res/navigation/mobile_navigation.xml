@@ -16,6 +16,19 @@
         <action
             android:id="@+id/action_nav_home_to_travel_now"
             app:destination="@id/travel_now" />
+        <action
+            android:id="@+id/action_nav_home_to_profile_view"
+            app:destination="@id/profile_view" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_view"
+        android:name="com.uid.smartmobilityapp.ui.profile_setup.ProfileViewFragment"
+        android:label="@string/profile_view"
+        tools:layout="@layout/fragment_view_profile">
+        <action
+            android:id="@+id/action_view_profile_to_edit_profile"
+            app:destination="@id/profile_setup" />
     </fragment>
 
     <fragment
@@ -79,6 +92,16 @@
     </fragment>
 
     <fragment
+        android:id="@+id/profile_setup"
+        android:name="com.uid.smartmobilityapp.ui.profile_setup.ProfileSetupFragment"
+        android:label="Profile setup"
+        tools:layout="@layout/fragment_profile_setup">
+        <action
+            android:id="@+id/action_setup_profile_to_view_profile"
+            app:destination="@id/profile_view" />
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_flexible_intents"
         android:name="com.uid.smartmobilityapp.ui.my_flexible_intents.MyFlexibleIntentsFragment"
         android:label="@string/menu_flexible_intents"
@@ -92,8 +115,7 @@
         android:id="@+id/getOptimalRoute"
         android:name="com.uid.smartmobilityapp.ui.my_flexible_intents.GetOptimalRouteFragment"
         android:label="Optimal route"
-        tools:layout="@layout/fragment_optimal_route"
-        >
+        tools:layout="@layout/fragment_optimal_route">
         <action
             android:id="@+id/action_optimal_route_to_view_final_route"
             app:destination="@id/viewFinalRoute">
@@ -108,11 +130,10 @@
         android:id="@+id/viewFinalRoute"
         android:name="com.uid.smartmobilityapp.ui.my_flexible_intents.ViewFinalRouteOptimalFragment"
         android:label="Final route"
-        tools:layout="@layout/fragment_view_final_route"
-        >
+        tools:layout="@layout/fragment_view_final_route">
         <action
-        android:id="@+id/action_view_final_route_to_home"
-        app:destination="@id/nav_home" />
+            android:id="@+id/action_view_final_route_to_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment
@@ -131,7 +152,7 @@
         android:id="@+id/nav_report_event"
         android:name="com.uid.smartmobilityapp.ui.report_event.ReportEventFragment"
         android:label="@string/menu_report_an_event"
-        tools:layout="@layout/fragment_report_event" >
+        tools:layout="@layout/fragment_report_event">
         <action
             android:id="@+id/action_nav_report_event_to_nav_report_event_success"
             app:destination="@id/nav_report_event_success" />
@@ -155,7 +176,7 @@
         android:id="@+id/nav_rate_ride"
         android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideFragment"
         android:label="@string/menu_rate_a_ride"
-        tools:layout="@layout/fragment_rate_ride" >
+        tools:layout="@layout/fragment_rate_ride">
         <action
             android:id="@+id/action_nav_rate_ride_to_nav_rate_ride_success"
             app:destination="@id/nav_rate_ride_success" />
@@ -225,7 +246,7 @@
         android:id="@+id/nav_report_event_success"
         android:name="com.uid.smartmobilityapp.ui.report_event.ReportEventSuccessFragment"
         android:label="Successfully Reported Event"
-        tools:layout="@layout/fragment_report_event_success" >
+        tools:layout="@layout/fragment_report_event_success">
         <action
             android:id="@+id/action_nav_report_event_success_to_nav_home"
             app:destination="@id/nav_home" />
@@ -235,7 +256,7 @@
         android:id="@+id/nav_report_event_select_location"
         android:name="com.uid.smartmobilityapp.ui.report_event.ReportEventSelectLocationFragment"
         android:label="Select Event Location"
-        tools:layout="@layout/fragment_select_location" >
+        tools:layout="@layout/fragment_select_location">
         <action
             android:id="@+id/action_nav_report_event_select_location_to_nav_report_event"
             app:destination="@id/nav_report_event" />
@@ -245,7 +266,7 @@
         android:id="@+id/nav_rate_ride_success"
         android:name="com.uid.smartmobilityapp.ui.rate_ride.RateRideSuccessFragment"
         android:label="Successfully Rated Ride"
-        tools:layout="@layout/fragment_rate_ride_success" >
+        tools:layout="@layout/fragment_rate_ride_success">
         <action
             android:id="@+id/action_nav_rate_ride_success_to_nav_home"
             app:destination="@id/nav_home" />
