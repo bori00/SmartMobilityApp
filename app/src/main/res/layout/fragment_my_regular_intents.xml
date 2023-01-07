@@ -19,8 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:text="@string/specify_intent_name"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/subtitle_size"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -47,8 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
             android:text="@string/specify_the_day"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/subtitle_size"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -78,20 +76,20 @@
         <Button
             android:id="@+id/nextButtonID"
             android:layout_width="157dp"
-            android:layout_height="51dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:backgroundTint="@color/purple_700"
             android:text="@string/next"
             android:textAllCaps="false"
-            app:cornerRadius="20dp" />
+            app:cornerRadius="@dimen/button_corner_radius" />
 
         <Button
             android:id="@+id/addNewIntentButtonID"
             android:layout_width="159dp"
-            android:layout_height="51dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/add_new_intent"
             android:textAllCaps="false"
-            app:cornerRadius="25dp" />
+            app:cornerRadius="@dimen/button_corner_radius" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
