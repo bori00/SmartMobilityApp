@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_view_profile_to_edit_profile"
             app:destination="@id/profile_setup" />
+        <action
+            android:id="@+id/action_view_profile_to_home"
+            app:destination="@id/nav_home" />
     </fragment>
 
     <fragment

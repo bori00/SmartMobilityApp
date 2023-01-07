@@ -31,6 +31,7 @@ class ProfileViewFragment : Fragment() {
 
         setupEditButton()
         setUpUserData()
+        setupHomeButton()
         return _root
     }
 
@@ -44,6 +45,13 @@ class ProfileViewFragment : Fragment() {
         val editButton: Button = binding.editButtonID
         editButton.setOnClickListener {
             binding.root.findNavController().navigate(R.id.action_view_profile_to_edit_profile)
+        }
+    }
+
+    private fun setupHomeButton() {
+        val homeButton: Button = binding.goHomeButtonID
+        homeButton.setOnClickListener {
+            binding.root.findNavController().navigate(R.id.action_view_profile_to_home)
         }
     }
 
