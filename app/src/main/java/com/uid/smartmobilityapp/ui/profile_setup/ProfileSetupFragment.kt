@@ -32,6 +32,7 @@ class ProfileSetupFragment : Fragment() {
     private val binding get() = _binding!!
 
     lateinit private var initialVehicleList: MutableCollection<String>
+    lateinit private var initialExpiryDate: LocalDateTime
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +40,15 @@ class ProfileSetupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         initialVehicleList = MyUser.defaultUser.vehicleList.toMutableList()
+        initialExpiryDate = LocalDateTime.of(
+            MyUser.defaultUser.expiryDate.year,
+            MyUser.defaultUser.expiryDate.month,
+            MyUser.defaultUser.expiryDate.dayOfMonth,
+            MyUser.defaultUser.expiryDate.hour,
+            MyUser.defaultUser.expiryDate.minute,
+            MyUser.defaultUser.expiryDate.second,
+            MyUser.defaultUser.expiryDate.nano
+        )
         _viewModel =
             ViewModelProvider(this).get(ProfileSetupViewModel::class.java)
 
@@ -247,6 +257,7 @@ class ProfileSetupFragment : Fragment() {
     private fun setupCancelButton() {
         val cancelButton: Button = binding.cancelButtonID
         cancelButton.setOnClickListener {
+            MyUser.defaultUser.expiryDate = initialExpiryDate
             MyUser.defaultUser.vehicleList = initialVehicleList.toMutableList() as ArrayList<String>
             binding.root.findNavController().navigate(R.id.action_setup_profile_to_view_profile)
         }
