@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.uid.smartmobilityapp.MainActivity
+import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentInputBikeLocationBinding
 import com.uid.smartmobilityapp.input_bikes.adapters.InputBikeAdapter
 
@@ -36,26 +39,17 @@ class InputBikeLocationFragment : Fragment() {
         _root = binding.root
 
         setupLocationsRecyclerView()
-//        setupSearchRoutesButton()
-//        setupAddNewStopButton()
-//
+        setupAddNewLocationButton()
 
         return _root
     }
-//
-//    private fun setupAddNewStopButton() {
-//        val addNewStopButton: Button = binding.addNewStopButtonId
-//        addNewStopButton.setOnClickListener { view ->
-//            view.findNavController().navigate(R.id.action_locations_to_travel_now)
-//        }
-//    }
-//
-//    private fun setupSearchRoutesButton() {
-//        val searchRoutesButton: Button = binding.searchRoutesButton2Id
-//        searchRoutesButton.setOnClickListener { view ->
-//            binding.root.findNavController().navigate(R.id.action_locations_to_vehicle_list)
-//        }
-//    }
+
+    private fun setupAddNewLocationButton() {
+        val addNewStopButton: FloatingActionButton = binding.floatingActionButton
+        addNewStopButton.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_input_bike_locations_to_add_input_bike_location)
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -62,14 +62,16 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
 
         val okButton: FloatingActionButton = binding.floatingActionButton2
         okButton.setOnClickListener {
-            if(nrBikes.text.toString() == ""){
-//                makeTpa
+            if(nrBikes.text.toString() != ""){
+                _viewModel.input_bikes.value?.add(
+                    InputBike(
+                        _viewModel.query.value!!,
+                        nrBikes.text.toString(),
+                        _viewModel.selectedAddress.value!!
+                    )
+                )
             }
-
-
-
-                binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
-
+                binding.root.findNavController().navigate(R.id.action_add_input_bike_location_to_input_bike_locations)
         }
 
         setupMap(savedInstanceState)
@@ -117,14 +119,13 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
                         if (!addressList.isEmpty()) {
                             _viewModel.selectedAddress.value = addressList[0]
                             _viewModel.query.value = query
-
-                            _viewModel.input_bikes.value?.add(
-                                InputBike(
-                                    query,
-                                    "",
-                                    _viewModel.selectedAddress.value!!
-                                )
-                            )
+//                            _viewModel.input_bikes.value?.add(
+//                                InputBike(
+//                                    query,
+//                                    "",
+//                                    _viewModel.selectedAddress.value!!
+//                                )
+//                            )
                         } else {
                             Toast.makeText(
                                 MainActivity.context,

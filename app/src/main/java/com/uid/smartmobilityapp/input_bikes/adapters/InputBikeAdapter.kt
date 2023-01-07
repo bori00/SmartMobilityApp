@@ -34,7 +34,7 @@ class InputBikeAdapter(
         holder.bindData (dataSource[position])
         holder.deleteButtonRef.setOnClickListener {
             dataSource.removeAt(position)
-            //it.findNavController().navigate(R.id.action_locations_to_locations)
+            it.findNavController().navigate(R.id.action_input_bike_locations_to_input_bike_location)
         }
 
     }
