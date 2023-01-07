@@ -211,7 +211,7 @@ class ProfileSetupFragment : Fragment() {
                 MyUser.defaultUser.maxWalkingDistance = maxDis.text.toString()
                 MyUser.defaultUser.hasPublicTransportPass = busYes.isChecked
                 MyUser.defaultUser.expiryDate = LocalDateTime.parse(expDate.text.toString())
-                binding.root.findNavController().navigate(R.id.action_setup_profile_to_home)
+                binding.root.findNavController().navigate(R.id.action_setup_profile_to_view_profile)
             }
         }
     }
@@ -236,7 +236,7 @@ class ProfileSetupFragment : Fragment() {
     private fun checkWalkingDistance(): Boolean {
         val walkingDistance: EditText = binding.maximumDistEditTextID
         val number = walkingDistance.text.toString().toFloatOrNull()
-        if (number == null || number <= 0) {
+        if (number == null || number < 0) {
             walkingDistance.error = "Please enter a valid number"
             return false
         }
@@ -248,7 +248,7 @@ class ProfileSetupFragment : Fragment() {
         val cancelButton: Button = binding.cancelButtonID
         cancelButton.setOnClickListener {
             MyUser.defaultUser.vehicleList = initialVehicleList.toMutableList() as ArrayList<String>
-            binding.root.findNavController().navigate(R.id.action_setup_profile_to_home)
+            binding.root.findNavController().navigate(R.id.action_setup_profile_to_view_profile)
         }
     }
 }
