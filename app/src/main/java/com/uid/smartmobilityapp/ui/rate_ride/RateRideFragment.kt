@@ -131,7 +131,7 @@ class RateRideFragment : Fragment() {
     }
 
     private fun getDateString(dayOfMonth : Int, month : Int, year : Int) : String {
-        return "$dayOfMonth-$month-$year"
+        return "%02d-%02d-%04d".format(dayOfMonth, month, year)
     }
 
     private fun selectDate(callback : Consumer<LocalDate?>) {

@@ -220,7 +220,7 @@ class ReportEventFragment : Fragment() {
     }
 
     private fun getDateString(dayOfMonth : Int, month : Int, year : Int, hourOfDay : Int, minute : Int) : String {
-        return "$dayOfMonth-$month-$year $hourOfDay:$minute"
+        return "%02d-%02d-%04d %02d:%02d".format(dayOfMonth, month, year, hourOfDay, minute)
     }
 
     override fun onDestroyView() {
