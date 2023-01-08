@@ -1,9 +1,8 @@
 package com.uid.smartmobilityapp
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -19,50 +18,25 @@ import com.uid.smartmobilityapp.ui.notifications.NotificationsScheduler
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        context = this
-
-        setSupportActionBar(binding.appBarMain.toolbar) //error
-
-        val drawerLayout: DrawerLayout = binding.drawerLayout //error
-        val navView: NavigationView = binding.navView //error
-
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home,
-                R.id.nav_flexible_intents,
-                R.id.nav_regular_intents,
-                R.id.nav_report_event,
-                R.id.nav_rate_ride,
-                R.id.nav_bookmarks
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
-        NotificationsScheduler().scheduleNotifications()
+        setup()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
+    private fun setup() {
+        var loginButton : Button = findViewById(R.id.loginButton)
+        loginButton.setOnClickListener {
+            val intent = Intent ( this, LoginActivity::class.java )
+            startActivity(intent)
+        }
 
-    companion object {
-        lateinit var context: Activity
+        var signupButton : Button = findViewById(R.id.signupButton)
+        signupButton.setOnClickListener {
+            val intent = Intent ( this, SigninChooseAccountActivity::class.java )
+            startActivity(intent)
+        }
+
     }
 }
