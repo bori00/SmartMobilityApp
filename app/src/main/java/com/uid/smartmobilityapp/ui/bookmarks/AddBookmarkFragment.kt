@@ -113,7 +113,6 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setupMapSearch() {
-
         MapSearchUtils().setupMapSearchWithNoBookmarkSuggestions(binding.bookmarkAddressSearchView,
             {addressWithName : AddressWithName -> _viewModel.selectedAddress.value = addressWithName.address}
         )
