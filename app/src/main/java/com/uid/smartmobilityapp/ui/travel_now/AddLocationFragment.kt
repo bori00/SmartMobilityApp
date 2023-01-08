@@ -25,11 +25,14 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
+import com.uid.smartmobilityapp.models.AddressWithName
+import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyGroupSize.size
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations.locations
 import com.uid.smartmobilityapp.ui.travel_now.model.MyVehicles.vehicles
 import com.uid.smartmobilityapp.ui.travel_now.model.VehicleListItem
+import com.uid.smartmobilityapp.ui.utils.MapSearchUtils
 import java.io.IOException
 
 class AddLocationFragment : Fragment(), OnMapReadyCallback {
@@ -86,7 +89,49 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         setupViewModel()
         setupEditText()
         setupGroupTravelButton()
+        saveStopButtonId()
         return root
+    }
+
+    private fun saveStopButtonId() {
+        val saveStopButton: Button = binding.saveStopButtonId
+        saveStopButton.setOnClickListener {
+            if (_viewModel.selectedAddress.value == null) {
+                Toast.makeText(MainActivity.context, "Please select an Address", Toast.LENGTH_SHORT).show()
+            }
+            val bundle: Bundle? = arguments
+            var i = -1
+            if (bundle != null) {
+                i = bundle.getInt("position", -1)
+            }
+            if (i != -1) {
+                _viewModel.locations.value?.set(
+                    i, Location(
+                        _viewModel.query.value!!,
+                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
+                        _viewModel.selectedAddress.value!!
+                    )
+                )
+
+            } else {
+                _viewModel.locations.value?.add(
+                    Location(
+                        _viewModel.query.value!!,
+                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
+                        _viewModel.selectedAddress.value!!
+                    )
+                )
+            }
+            val nextStop: TextView = binding.include.nextStopTextFieldId
+            var text: String = "Current location"
+            for (loc: Location in locations) {
+                if (loc.indexNo.toInt() > 1) {
+                    val addition = "➔${loc.name}"
+                    text += addition
+                }
+            }
+            nextStop.text = text
+        }
     }
 
     private fun setupEditText() {
@@ -197,11 +242,6 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         _searchView = binding.getLocationSearchView
         _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                val bundle: Bundle? = arguments
-                var i = -1
-                if (bundle != null) {
-                    i = bundle.getInt("position", -1)
-                }
                 val location = _searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
@@ -210,33 +250,8 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             _viewModel.selectedAddress.value = addressList[0]
-                            if (i != -1) {
-                                _viewModel.locations.value?.set(
-                                    i, Location(
-                                        query,
-                                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
-                                        _viewModel.selectedAddress.value!!
-                                    )
-                                )
+                            _viewModel.query.value = query
 
-                            } else {
-                                _viewModel.locations.value?.add(
-                                    Location(
-                                        query,
-                                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
-                                        _viewModel.selectedAddress.value!!
-                                    )
-                                )
-                            }
-                            val nextStop: TextView = binding.include.nextStopTextFieldId
-                            var text: String = "Current location"
-                            for (loc: Location in locations) {
-                                if (loc.indexNo.toInt() > 1) {
-                                    val addition = "➔${loc.name}"
-                                    text += addition
-                                }
-                            }
-                            nextStop.text = text
                         } else {
                             Toast.makeText(
                                 MainActivity.context,
@@ -266,6 +281,41 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 return false
             }
         })
+//        MapSearchUtils().setupMapSearchWithBookmarkSuggestions(binding.getLocationSearchView, requireContext(), requireView(),
+//            {addressWithName : AddressWithName -> _viewModel.newlySelectedLocation.value = addressWithName},
+//            {bookmark : Bookmark -> _viewModel.newlySelectedLocation.value = AddressWithName(bookmark.address, bookmark.name) }
+//        )
+//        val bundle: Bundle? = arguments
+//        var i = -1
+//        if (bundle != null) {
+//            i = bundle.getInt("position", -1)
+//        }
+//        if (i != -1) {
+//            _viewModel.locations.value?.set(
+//                i, Location(
+//                    query,
+//                    (_viewModel.locations.value!!.lastIndex + 2).toString(),
+//                    _viewModel.newlySelectedLocation.value!!
+//                )
+//            )
+//
+//        } else {
+//            _viewModel.locations.value?.add(
+//                Location(
+//                    query,
+//                    (_viewModel.locations.value!!.lastIndex + 2).toString(),
+//                    _viewModel.selectedAddress.value!!
+//                )
+//            )
+//        }
+//        val nextStop: TextView = binding.include.nextStopTextFieldId
+//        var text: String = "Current location"
+//        for (loc: Location in locations) {
+//            if (loc.indexNo.toInt() > 1) {
+//                val addition = "➔${loc.name}"
+//                text += addition
+//            }
+//        }
     }
 
     private fun setupViewModel() {
