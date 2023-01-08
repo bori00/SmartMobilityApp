@@ -13,7 +13,6 @@ import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -55,16 +54,21 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View {
         Log.d("MainActivity", "Open Add Location Fragment")
-        _viewModel =
-            ViewModelProvider(this).get(LocationsViewModel::class.java)
+        _viewModel = LocationsViewModel
 
         _binding = FragmentAddLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val searchRoutesButton: Button = binding.searchRoutesButtonId
-        searchRoutesButton.setOnClickListener {
-            binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
 
+        if(_viewModel.selectedIntent.value === "Flexible Intent") {
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
+            }
+        } else {
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
+            }
         }
 
         val summaryButton: Button = binding.include.editRouteButtonId

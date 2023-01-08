@@ -1,5 +1,6 @@
 package com.uid.smartmobilityapp.ui.home
 
+import android.location.Geocoder
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,12 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentHomeBinding
+import com.uid.smartmobilityapp.ui.travel_now.LocationsViewModel
+import com.uid.smartmobilityapp.ui.travel_now.model.Location
+import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 
 
 class HomeFragment : Fragment() {
@@ -19,6 +24,8 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var viewModelForLocations: LocationsViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +34,9 @@ class HomeFragment : Fragment() {
     ): View {
         val viewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModelForLocations = LocationsViewModel
+        viewModelForLocations.selectedIntent.value = ""
+        initializeLocationsWithCurrentLocation()
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -51,6 +61,19 @@ class HomeFragment : Fragment() {
         }
 
         return root
+    }
+
+    private fun initializeLocationsWithCurrentLocation() {
+        MyLocations.locations = arrayListOf(
+            Location(
+                "CurrentLocation",
+                "1",
+                Geocoder(MainActivity.context).getFromLocationName(
+                    "Str. Donath 15, Cluj-Napoca", 1
+                ).get(0)
+            )
+        )
+        viewModelForLocations.locations.value = MyLocations.locations
     }
 
     override fun onPause() {

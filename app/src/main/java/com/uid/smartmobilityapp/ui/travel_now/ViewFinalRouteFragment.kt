@@ -1,5 +1,6 @@
 package com.uid.smartmobilityapp.ui.travel_now
 
+import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentViewRouteBinding
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
@@ -31,6 +33,13 @@ class ViewFinalRouteFragment : Fragment() {
     ): View {
         _viewModel =
             ViewModelProvider(this).get(ViewVehiclesModel::class.java)
+
+        MyLocations.locations = arrayListOf(
+            Location("CurrentLocation",
+                "1",
+                Geocoder(MainActivity.context).getFromLocationName(
+                    "Str. Donath 15, Cluj-Napoca", 1).get(0))
+        )
 
         _binding = FragmentViewRouteBinding.inflate(inflater, container, false)
         _root = binding.root
