@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.uid.smartmobilityapp.CompanyActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddInputBikesBinding
 import com.uid.smartmobilityapp.ui.company.input_bikes.model.InputBike
 import java.io.IOException
@@ -61,6 +62,7 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
         val okButton: FloatingActionButton = binding.floatingActionButton2
         okButton.setOnClickListener {
             if (nrBikes.text.toString() != "") {
+                if(_viewModel.query.value!=null){
                 _viewModel.input_bikes.value?.add(
                     InputBike(
                         _viewModel.query.value!!,
@@ -68,9 +70,15 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
                         _viewModel.selectedAddress.value!!
                     )
                 )
+                binding.root.findNavController()
+                    .navigate(R.id.action_add_input_bike_location_to_input_bike_locations)}
+                else {
+                    Toast.makeText(CompanyActivity.context, "Please introduce an address", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(CompanyActivity.context, "Please introduce a number of available bikes", Toast.LENGTH_SHORT).show()
             }
-            binding.root.findNavController()
-                .navigate(R.id.action_add_input_bike_location_to_input_bike_locations)
+
         }
 
         setupMap(savedInstanceState)
