@@ -1,4 +1,4 @@
-package com.uid.smartmobilityapp.ui.travel_now.adapter
+package com.uid.smartmobilityapp.ui.regular_intent.adapter
 
 import android.content.Context
 import android.os.Bundle
@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.ui.travel_now.model.Location
+import com.uid.smartmobilityapp.ui.regular_intent.model.RegularIntentLocation
 
 
-class LocationAdapter(
+class LocationAdapter (
     private val context: Context,
-    private val dataSource: ArrayList<Location>
-) : RecyclerView.Adapter<LocationViewHolder>()
+    private val dataSource: ArrayList<RegularIntentLocation>) : RecyclerView.Adapter<LocationViewHolder>()
     {
         // similar to the ListView adapter we will define here a LayoutInflater that we
         // will use when transforming the XML to Kotlin objects for a specific list element
@@ -32,18 +31,13 @@ class LocationAdapter(
         override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
             // binds the view holder with the data
             holder.bindData (dataSource[position])
-            if(position==0){
-                holder.deleteButtonRef.visibility=GONE
-            }
-            holder.deleteButtonRef.setOnClickListener {
-                dataSource.removeAt(position)
-                it.findNavController().navigate(R.id.action_locations_to_locations)
-            }
+            holder.nameRef.hint = dataSource[position].hint
+            holder.deleteButtonRef.visibility=GONE
 
             holder.editButtonRef.setOnClickListener { view ->
                 val bundle = Bundle()
                 bundle.putInt("position", position)
-                view.findNavController().navigate(R.id.action_locations_to_travel_now,bundle)}
+                view.findNavController().navigate(R.id.action_nav_regular_intent_setup_to_nav_regular_intent_select_location,bundle)}
         }
 
         override fun getItemViewType ( position: Int ) : Int {

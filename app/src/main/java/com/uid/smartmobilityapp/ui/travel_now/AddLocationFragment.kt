@@ -43,6 +43,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
     private lateinit var _searchView: SearchView
 
     private var _selectedAddressMarker: Marker? = null
+    private lateinit var searchRoutesButton: Button
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -59,9 +60,10 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         _binding = FragmentAddLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val searchRoutesButton: Button = binding.searchRoutesButtonId
+        searchRoutesButton = binding.searchRoutesButtonId
 
         if(_viewModel.selectedIntent.value === "Flexible Intent") {
+            searchRoutesButton.text = "Confirm destination"
             searchRoutesButton.setOnClickListener {
                 binding.root.findNavController().navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
             }
@@ -70,6 +72,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
             }
         }
+        searchRoutesButton.isEnabled = locations.size > 1
 
         val summaryButton: Button = binding.include.editRouteButtonId
         summaryButton.setOnClickListener {
@@ -290,6 +293,8 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 _selectedAddressMarker?.snippet = it.getAddressLine(0)
                 _selectedAddressMarker?.showInfoWindow()
                 _mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+
+                searchRoutesButton.isEnabled = locations.size > 1
             }
         }
     }
