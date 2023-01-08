@@ -42,7 +42,11 @@
         <item>Construction Work</item>
         <item>Other</item>
     </string-array>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
+    <string name="profile_view">Profile View</string>
+    <string name="profile_setup">Profile View</string>
     <string name="label">app_label</string>
     <string name="hint">hint</string>
     <string name="selectDestination">Select a destination</string>
@@ -58,4 +62,11 @@
     <string name="schedule_a_regular_trip">Schedule a regular trip</string>
     <string name="days">Days</string>
     <string name="continueButton">Continue</string>
+
+    <string name="car_driving_license">Car driving license</string>
+    <string name="know_how_to_ride_a_bike">Know how to ride a bike</string>
+    <string name="know_how_to_ride_an_electric_scooter">Know how to ride an electric scooter</string>
+    <string name="maximum_walking_distance">Maximum walking distance</string>
+    <string name="public_transport_pass">Public transport pass</string>
+    <string name="possess_a_vehicle">Possess a vehicle</string>
 </resources>

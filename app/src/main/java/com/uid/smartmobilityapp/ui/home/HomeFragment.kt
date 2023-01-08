@@ -47,7 +47,16 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val setUpProfileButton: Button =
+            requireActivity().findViewById(R.id.viewProfileButtonID)
+        setUpProfileButton.visibility = View.VISIBLE
+
+        setUpProfileButton.setOnClickListener {
+            binding.root.findNavController().navigate(R.id.action_nav_home_to_profile_view)
+        }
+
         val travelNowButton: Button = binding.travelNowButtonId
+
         travelNowButton.setOnClickListener {
             binding.root.findNavController().navigate(R.id.action_nav_home_to_travel_now)
         }
@@ -67,12 +76,22 @@ class HomeFragment : Fragment() {
 
     private fun initializeLocationsWithCurrentLocation() {
         MyLocations.locations = arrayListOf(
-            Location("CurrentLocation",
+            Location(
+                "CurrentLocation",
                 "1",
                 Geocoder(MainActivity.context).getFromLocationName(
-                    "Str. Donath 15, Cluj-Napoca", 1).get(0))
+                    "Str. Donath 15, Cluj-Napoca", 1
+                ).get(0)
+            )
         )
         viewModelForLocations.locations.value = MyLocations.locations
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val setUpProfileButton: Button =
+            requireActivity().findViewById(R.id.viewProfileButtonID)
+        setUpProfileButton.visibility = View.GONE
     }
 
     override fun onDestroyView() {
