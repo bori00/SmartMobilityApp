@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSuccessBinding
 import com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentViewModel
 import com.uid.smartmobilityapp.ui.travel_now.LocationsViewModel
@@ -41,7 +42,7 @@ class RegularIntentSuccessFragment : Fragment() {
         MyLocations.locations = arrayListOf(
             Location("CurrentLocation",
                 "1",
-                Geocoder(MainActivity.context).getFromLocationName(
+                Geocoder(UserActivity.context).getFromLocationName(
                     "Str. Donath 15, Cluj-Napoca", 1).get(0))
         )
         viewModelForLocations.locations.value = MyLocations.locations

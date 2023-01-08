@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentReportEventBinding
 import java.time.LocalDateTime
 import java.util.*
@@ -69,11 +70,11 @@ class ReportEventFragment : Fragment() {
 
     private fun onReportEventClick() {
         if (viewModel.selectedEventType.value == null) {
-            Toast.makeText(MainActivity.context, "Please select an event type", Toast.LENGTH_SHORT).show()
+            Toast.makeText(UserActivity.context, "Please select an event type", Toast.LENGTH_SHORT).show()
             return
         }
         if (viewModel.selectedLocation.value == null) {
-            Toast.makeText(MainActivity.context, "Please select a location", Toast.LENGTH_SHORT).show()
+            Toast.makeText(UserActivity.context, "Please select a location", Toast.LENGTH_SHORT).show()
             return
         }
         binding.root.findNavController().navigate(R.id.action_nav_report_event_to_nav_report_event_success)
@@ -132,7 +133,7 @@ class ReportEventFragment : Fragment() {
         val eventTypeDropDown = binding.selectEventTypeAutoComplete
 
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-            MainActivity.context,
+            UserActivity.context,
             android.R.layout.simple_dropdown_item_1line,
             resources.getStringArray(R.array.event_types_array)
         )
@@ -159,12 +160,12 @@ class ReportEventFragment : Fragment() {
         val mMinute = c.get(Calendar.MINUTE);
 
 
-        val datePickerDialog = DatePickerDialog(MainActivity.context,
+        val datePickerDialog = DatePickerDialog(UserActivity.context,
             OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 run {
 
                     val timePickerDialog = TimePickerDialog(
-                        MainActivity.context,
+                        UserActivity.context,
                         OnTimeSetListener { view, hourOfDay, minute ->
 
                             val selectedDateTime = LocalDateTime.of(year, monthOfYear + 1, dayOfMonth, hourOfDay, minute)

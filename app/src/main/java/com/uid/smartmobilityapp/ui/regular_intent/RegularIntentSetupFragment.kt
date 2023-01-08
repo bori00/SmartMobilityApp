@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentRegularIntentSetupBinding
 import com.uid.smartmobilityapp.ui.regular_intent.model.RegularIntentLocation
 import com.uid.smartmobilityapp.ui.regular_intent.adapter.LocationAdapter
@@ -103,7 +104,7 @@ class RegularIntentSetupFragment : Fragment() {
      fun setupLocationsRecyclerView() {
         val bookmarksRecyclerView: RecyclerView = binding.locationsRecyclerViewId
         val layoutManager =
-            LinearLayoutManager(MainActivity.context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(UserActivity.context, LinearLayoutManager.VERTICAL, false)
         if(viewModel.startingPointNewAddress.value != null) {
             viewModel.startingPoint.value = RegularIntentLocation(viewModel.startingPointNewAddress.value?.name,
                 "1",
@@ -125,7 +126,7 @@ class RegularIntentSetupFragment : Fragment() {
             viewModel.destination.value!!
         )
         val adapter = LocationAdapter(
-            MainActivity.context,
+            UserActivity.context,
             locations
         )
         bookmarksRecyclerView.layoutManager = layoutManager

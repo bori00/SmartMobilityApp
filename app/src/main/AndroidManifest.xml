@@ -12,12 +12,49 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMobilityApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SigninActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SigninChooseAccountActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CompanyActivity"
+            android:exported="true"
+            android:label="@string/companyActivity"
+            android:theme="@style/Theme.SmartMobilityApp.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".UserActivity"
+            android:exported="true"
+            android:label="@string/userActivity"
+            android:theme="@style/Theme.SmartMobilityApp.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.SmartMobilityApp.NoActionBar">
+            android:label="@string/title_activity_main">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -36,7 +73,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
-
     </application>
 
 </manifest>

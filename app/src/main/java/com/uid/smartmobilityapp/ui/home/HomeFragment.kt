@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentHomeBinding
 import com.uid.smartmobilityapp.ui.regular_intent.RegularIntentViewModel
 import com.uid.smartmobilityapp.ui.regular_intent.model.RegularIntent
@@ -79,7 +80,7 @@ class HomeFragment : Fragment() {
             Location(
                 "CurrentLocation",
                 "1",
-                Geocoder(MainActivity.context).getFromLocationName(
+                Geocoder(UserActivity.context).getFromLocationName(
                     "Str. Donath 15, Cluj-Napoca", 1
                 ).get(0)
             )
