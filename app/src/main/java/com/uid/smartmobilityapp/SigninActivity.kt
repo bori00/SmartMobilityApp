@@ -44,10 +44,10 @@ class SigninActivity : AppCompatActivity() {
         val websiteError: TextView = findViewById<TextView>( R.id.company_website_error_id )
         val signInMessage: TextView = findViewById<TextView>( R.id.signinMessage )
 
-        val isUsernameValid: Boolean = validateLengthAndEmpty(usernameInput, usernameError)
+        val isUsernameValid: Boolean = validateLengthAndEmpty(usernameInput, usernameError) && validateUsername(usernameInput, usernameError)
         val isPasswordValid: Boolean = validateLengthAndEmpty(passwordInput, passwordError)
         val isEmailValid: Boolean =
-            validateLengthAndEmpty(emailInput, emailError) && isEmailValid(emailInput, emailError)
+            validateLengthAndEmpty(emailInput, emailError) && isEmailValid(emailInput, emailError) && validateEmail(emailInput, emailError)
         val isPersonNameValid: Boolean = validateLengthAndEmpty(personNameInput, personNameError)
         val isPersonPhoneValid: Boolean = validateLengthAndEmpty(personPhoneInput, personPhoneError)&& isPhoneValid(personPhoneInput, personPhoneError)
         val isWebsiteValid: Boolean = validateLengthAndEmpty(websiteInput, websiteError)
@@ -73,12 +73,34 @@ class SigninActivity : AppCompatActivity() {
         }
     }
 
+    private fun validateUsername(input: TextView, errorMessage: TextView): Boolean {
+        for(company in viewModel.companies.value!!) {
+            if(company.username.contentEquals(input.text)) {
+                errorMessage.text = "Username already exists"
+                return false
+            }
+        }
+        errorMessage.text = ""
+        return true
+    }
+
+    private fun validateEmail(input: TextView, errorMessage: TextView): Boolean {
+        for(company in viewModel.companies.value!!) {
+            if(company.email.contentEquals(input.text)) {
+                errorMessage.text = "Email already exists"
+                return false
+            }
+        }
+        errorMessage.text = ""
+        return true
+    }
+
     private fun validateLengthAndEmpty(input: TextView, errorMessage: TextView): Boolean {
         return if(input.text.isEmpty()) {
             errorMessage.text = getString(R.string.username_error_string)
             false
         } else {
-            if(input.text.length < 3) {
+            if(input.text.length < 5) {
                 errorMessage.text = getString(R.string.username_short_error_string)
                 false
             } else {

@@ -25,53 +25,25 @@ class LoginActivity : AppCompatActivity() {
         val passwordInput: TextView = findViewById<TextView>( R.id.password_input_id )
         val passwordError: TextView = findViewById<TextView>( R.id.password_error_id )
         val signInMessage: TextView = findViewById<TextView>( R.id.signinMessage )
-        var isUsernameValid = false
-        var isPasswordValid = false
 
-        if(usernameInput.text.isEmpty()) {
-            usernameError.text = getString(R.string.username_error_string)
-        } else {
-            if(usernameInput.text.length < 3) {
-                usernameError.text = getString(R.string.username_short_error_string)
-            } else {
-                usernameError.text = ""
-                isUsernameValid = true
-            }
+        if(usernameInput.text.contentEquals( "username") and passwordInput.text.contentEquals("password")) {
+            signInMessage.text = getString(R.string.authentication_success_string)
+            signInMessage.setTextColor(getColor(R.color.purple_700));
+
+            val intent = Intent ( this, UserActivity::class.java )
+            startActivity ( intent )
+
+        } else if(validateCompany(usernameInput.text.toString(), passwordInput.text.toString())) {
+            signInMessage.text = getString(R.string.authentication_success_string)
+            signInMessage.setTextColor(getColor(R.color.purple_700));
+
+            val intent = Intent ( this, CompanyActivity::class.java )
+            startActivity ( intent )
+
         }
-
-        if(passwordInput.text.isEmpty()) {
-            passwordError.text = getString(R.string.password_error_string)
-        } else {
-            if(passwordInput.text.length < 7) {
-                passwordError.text = getString(R.string.password_short_error_string)
-            } else {
-                passwordError.text = ""
-                isPasswordValid = true
-            }
-        }
-
-        if(isUsernameValid and isPasswordValid) {
-            if(usernameInput.text.contentEquals( "username") and passwordInput.text.contentEquals("password")) {
-                signInMessage.text = getString(R.string.authentication_success_string)
-                signInMessage.setTextColor(getColor(R.color.purple_700));
-
-                val intent = Intent ( this, UserActivity::class.java )
-                startActivity ( intent )
-
-            } else if(validateCompany(usernameInput.text.toString(), passwordInput.text.toString())) {
-                signInMessage.text = getString(R.string.authentication_success_string)
-                signInMessage.setTextColor(getColor(R.color.purple_700));
-
-                val intent = Intent ( this, CompanyActivity::class.java )
-                startActivity ( intent )
-
-            }
-            else {
-                signInMessage.text = getString(R.string.authentication_failed_string)
-                signInMessage.setTextColor(getColor(R.color.red));
-            }
-        } else {
-            signInMessage.text = ""
+        else {
+            signInMessage.text = getString(R.string.authentication_failed_string)
+            signInMessage.setTextColor(getColor(R.color.red));
         }
     }
 
