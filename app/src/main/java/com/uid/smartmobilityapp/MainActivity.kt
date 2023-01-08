@@ -37,5 +37,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent ( this, SigninChooseAccountActivity::class.java )
             startActivity(intent)
         }
+
     }
 }
