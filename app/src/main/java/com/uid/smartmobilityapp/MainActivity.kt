@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity() {
 
         context = this
 
-        setSupportActionBar(binding.appBarMain.toolbar)
+        setSupportActionBar(binding.appBarMain.toolbar) //error
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
+        val drawerLayout: DrawerLayout = binding.drawerLayout //error
+        val navView: NavigationView = binding.navView //error
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
