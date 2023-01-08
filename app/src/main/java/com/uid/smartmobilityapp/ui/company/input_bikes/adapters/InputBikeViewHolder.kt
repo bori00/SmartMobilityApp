@@ -1,11 +1,11 @@
-package com.uid.smartmobilityapp.input_bikes.adapters
+package com.uid.smartmobilityapp.ui.company.input_bikes.adapters
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.input_bikes.model.InputBike
+import com.uid.smartmobilityapp.ui.company.input_bikes.model.InputBike
 
 class InputBikeViewHolder ( private val view: View) : RecyclerView.ViewHolder ( view )  {
     private lateinit var nameRef: TextView

@@ -41,11 +41,6 @@ class HomeFragment : Fragment() {
             view.findNavController().navigate(R.id.action_nav_home_to_nav_flexible_intent_setup)
         }
 
-        val input_bike: Button = binding.button
-        input_bike.setOnClickListener {
-            binding.root.findNavController().navigate(R.id.action_nav_home_to_input_bike_locations)
-        }
-
         return root
     }
 

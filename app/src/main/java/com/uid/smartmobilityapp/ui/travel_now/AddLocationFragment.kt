@@ -7,11 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.SearchView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -22,7 +18,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
@@ -104,7 +99,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             if (editText.visibility == View.GONE) {
                 editText.visibility = View.VISIBLE
             } else {
-                if ((number != null && number > 0) || editText.text.isEmpty() )
+                if ((number != null && number > 0) || editText.text.isEmpty())
                     editText.visibility = View.GONE
             }
             size = "1"

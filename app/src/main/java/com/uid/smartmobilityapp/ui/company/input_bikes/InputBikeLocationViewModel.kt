@@ -1,11 +1,11 @@
-package com.uid.smartmobilityapp.input_bikes
+package com.uid.smartmobilityapp.ui.company.input_bikes
 
 import android.location.Address
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.uid.smartmobilityapp.input_bikes.model.InputBike
-import com.uid.smartmobilityapp.input_bikes.model.MyInputBikes
+import com.uid.smartmobilityapp.ui.company.input_bikes.model.InputBike
+import com.uid.smartmobilityapp.ui.company.input_bikes.model.MyInputBikes
 import com.uid.smartmobilityapp.models.AddressWithName
 import com.uid.smartmobilityapp.services.DeviceLocationProviderService
 

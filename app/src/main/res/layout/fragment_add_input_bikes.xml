@@ -7,7 +7,7 @@
 
     <EditText
         android:id="@+id/noBikesTF"
-        android:layout_width="406dp"
+        android:layout_width="match_parent"
         android:layout_height="57dp"
         android:autofillHints="name"
         android:backgroundTint="@color/purple_100"

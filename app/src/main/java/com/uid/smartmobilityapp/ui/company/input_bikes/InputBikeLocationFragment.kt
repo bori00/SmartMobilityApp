@@ -1,4 +1,4 @@
-package com.uid.smartmobilityapp.input_bikes
+package com.uid.smartmobilityapp.ui.company.input_bikes
 
 import android.os.Bundle
 import android.util.Log
@@ -12,10 +12,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.uid.smartmobilityapp.CompanyActivity
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentInputBikeLocationBinding
-import com.uid.smartmobilityapp.input_bikes.adapters.InputBikeAdapter
+import com.uid.smartmobilityapp.ui.company.input_bikes.adapters.InputBikeAdapter
 
 class InputBikeLocationFragment : Fragment() {
     private var _binding: FragmentInputBikeLocationBinding? = null
@@ -59,10 +60,10 @@ class InputBikeLocationFragment : Fragment() {
     private fun setupLocationsRecyclerView() {
         val bookmarksRecyclerView: RecyclerView = binding.recyclerView2
         val layoutManager =
-            LinearLayoutManager(MainActivity.context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(CompanyActivity.context, LinearLayoutManager.VERTICAL, false)
         val adapter = _viewModel.input_bikes.value?.let {
             InputBikeAdapter(
-                MainActivity.context,
+                CompanyActivity.context,
                 it
             )
         }

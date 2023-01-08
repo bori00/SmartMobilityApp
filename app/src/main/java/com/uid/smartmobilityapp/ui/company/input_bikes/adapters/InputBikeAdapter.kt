@@ -1,4 +1,4 @@
-package com.uid.smartmobilityapp.input_bikes.adapters
+package com.uid.smartmobilityapp.ui.company.input_bikes.adapters
 
 import android.content.Context
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.input_bikes.model.InputBike
+import com.uid.smartmobilityapp.ui.company.input_bikes.model.InputBike
 import com.uid.smartmobilityapp.ui.travel_now.adapter.LocationViewHolder
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 

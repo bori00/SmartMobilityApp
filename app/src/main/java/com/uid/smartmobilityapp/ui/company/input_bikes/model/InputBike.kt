@@ -1,4 +1,4 @@
-package com.uid.smartmobilityapp.input_bikes.model
+package com.uid.smartmobilityapp.ui.company.input_bikes.model
 
 import android.location.Address
 

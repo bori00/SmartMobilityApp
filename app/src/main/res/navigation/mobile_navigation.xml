@@ -16,34 +16,6 @@
         <action
             android:id="@+id/action_nav_home_to_travel_now"
             app:destination="@id/travel_now" />
-<!--        TODO to delete this action-->
-        <action
-            android:id="@+id/action_nav_home_to_input_bike_locations"
-            app:destination="@id/input_bike_locations" />
-    </fragment>
-
-<!--    TODO modify path-->
-    <fragment
-        android:id="@+id/input_bike_locations"
-        android:name="com.uid.smartmobilityapp.input_bikes.InputBikeLocationFragment"
-        android:label="Input Bike Locations"
-        tools:layout="@layout/fragment_input_bike_location">
-        <action
-            android:id="@+id/action_input_bike_locations_to_add_input_bike_location"
-            app:destination="@id/add_input_bike" />
-        <action
-            android:id="@+id/action_input_bike_locations_to_input_bike_location"
-            app:destination="@id/input_bike_locations" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/add_input_bike"
-        android:name="com.uid.smartmobilityapp.input_bikes.AddInputBikeLocation"
-        android:label="Add input bike"
-        tools:layout="@layout/fragment_add_input_bikes">
-        <action
-            android:id="@+id/action_add_input_bike_location_to_input_bike_locations"
-            app:destination="@id/input_bike_locations" />
     </fragment>
 
     <fragment

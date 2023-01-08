@@ -1,4 +1,4 @@
-package com.uid.smartmobilityapp.input_bikes
+package com.uid.smartmobilityapp.ui.company.input_bikes
 
 import android.location.Address
 import android.location.Geocoder
@@ -7,7 +7,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.SearchView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -19,14 +21,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.uid.smartmobilityapp.MainActivity
+import com.uid.smartmobilityapp.CompanyActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.databinding.FragmentAddInputBikesBinding
-import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
-import com.uid.smartmobilityapp.input_bikes.model.InputBike
-import com.uid.smartmobilityapp.ui.travel_now.LocationsViewModel
-import com.uid.smartmobilityapp.ui.travel_now.model.Location
-import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
+import com.uid.smartmobilityapp.ui.company.input_bikes.model.InputBike
 import java.io.IOException
 
 class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
@@ -51,7 +49,7 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d("MainActivity", "Open Add Location Fragment")
+        Log.d("CompanyActivity", "Open Add Location Fragment")
         _viewModel =
             ViewModelProvider(this).get(InputBikeLocationViewModel::class.java)
 
@@ -62,7 +60,7 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
 
         val okButton: FloatingActionButton = binding.floatingActionButton2
         okButton.setOnClickListener {
-            if(nrBikes.text.toString() != ""){
+            if (nrBikes.text.toString() != "") {
                 _viewModel.input_bikes.value?.add(
                     InputBike(
                         _viewModel.query.value!!,
@@ -71,7 +69,8 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
                     )
                 )
             }
-                binding.root.findNavController().navigate(R.id.action_add_input_bike_location_to_input_bike_locations)
+            binding.root.findNavController()
+                .navigate(R.id.action_add_input_bike_location_to_input_bike_locations)
         }
 
         setupMap(savedInstanceState)
@@ -113,7 +112,7 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
                 val location = _searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(MainActivity.context)
+                    val geocoder = Geocoder(CompanyActivity.context)
                     try {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
@@ -128,14 +127,14 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
 //                            )
                         } else {
                             Toast.makeText(
-                                MainActivity.context,
+                                CompanyActivity.context,
                                 "This location couldn't be found. Please make your query more specific",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     } catch (e: IOException) {
                         Toast.makeText(
-                            MainActivity.context,
+                            CompanyActivity.context,
                             "This location couldn't be found. Please make your query more specific",
                             Toast.LENGTH_SHORT
                         ).show()
@@ -143,7 +142,7 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
                     }
                 } else {
                     Toast.makeText(
-                        MainActivity.context,
+                        CompanyActivity.context,
                         "Please select an address",
                         Toast.LENGTH_SHORT
                     ).show()
