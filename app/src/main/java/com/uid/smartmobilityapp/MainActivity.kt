@@ -2,6 +2,9 @@ package com.uid.smartmobilityapp
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -29,7 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
 
@@ -54,7 +56,6 @@ class MainActivity : AppCompatActivity() {
 
         NotificationsScheduler().scheduleNotifications()
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
