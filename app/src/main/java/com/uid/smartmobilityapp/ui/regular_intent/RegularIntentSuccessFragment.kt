@@ -1,6 +1,7 @@
-package com.uid.smartmobilityapp.ui.flexible_intent
+package com.uid.smartmobilityapp.ui.regular_intent
 
 import android.location.Geocoder
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,13 +14,15 @@ import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentFlexibleIntentSuccessBinding
+import com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentViewModel
 import com.uid.smartmobilityapp.ui.travel_now.LocationsViewModel
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 
-class FlexibleIntentSuccessFragment : Fragment() {
+class RegularIntentSuccessFragment : Fragment() {
 
-    private lateinit var viewModel: FlexibleIntentViewModel
+
+    private lateinit var viewModel: RegularIntentViewModel
     private lateinit var viewModelForLocations: LocationsViewModel
     private var _binding: FragmentFlexibleIntentSuccessBinding? = null
     lateinit private var _root : View;
@@ -32,7 +35,7 @@ class FlexibleIntentSuccessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = FlexibleIntentViewModel
+        viewModel = RegularIntentViewModel
         viewModelForLocations = LocationsViewModel
 
         viewModelForLocations.selectedIntent.value = ""
@@ -55,15 +58,15 @@ class FlexibleIntentSuccessFragment : Fragment() {
     fun setup() {
         val nextButtonClick = _root.findViewById<Button>(R.id.backButton)
         nextButtonClick.setOnClickListener {view ->
-            view.findNavController().navigate(R.id.action_nav_flexible_intent_success_to_nav_home)
+            view.findNavController().navigate(R.id.action_nav_regular_intent_success_nav_home)
         }
 
         val successMessage = _root.findViewById<TextView>(R.id.successMessage)
         successMessage.text =
             buildString {
                 append("Your trip for \"")
-                append(FlexibleIntentViewModel.selectedName.value)
-                append("\" flexible intent has been scheduled")
+                append(viewModel.selectedName.value)
+                append("\" regular intent has been scheduled")
             }
     }
 

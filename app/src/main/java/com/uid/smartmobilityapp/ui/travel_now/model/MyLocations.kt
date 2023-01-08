@@ -5,7 +5,7 @@ import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.UserActivity
 
 object MyLocations {
-    val locations : ArrayList<Location> = arrayListOf(
+    var locations : ArrayList<Location> = arrayListOf(
         Location("CurrentLocation",
             "1",
             Geocoder(UserActivity.context).getFromLocationName(

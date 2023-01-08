@@ -17,6 +17,9 @@
             android:id="@+id/action_nav_home_to_travel_now"
             app:destination="@id/travel_now" />
         <action
+            android:id="@+id/action_nav_home_to_regular_intent_setup"
+            app:destination="@id/nav_regular_intent_setup" />
+        <action
             android:id="@+id/action_nav_home_to_profile_view"
             app:destination="@id/profile_view" />
     </fragment>
@@ -71,6 +74,9 @@
         <action
             android:id="@+id/action_travel_now_to_vehicle_list"
             app:destination="@id/view_vehicles" />
+        <action
+            android:id="@+id/action_travel_now_to_flexible_intent_select_transport"
+            app:destination="@id/nav_flexible_intent_select_transport" />
     </fragment>
 
     <fragment
@@ -92,6 +98,9 @@
         <action
             android:id="@+id/action_locations_to_vehicle_list"
             app:destination="@id/view_vehicles" />
+        <action
+            android:id="@+id/action_travel_now_to_flexible_intent_select_transport"
+            app:destination="@id/nav_flexible_intent_select_transport" />
     </fragment>
 
     <fragment
@@ -211,8 +220,8 @@
         android:label="@string/schedule_a_flexible_trip"
         tools:layout="@layout/fragment_flexible_intent_setup">
         <action
-            android:id="@+id/action_nav_flexible_intent_setup_to_nav_flexible_intent_select_transport"
-            app:destination="@id/nav_flexible_intent_select_transport" />
+            android:id="@+id/action_nav_flexible_intent_setup_to_nav_travel_now"
+            app:destination="@id/travel_now" />
     </fragment>
 
     <fragment
@@ -275,11 +284,53 @@
             app:destination="@id/nav_home" />
     </fragment>
 
-
     <fragment
         android:id="@+id/nav_logout"
         android:name="com.uid.smartmobilityapp.ui.logout.LogoutFragment"
         android:label="Logout"
         tools:layout="@layout/fragment_logout">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_regular_intent_setup"
+        android:name="com.uid.smartmobilityapp.ui.regular_intent.RegularIntentSetupFragment"
+        android:label="@string/schedule_a_regular_trip"
+        tools:layout="@layout/fragment_regular_intent_setup">
+        <action
+            android:id="@+id/action_nav_regular_intent_setup_to_nav_regular_intent_select_location"
+            app:destination="@id/nav_regular_intent_select_location" />
+        <action
+            android:id="@+id/action_nav_regular_intent_setup_to_nav_regular_intent_select_transport"
+            app:destination="@id/nav_regular_intent_select_transport" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_regular_intent_select_location"
+        android:name="com.uid.smartmobilityapp.ui.regular_intent.RegularIntentSelectLocationFragment"
+        android:label="@string/schedule_a_regular_trip"
+        tools:layout="@layout/fragment_select_location">
+        <action
+            android:id="@+id/action_nav_regular_intent_select_location_nav_regular_intent_setup"
+            app:destination="@id/nav_regular_intent_setup" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_regular_intent_select_transport"
+        android:name="com.uid.smartmobilityapp.ui.regular_intent.RegularIntentSelectTransportFragment"
+        android:label="@string/schedule_a_regular_trip"
+        tools:layout="@layout/fragment_flexible_intent_select_transport">
+        <action
+            android:id="@+id/action_nav_regular_intent_select_transport_nav_regular_intent_success"
+            app:destination="@id/nav_regular_intent_success" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_regular_intent_success"
+        android:name="com.uid.smartmobilityapp.ui.regular_intent.RegularIntentSuccessFragment"
+        android:label="@string/schedule_a_regular_trip"
+        tools:layout="@layout/fragment_flexible_intent_success">
+        <action
+            android:id="@+id/action_nav_regular_intent_success_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 </navigation>

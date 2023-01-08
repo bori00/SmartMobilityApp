@@ -49,6 +49,7 @@
     <string name="profile_setup">Profile View</string>
     <string name="label">app_label</string>
     <string name="hint">hint</string>
+    <string name="selectDestination">Select a destination</string>
     <string name="add_new_intent">Add New Intent</string>
     <string name="specify_the_day">Specify the day:</string>
     <string name="specify_intent_name">Specify intent name:</string>
@@ -68,6 +69,10 @@
     <string name="home">Home</string>
     <string name="companyActivity">Company Activity</string>
     <string name="logout">Logout</string>
+
+    <string name="schedule_a_regular_trip">Schedule a regular trip</string>
+    <string name="days">Days</string>
+    <string name="continueButton">Continue</string>
 
     <string name="car_driving_license">Car driving license</string>
     <string name="know_how_to_ride_a_bike">Know how to ride a bike</string>

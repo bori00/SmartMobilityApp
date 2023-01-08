@@ -9,7 +9,7 @@ import com.uid.smartmobilityapp.ui.bookmarks.model.MyBookmarks
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 
-class LocationsViewModel: ViewModel() {
+object LocationsViewModel: ViewModel() {
     val selectedAddress: MutableLiveData<Address> = MutableLiveData<Address>().apply {
         value = null
     }
@@ -18,8 +18,10 @@ class LocationsViewModel: ViewModel() {
         value = null
     }
 
-    val locations : LiveData<ArrayList<Location>> = MutableLiveData<ArrayList<Location>>().apply {
+    val locations : MutableLiveData<ArrayList<Location>> = MutableLiveData<ArrayList<Location>>().apply {
         value = MyLocations.locations
     }
+
+    val selectedIntent: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
 
 }
