@@ -48,7 +48,7 @@
 
                     <ImageView
                         android:id="@+id/redDotImageID"
-                        android:layout_width="79dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="4dp"
