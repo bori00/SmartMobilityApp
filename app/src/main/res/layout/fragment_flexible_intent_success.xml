@@ -52,7 +52,6 @@
         android:layout_marginTop="@dimen/fragment_title_top_margin"
         android:text="Success"
         android:textSize="@dimen/fragment_title_size"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
