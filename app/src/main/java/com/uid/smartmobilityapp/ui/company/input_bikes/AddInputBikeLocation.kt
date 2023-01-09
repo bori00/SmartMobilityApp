@@ -69,9 +69,12 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
                 var addressExists = false
                 if(_viewModel.query.value!=null){
                     for (loc: InputBike in MyInputBikes.input_bikes) {
-                        if (loc.address== _viewModel.selectedAddress.value!!) {
+                        Log.d("ADDR",loc.address.toString())
+                        Log.d("COMP",_viewModel.selectedAddress.value!!.toString())
+                        if (loc.address.toString() ==_viewModel.selectedAddress.value!!.toString()) {
                             addressExists = true
                         }
+                        Log.d("BUG",addressExists.toString())
                     }
                     if(!addressExists){
                         _viewModel.input_bikes.value?.add(

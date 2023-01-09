@@ -16,10 +16,9 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/deleteButtonID"
-        app:layout_constraintHorizontal_bias="0.787"
-        app:layout_constraintStart_toEndOf="@+id/nameTVID"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.484" />
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/deleteButtonID"
