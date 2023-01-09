@@ -61,7 +61,8 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
 
         val okButton: FloatingActionButton = binding.floatingActionButton2
         okButton.setOnClickListener {
-            if (nrBikes.text.toString() != "") {
+            val regex = "-?[0-9]+(\\.[0-9]+)?".toRegex()
+            if (nrBikes.text.toString() != "" && nrBikes.text.toString().matches(regex)==true ) {
                 if(_viewModel.query.value!=null){
                 _viewModel.input_bikes.value?.add(
                     InputBike(

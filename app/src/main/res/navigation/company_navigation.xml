@@ -12,18 +12,18 @@
         tools:layout="@layout/fragment_company_home">
     </fragment>
 
+<!--    <fragment-->
+<!--        android:id="@+id/nav_company_specifications"-->
+<!--        android:name="com.uid.smartmobilityapp.ui.company.CompanySpecificationsFragment"-->
+<!--        android:label="Company specifications"-->
+<!--        tools:layout="@layout/fragment_company_specifications">-->
+<!--        <action-->
+<!--            android:id="@+id/action_company_specifications_to_input_bike_locations"-->
+<!--            app:destination="@id/input_bike_locations" />-->
+<!--    </fragment>-->
     <fragment
         android:id="@+id/nav_company_specifications"
         android:name="com.uid.smartmobilityapp.ui.company.CompanySpecificationsFragment"
-        android:label="Company specifications"
-        tools:layout="@layout/fragment_company_specifications">
-        <action
-            android:id="@+id/action_company_specifications_to_input_bike_locations"
-            app:destination="@id/input_bike_locations" />
-    </fragment>
-    <fragment
-        android:id="@+id/input_bike_locations"
-        android:name="com.uid.smartmobilityapp.ui.company.input_bikes.InputBikeLocationFragment"
         android:label="Input Bike Locations"
         tools:layout="@layout/fragment_input_bike_location">
         <action
@@ -31,7 +31,10 @@
             app:destination="@id/add_input_bike" />
         <action
             android:id="@+id/action_input_bike_locations_to_input_bike_location"
-            app:destination="@id/input_bike_locations" />
+            app:destination="@id/nav_company_specifications" />
+        <action
+            android:id="@+id/action_input_bike_locations_to_home"
+            app:destination="@id/nav_company_home" />
     </fragment>
 
     <fragment
@@ -41,7 +44,7 @@
         tools:layout="@layout/fragment_add_input_bikes">
         <action
             android:id="@+id/action_add_input_bike_location_to_input_bike_locations"
-            app:destination="@id/input_bike_locations" />
+            app:destination="@id/nav_company_specifications" />
     </fragment>
 
 
