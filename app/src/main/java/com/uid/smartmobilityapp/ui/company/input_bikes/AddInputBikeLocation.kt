@@ -26,6 +26,9 @@ import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddInputBikesBinding
 import com.uid.smartmobilityapp.ui.company.input_bikes.model.InputBike
+import com.uid.smartmobilityapp.ui.company.input_bikes.model.MyInputBikes
+import com.uid.smartmobilityapp.ui.travel_now.model.Location
+import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 import java.io.IOException
 
 class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
@@ -62,17 +65,28 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
         val okButton: FloatingActionButton = binding.floatingActionButton2
         okButton.setOnClickListener {
             val regex = "-?[0-9]+(\\.[0-9]+)?".toRegex()
-            if (nrBikes.text.toString() != "" && nrBikes.text.toString().matches(regex)==true ) {
+            if (nrBikes.text.toString() != "" && nrBikes.text.toString().matches(regex)) {
+                var addressExists = false
                 if(_viewModel.query.value!=null){
-                _viewModel.input_bikes.value?.add(
-                    InputBike(
-                        _viewModel.query.value!!,
-                        nrBikes.text.toString(),
-                        _viewModel.selectedAddress.value!!
-                    )
-                )
-                binding.root.findNavController()
-                    .navigate(R.id.action_add_input_bike_location_to_input_bike_locations)}
+                    for (loc: InputBike in MyInputBikes.input_bikes) {
+                        if (loc.address== _viewModel.selectedAddress.value!!) {
+                            addressExists = true
+                        }
+                    }
+                    if(!addressExists){
+                        _viewModel.input_bikes.value?.add(
+                            InputBike(
+                                _viewModel.query.value!!,
+                                nrBikes.text.toString(),
+                                _viewModel.selectedAddress.value!!
+                            )
+                        )
+                        binding.root.findNavController()
+                            .navigate(R.id.action_add_input_bike_location_to_input_bike_locations)
+                    } else {
+                        Toast.makeText(CompanyActivity.context, "Address already exists", Toast.LENGTH_SHORT).show()
+                    }
+               }
                 else {
                     Toast.makeText(CompanyActivity.context, "Please introduce an address", Toast.LENGTH_SHORT).show()
                 }
