@@ -70,7 +70,7 @@ class RegularIntentSelectTransportFragment : Fragment() {
         val selectTransportLabel = _root.findViewById<TextView>(R.id.selectTransportLabel)
         selectTransportLabel.text =
             buildString {
-                append("Select the accepted means of transport for \"")
+                append("Select means of transport for \"")
                 append(viewModel.selectedName.value)
                 append("\"")
             }

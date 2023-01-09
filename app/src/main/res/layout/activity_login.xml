@@ -64,6 +64,8 @@
         android:layout_marginTop="70dp"
         android:onClick="logInClick"
         android:text="Login"
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/button_corner_radius"
         app:layout_constraintEnd_toEndOf="@+id/password_input_id"
         app:layout_constraintStart_toStartOf="@+id/username_id"
         app:layout_constraintTop_toBottomOf="@+id/password_input_id" />

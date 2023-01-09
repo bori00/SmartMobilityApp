@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="Select account type"
-        android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="@dimen/subtitle_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Traveller"
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/button_corner_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SelectAccountLabel" />
@@ -35,6 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Company"
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/button_corner_radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TravellerButton" />
