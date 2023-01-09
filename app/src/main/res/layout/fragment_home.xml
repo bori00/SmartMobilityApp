@@ -16,13 +16,13 @@
         android:minWidth="280dp"
         android:textAllCaps="false"
         app:cornerRadius="@dimen/button_corner_radius"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="@+id/scheduleFlexibleIntentButton"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/scheduleFlexibleIntentButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/scheduleRegularIntentButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -46,6 +46,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/scheduleRegularIntentButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

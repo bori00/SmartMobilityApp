@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.MainActivity
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentRateRideBinding
 import com.uid.smartmobilityapp.services.RideFinderService
 import java.time.LocalDate
@@ -75,7 +76,7 @@ class RateRideFragment : Fragment() {
         val ridesDropDown = binding.selectRideAutoComplete
 
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-            MainActivity.context,
+            UserActivity.context,
             R.layout.simple_dropdown_item_1line,
             RideFinderService().findRidesOnDate(viewModel.selectedDate.value)
         )
@@ -141,7 +142,7 @@ class RateRideFragment : Fragment() {
         val mDay = c.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(
-            MainActivity.context,
+            UserActivity.context,
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 run {
                     callback.accept(LocalDate.of(year, monthOfYear + 1, dayOfMonth))

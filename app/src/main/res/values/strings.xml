@@ -49,6 +49,7 @@
     <string name="profile_setup">Profile View</string>
     <string name="label">app_label</string>
     <string name="hint">hint</string>
+    <string name="selectDestination">Select a destination</string>
     <string name="add_new_intent">Add New Intent</string>
     <string name="specify_the_day">Specify the day:</string>
     <string name="specify_intent_name">Specify intent name:</string>
@@ -58,10 +59,26 @@
     <string name="action_select_the_ride">Select the ride</string>
     <string name="action_tell_us_what_you_think">Tell us what you think!</string>
     <string name="action_rate">Submit Rating</string>
+    <string name="userActivity">User Activity</string>
+
+    <string name="username_error_string">Cannot be empty!</string>
+    <string name="username_short_error_string">Length should be greater than 5</string>
+    <string name="authentication_failed_string">Login failed. Username or password are incorrect!</string>
+    <string name="authentication_success_string">Login successful!</string>
+    <string name="company_specifications">Company specifications</string>
+    <string name="home">Home</string>
+    <string name="companyActivity">Company Activity</string>
+    <string name="logout">Logout</string>
+
+    <string name="schedule_a_regular_trip">Schedule a regular trip</string>
+    <string name="days">Days</string>
+    <string name="continueButton">Continue</string>
+
     <string name="car_driving_license">Car driving license</string>
     <string name="know_how_to_ride_a_bike">Know how to ride a bike</string>
     <string name="know_how_to_ride_an_electric_scooter">Know how to ride an electric scooter</string>
     <string name="maximum_walking_distance">Maximum walking distance</string>
     <string name="public_transport_pass">Public transport pass</string>
     <string name="possess_a_vehicle">Possess a vehicle</string>
+
 </resources>

@@ -9,7 +9,7 @@ import android.provider.Settings.Global.getString
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat.getSystemService
-import com.uid.smartmobilityapp.MainActivity.Companion.context
+import com.uid.smartmobilityapp.UserActivity.Companion.context
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.ui.notifications.model.IntentNotificationsQueue
 import com.uid.smartmobilityapp.ui.notifications.model.NotificationChannelTypes

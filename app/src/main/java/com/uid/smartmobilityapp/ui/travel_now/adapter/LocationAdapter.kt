@@ -5,19 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.ui.travel_now.AddLocationFragment
-import com.uid.smartmobilityapp.ui.travel_now.LocationsFragment
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 
 
-class LocationAdapter (
+class LocationAdapter(
     private val context: Context,
-    private val dataSource: ArrayList<Location>) : RecyclerView.Adapter<LocationViewHolder>()
+    private val dataSource: ArrayList<Location>
+) : RecyclerView.Adapter<LocationViewHolder>()
     {
         // similar to the ListView adapter we will define here a LayoutInflater that we
         // will use when transforming the XML to Kotlin objects for a specific list element
