@@ -32,6 +32,7 @@
         android:layout_weight="1"
         android:clickable="true"
         android:src="@drawable/ic_baseline_my_location_24"
+        app:tint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -51,6 +52,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/action_discard"
+        android:textAllCaps="false"
         app:cornerRadius="@dimen/button_corner_radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/saveLocationChangesButton"
@@ -63,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/action_save"
+        android:textAllCaps="false"
         app:cornerRadius="@dimen/button_corner_radius"
         app:layout_constraintBaseline_toBaselineOf="@id/discardLocationChangesButton"
         app:layout_constraintEnd_toEndOf="parent"
