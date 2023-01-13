@@ -7,11 +7,12 @@
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_title_top_margin"
         android:text="Bikes Pick-up Locations"
-        android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="@dimen/fragment_title_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

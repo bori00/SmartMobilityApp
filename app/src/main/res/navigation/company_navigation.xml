@@ -12,15 +12,6 @@
         tools:layout="@layout/fragment_company_home">
     </fragment>
 
-<!--    <fragment-->
-<!--        android:id="@+id/nav_company_specifications"-->
-<!--        android:name="com.uid.smartmobilityapp.ui.company.CompanySpecificationsFragment"-->
-<!--        android:label="Company specifications"-->
-<!--        tools:layout="@layout/fragment_company_specifications">-->
-<!--        <action-->
-<!--            android:id="@+id/action_company_specifications_to_input_bike_locations"-->
-<!--            app:destination="@id/input_bike_locations" />-->
-<!--    </fragment>-->
     <fragment
         android:id="@+id/nav_company_specifications"
         android:name="com.uid.smartmobilityapp.ui.company.CompanySpecificationsFragment"
@@ -40,7 +31,7 @@
     <fragment
         android:id="@+id/add_input_bike"
         android:name="com.uid.smartmobilityapp.ui.company.input_bikes.AddInputBikeLocation"
-        android:label="Add input bike"
+        android:label="New Pick-Up Location"
         tools:layout="@layout/fragment_add_input_bikes">
         <action
             android:id="@+id/action_add_input_bike_location_to_input_bike_locations"

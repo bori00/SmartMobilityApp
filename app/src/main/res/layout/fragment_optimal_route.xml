@@ -12,12 +12,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
-        <!--    <ScrollView-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        app:layout_constraintBottom_toTopOf="parent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent">-->
         <TextView
             android:id="@+id/optimalRouteTitleTVId"
             android:layout_width="wrap_content"
@@ -35,12 +29,12 @@
             android:id="@+id/destinationTFID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:text="Destination:"
             android:textSize="@dimen/text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.036"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
@@ -48,12 +42,12 @@
             android:id="@+id/vehicleTFID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Vehicle:"
             android:textSize="@dimen/text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.038"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/destinationTFID" />
 
@@ -61,12 +55,12 @@
             android:id="@+id/estimatedTimeTFID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:text="Estimated time:"
             android:textSize="@dimen/text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vehicleTFID" />
 
@@ -74,14 +68,29 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Current leaving time:"
+            android:textSize="@dimen/text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/estimatedTimeTFID" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Try another leaving time:"
             android:textSize="@dimen/text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.061"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/estimatedTimeTFID" />
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+
 
         <ImageView
             android:id="@+id/imageView5"
@@ -90,7 +99,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
             app:srcCompat="@drawable/bar_plot" />
 
         <SeekBar
@@ -162,10 +171,11 @@
             android:id="@+id/progressSeekBarId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="11dp"
             android:text="12:20"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintHorizontal_bias="0.095"
             app:layout_constraintStart_toEndOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/estimatedTimeTFID" />
 
