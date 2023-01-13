@@ -105,8 +105,8 @@ class FlexibleIntentSetupFragment : Fragment() {
 
     fun updateButtonState() {
         selectDestinationButton.isEnabled = editTextIntentName.text.isNotEmpty() &&
-                fromHourButton.text != "00:00" &&
-                toHourButton.text != "00:00" &&
+                fromHourButton.text != "__:__" &&
+                toHourButton.text != "__:__" &&
                 selectedDay != ""
     }
 

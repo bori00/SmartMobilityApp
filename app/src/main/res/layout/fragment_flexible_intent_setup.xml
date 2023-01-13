@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextIntentName" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/selectDayTextInput"
+        android:id="@+id/selectDayTextInput"g
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="@dimen/default_width"
         android:layout_height="wrap_content"

@@ -176,7 +176,7 @@ class RegularIntentSetupFragment : Fragment() {
 
     fun updateButtonState() {
         continueButton.isEnabled = editTextIntentName.text.isNotEmpty() &&
-                arrivalTimeButton.text != "00:00" &&
+                arrivalTimeButton.text != "__:__" &&
                 viewModel.selectedDay.value != "" &&
                 viewModel.startingPoint.value?.address != null &&
                 viewModel.destination.value?.address != null
