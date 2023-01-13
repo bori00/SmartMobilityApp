@@ -77,6 +77,12 @@ class ReportEventFragment : Fragment() {
             Toast.makeText(context, "Please select a location", Toast.LENGTH_SHORT).show()
             return
         }
+        if (viewModel.selectedEndDate.value != null &&
+            viewModel.selectedStartDate.value != null &&
+            viewModel.selectedEndDate.value!!.isBefore(viewModel.selectedStartDate.value)) {
+            Toast.makeText(context, "Please specify an end date after the start date", Toast.LENGTH_SHORT).show()
+            return
+        }
         binding.root.findNavController().navigate(R.id.action_nav_report_event_to_nav_report_event_success)
     }
 
