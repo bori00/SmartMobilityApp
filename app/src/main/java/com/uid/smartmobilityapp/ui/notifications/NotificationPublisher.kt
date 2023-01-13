@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.ui.notifications.model.IntentNotification
 import com.uid.smartmobilityapp.ui.notifications.model.NotificationChannelTypes
 
@@ -55,7 +56,7 @@ class NotificationPublisher : BroadcastReceiver() {
         }
         // Create an Intent for the activity you want to start
         val resultIntent = NavDeepLinkBuilder(context)
-            .setComponentName(MainActivity::class.java)
+            .setComponentName(UserActivity::class.java)
             .setGraph(R.navigation.mobile_navigation)
             .setDestination(destination)
             .createPendingIntent()
