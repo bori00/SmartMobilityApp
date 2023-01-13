@@ -95,7 +95,8 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
             selectedName,
             _viewModel.selectedAddress.value!!
         ))
-        binding.root.findNavController().navigate(R.id.action_nav_add_bookmark_to_nav_bookmarks2)
+//        binding.root.findNavController().navigate(R.id.action_nav_add_bookmark_to_nav_bookmarks2)
+        binding.root.findNavController().popBackStack()
     }
 
     private fun setupMap(savedInstanceState: Bundle?) {
