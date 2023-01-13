@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentRateRideBinding
 import com.uid.smartmobilityapp.services.RideFinderService
