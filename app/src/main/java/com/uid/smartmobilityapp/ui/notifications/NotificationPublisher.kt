@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.ui.notifications.model.IntentNotification
 import com.uid.smartmobilityapp.ui.notifications.model.NotificationChannelTypes
 
@@ -46,19 +47,19 @@ class NotificationPublisher : BroadcastReceiver() {
         builder.setContentText(content)
         builder.setSmallIcon(R.drawable.ic_baseline_schedule_24)
         builder.setChannelId(channelId)
+        builder.setAutoCancel(true)
 
+        // set destination on notification click
+        val destinationIntent = Intent(context, UserActivity::class.java)
         val destination : Int;
         if (channelId == NotificationChannelTypes.REGULAR_INTENT_NOTIFICATIONS_CHANNEL.data.channelId) {
             destination = R.id.nav_regular_intents
         } else {
             destination = R.id.nav_flexible_intents
         }
+        destinationIntent.putExtra(UserActivity.destinationFragmentIdExtraName, destination)
         // Create an Intent for the activity you want to start
-        val resultIntent = NavDeepLinkBuilder(context)
-            .setComponentName(MainActivity::class.java)
-            .setGraph(R.navigation.mobile_navigation)
-            .setDestination(destination)
-            .createPendingIntent()
+        val resultIntent = PendingIntent.getActivity(context, 0, destinationIntent, PendingIntent.FLAG_IMMUTABLE);
 
         builder.setContentIntent(resultIntent)
         return builder.build()

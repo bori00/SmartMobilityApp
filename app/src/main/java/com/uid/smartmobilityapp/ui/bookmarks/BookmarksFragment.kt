@@ -57,9 +57,9 @@ class BookmarksFragment : Fragment() {
 
     private fun setupBookmarksRecyclerView() {
         val bookmarksRecyclerView: RecyclerView = binding.myBookmarksRecyclerView
-        val layoutManager = LinearLayoutManager ( UserActivity.context, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager (context, LinearLayoutManager.VERTICAL, false)
         val adapter = _viewModel.bookmarks.value?.let {
-            MyBookmarksRecyclerViewAdapter(UserActivity.context,
+            MyBookmarksRecyclerViewAdapter(requireContext(),
                 it
             )
         }

@@ -51,7 +51,7 @@ class MapSearchUtils {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             // Address successfully selected
-                            val selectedAddressWithName = AddressWithName(addressList[0], addressList[0].getAddressLine(0))
+                            val selectedAddressWithName = AddressWithName(addressList[0], query)
                             onAddressSelected.accept(selectedAddressWithName)
                         } else {
                             Toast.makeText(UserActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
@@ -122,7 +122,7 @@ class MapSearchUtils {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             // Address successfully selected
-                            val selectedAddressWithName = AddressWithName(addressList[0], addressList[0].getAddressLine(0))
+                            val selectedAddressWithName = AddressWithName(addressList[0], query)
                             onAddressSelected.accept(selectedAddressWithName)
                         } else {
                             Toast.makeText(UserActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
