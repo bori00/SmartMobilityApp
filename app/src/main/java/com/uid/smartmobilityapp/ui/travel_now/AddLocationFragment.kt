@@ -73,7 +73,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
             }
         }
-        searchRoutesButton.isEnabled = locations.size > 1
+        searchRoutesButton.isEnabled = _viewModel.locations.value?.size!! > 1
 
         val summaryButton: Button = binding.include.editRouteButtonId
         summaryButton.setOnClickListener {
@@ -245,6 +245,8 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                                 }
                             }
                             nextStop.text = text
+
+                            searchRoutesButton.isEnabled = _viewModel.locations.value?.size!! > 1
                         } else {
                             Toast.makeText(
                                 UserActivity.context,
@@ -294,8 +296,6 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 _selectedAddressMarker?.snippet = it.getAddressLine(0)
                 _selectedAddressMarker?.showInfoWindow()
                 _mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-
-                searchRoutesButton.isEnabled = locations.size > 1
             }
         }
     }
