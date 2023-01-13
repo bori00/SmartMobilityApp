@@ -4,6 +4,8 @@ import android.location.Address
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.uid.smartmobilityapp.models.AddressWithName
+import com.uid.smartmobilityapp.services.DeviceLocationProviderService
 import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import com.uid.smartmobilityapp.ui.bookmarks.model.MyBookmarks
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
@@ -12,6 +14,10 @@ import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 object LocationsViewModel: ViewModel() {
     val selectedAddress: MutableLiveData<Address> = MutableLiveData<Address>().apply {
         value = null
+    }
+
+    val newlySelectedLocation: MutableLiveData<AddressWithName?> = MutableLiveData<AddressWithName?>().apply {
+        value = AddressWithName(DeviceLocationProviderService().getCurrentLocation(), DeviceLocationProviderService().getCurrentLocation().getAddressLine(0))
     }
 
     val editStop:  MutableLiveData<String> = MutableLiveData<String>().apply {
@@ -23,5 +29,10 @@ object LocationsViewModel: ViewModel() {
     }
 
     val selectedIntent: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
+
+    val query: MutableLiveData<String?> = MutableLiveData<String?>().apply {
+        value = null
+    }
+
 
 }

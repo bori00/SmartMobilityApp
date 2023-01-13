@@ -7,8 +7,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.SearchView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -17,14 +22,18 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
+import com.uid.smartmobilityapp.models.AddressWithName
+import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyGroupSize.size
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations.locations
 import com.uid.smartmobilityapp.ui.travel_now.model.MyVehicles.vehicles
 import com.uid.smartmobilityapp.ui.travel_now.model.VehicleListItem
+import com.uid.smartmobilityapp.ui.utils.MapSearchUtils
 import java.io.IOException
 
 class AddLocationFragment : Fragment(), OnMapReadyCallback {
@@ -39,7 +48,6 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
     private lateinit var _searchView: SearchView
 
     private var _selectedAddressMarker: Marker? = null
-    private lateinit var searchRoutesButton: Button
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -51,24 +59,17 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View {
         Log.d("MainActivity", "Open Add Location Fragment")
-        _viewModel = LocationsViewModel
+        _viewModel =
+            LocationsViewModel
 
         _binding = FragmentAddLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        searchRoutesButton = binding.searchRoutesButtonId
+        val searchRoutesButton: Button = binding.searchRoutesButtonId
+        searchRoutesButton.setOnClickListener {
+            binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
 
-        if(_viewModel.selectedIntent.value === "Flexible Intent") {
-            searchRoutesButton.text = "Confirm destination"
-            searchRoutesButton.setOnClickListener {
-                binding.root.findNavController().navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
-            }
-        } else {
-            searchRoutesButton.setOnClickListener {
-                binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
-            }
         }
-        searchRoutesButton.isEnabled = locations.size > 1
 
         val summaryButton: Button = binding.include.editRouteButtonId
         summaryButton.setOnClickListener {
@@ -89,7 +90,49 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         setupViewModel()
         setupEditText()
         setupGroupTravelButton()
+        saveStopButtonId()
         return root
+    }
+
+    private fun saveStopButtonId() {
+        val saveStopButton: Button = binding.saveStopButtonId
+        saveStopButton.setOnClickListener {
+            if (_viewModel.selectedAddress.value == null) {
+                Toast.makeText(UserActivity.context, "Please select an Address", Toast.LENGTH_SHORT).show()
+            }
+            val bundle: Bundle? = arguments
+            var i = -1
+            if (bundle != null) {
+                i = bundle.getInt("position", -1)
+            }
+            if (i != -1) {
+                _viewModel.locations.value?.set(
+                    i, Location(
+                        _viewModel.query.value!!,
+                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
+                        _viewModel.selectedAddress.value!!
+                    )
+                )
+
+            } else {
+                _viewModel.locations.value?.add(
+                    Location(
+                        _viewModel.query.value!!,
+                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
+                        _viewModel.selectedAddress.value!!
+                    )
+                )
+            }
+            val nextStop: TextView = binding.include.nextStopTextFieldId
+            var text: String = "Current location"
+            for (loc: Location in locations) {
+                if (loc.indexNo.toInt() > 1) {
+                    val addition = "➔${loc.name}"
+                    text += addition
+                }
+            }
+            nextStop.text = text
+        }
     }
 
     private fun setupEditText() {
@@ -106,7 +149,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             if (editText.visibility == View.GONE) {
                 editText.visibility = View.VISIBLE
             } else {
-                if ((number != null && number > 0) || editText.text.isEmpty())
+                if ((number != null && number > 0) || editText.text.isEmpty() )
                     editText.visibility = View.GONE
             }
             size = "1"
@@ -200,11 +243,6 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         _searchView = binding.getLocationSearchView
         _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                val bundle: Bundle? = arguments
-                var i = -1
-                if (bundle != null) {
-                    i = bundle.getInt("position", -1)
-                }
                 val location = _searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
@@ -213,33 +251,8 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             _viewModel.selectedAddress.value = addressList[0]
-                            if (i != -1) {
-                                _viewModel.locations.value?.set(
-                                    i, Location(
-                                        query,
-                                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
-                                        _viewModel.selectedAddress.value!!
-                                    )
-                                )
+                            _viewModel.query.value = query
 
-                            } else {
-                                _viewModel.locations.value?.add(
-                                    Location(
-                                        query,
-                                        (_viewModel.locations.value!!.lastIndex + 2).toString(),
-                                        _viewModel.selectedAddress.value!!
-                                    )
-                                )
-                            }
-                            val nextStop: TextView = binding.include.nextStopTextFieldId
-                            var text: String = "Current location"
-                            for (loc: Location in locations) {
-                                if (loc.indexNo.toInt() > 1) {
-                                    val addition = "➔${loc.name}"
-                                    text += addition
-                                }
-                            }
-                            nextStop.text = text
                         } else {
                             Toast.makeText(
                                 UserActivity.context,
@@ -269,6 +282,41 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 return false
             }
         })
+//        MapSearchUtils().setupMapSearchWithBookmarkSuggestions(binding.getLocationSearchView, requireContext(), requireView(),
+//            {addressWithName : AddressWithName -> _viewModel.newlySelectedLocation.value = addressWithName},
+//            {bookmark : Bookmark -> _viewModel.newlySelectedLocation.value = AddressWithName(bookmark.address, bookmark.name) }
+//        )
+//        val bundle: Bundle? = arguments
+//        var i = -1
+//        if (bundle != null) {
+//            i = bundle.getInt("position", -1)
+//        }
+//        if (i != -1) {
+//            _viewModel.locations.value?.set(
+//                i, Location(
+//                    query,
+//                    (_viewModel.locations.value!!.lastIndex + 2).toString(),
+//                    _viewModel.newlySelectedLocation.value!!
+//                )
+//            )
+//
+//        } else {
+//            _viewModel.locations.value?.add(
+//                Location(
+//                    query,
+//                    (_viewModel.locations.value!!.lastIndex + 2).toString(),
+//                    _viewModel.selectedAddress.value!!
+//                )
+//            )
+//        }
+//        val nextStop: TextView = binding.include.nextStopTextFieldId
+//        var text: String = "Current location"
+//        for (loc: Location in locations) {
+//            if (loc.indexNo.toInt() > 1) {
+//                val addition = "➔${loc.name}"
+//                text += addition
+//            }
+//        }
     }
 
     private fun setupViewModel() {
@@ -289,8 +337,6 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 _selectedAddressMarker?.snippet = it.getAddressLine(0)
                 _selectedAddressMarker?.showInfoWindow()
                 _mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-
-                searchRoutesButton.isEnabled = locations.size > 1
             }
         }
     }
