@@ -28,6 +28,8 @@ import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentReportEventBinding
+import com.uid.smartmobilityapp.ui.flexible_intent.FlexibleIntentViewModel
+import com.uid.smartmobilityapp.ui.flexible_intent.model.FlexibleIntent
 import java.time.LocalDateTime
 import java.util.*
 import java.util.function.Consumer
@@ -239,5 +241,11 @@ class ReportEventFragment : Fragment() {
                 binding.eventLocationView.LocationNameTFId.setText(it.name)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        setupEventTypeDropDown()
     }
 }

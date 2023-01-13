@@ -80,4 +80,24 @@ class MyFlexibleIntentsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        val futureIntentsNames= ArrayList<String>()
+
+        for (loc: FlexibleIntent in FlexibleIntentViewModel.flexibleIntents.value!!) {
+            futureIntentsNames.add(loc.name)
+        }
+
+        val dropdown = binding.selectOptimizationAutoComplete
+        val adapter =
+            activity?.let {
+                ArrayAdapter(
+                    it,
+                    R.layout.simple_spinner_dropdown_item,
+                    futureIntentsNames
+                ) }
+        dropdown.setAdapter(adapter)
+    }
 }
