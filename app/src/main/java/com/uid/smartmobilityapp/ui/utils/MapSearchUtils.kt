@@ -16,6 +16,7 @@ import android.widget.SimpleCursorAdapter
 import android.widget.Toast
 import com.google.android.material.internal.ViewUtils
 import com.uid.smartmobilityapp.MainActivity
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.models.AddressWithName
 import com.uid.smartmobilityapp.ui.bookmarks.model.Bookmark
 import com.uid.smartmobilityapp.ui.bookmarks.model.MyBookmarks
@@ -45,22 +46,22 @@ class MapSearchUtils {
                 val location = searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(MainActivity.context)
+                    val geocoder = Geocoder(UserActivity.context)
                     try {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             // Address successfully selected
-                            val selectedAddressWithName = AddressWithName(addressList[0], addressList[0].getAddressLine(0))
+                            val selectedAddressWithName = AddressWithName(addressList[0], query)
                             onAddressSelected.accept(selectedAddressWithName)
                         } else {
-                            Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(UserActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
                         }
                     } catch (e: IOException) {
-                        Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(UserActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
                         e.printStackTrace()
                     }
                 } else {
-                    Toast.makeText(MainActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(UserActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
                 }
                 searchView.clearFocus()
                 return false
@@ -115,22 +116,22 @@ class MapSearchUtils {
                 val location = searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(MainActivity.context)
+                    val geocoder = Geocoder(UserActivity.context)
                     try {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             // Address successfully selected
-                            val selectedAddressWithName = AddressWithName(addressList[0], addressList[0].getAddressLine(0))
+                            val selectedAddressWithName = AddressWithName(addressList[0], query)
                             onAddressSelected.accept(selectedAddressWithName)
                         } else {
-                            Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(UserActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
                         }
                     } catch (e: IOException) {
-                        Toast.makeText(MainActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(UserActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
                         e.printStackTrace()
                     }
                 } else {
-                    Toast.makeText(MainActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(UserActivity.context, "Please select an address", Toast.LENGTH_SHORT).show()
                 }
                 searchView.clearFocus()
                 return false

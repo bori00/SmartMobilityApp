@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentProfileSetupBinding
 import com.uid.smartmobilityapp.ui.profile_setup.model.MyUser
 import java.time.LocalDateTime
@@ -91,12 +92,12 @@ class ProfileSetupFragment : Fragment() {
         val mMinute = c.get(Calendar.MINUTE);
 
         val datePickerDialog = DatePickerDialog(
-            MainActivity.context,
+            UserActivity.context,
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 run {
 
                     val timePickerDialog = TimePickerDialog(
-                        MainActivity.context,
+                        UserActivity.context,
                         TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
 
                             val selectedDateTime = LocalDateTime.of(

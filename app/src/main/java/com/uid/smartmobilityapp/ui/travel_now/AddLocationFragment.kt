@@ -7,13 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.SearchView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -22,8 +17,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
+import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddLocationBinding
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyGroupSize.size
@@ -44,6 +39,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
     private lateinit var _searchView: SearchView
 
     private var _selectedAddressMarker: Marker? = null
+    private lateinit var searchRoutesButton: Button
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -55,17 +51,24 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View {
         Log.d("MainActivity", "Open Add Location Fragment")
-        _viewModel =
-            ViewModelProvider(this).get(LocationsViewModel::class.java)
+        _viewModel = LocationsViewModel
 
         _binding = FragmentAddLocationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val searchRoutesButton: Button = binding.searchRoutesButtonId
-        searchRoutesButton.setOnClickListener {
-            binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
+        searchRoutesButton = binding.searchRoutesButtonId
 
+        if(_viewModel.selectedIntent.value === "Flexible Intent") {
+            searchRoutesButton.text = "Confirm destination"
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
+            }
+        } else {
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
+            }
         }
+        searchRoutesButton.isEnabled = locations.size > 1
 
         val summaryButton: Button = binding.include.editRouteButtonId
         summaryButton.setOnClickListener {
@@ -103,7 +106,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             if (editText.visibility == View.GONE) {
                 editText.visibility = View.VISIBLE
             } else {
-                if ((number != null && number > 0) || editText.text.isEmpty() )
+                if ((number != null && number > 0) || editText.text.isEmpty())
                     editText.visibility = View.GONE
             }
             size = "1"
@@ -205,7 +208,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 val location = _searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(MainActivity.context)
+                    val geocoder = Geocoder(UserActivity.context)
                     try {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
@@ -239,14 +242,14 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                             nextStop.text = text
                         } else {
                             Toast.makeText(
-                                MainActivity.context,
+                                UserActivity.context,
                                 "This location couldn't be found. Please make your query more specific",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     } catch (e: IOException) {
                         Toast.makeText(
-                            MainActivity.context,
+                            UserActivity.context,
                             "This location couldn't be found. Please make your query more specific",
                             Toast.LENGTH_SHORT
                         ).show()
@@ -254,7 +257,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                     }
                 } else {
                     Toast.makeText(
-                        MainActivity.context,
+                        UserActivity.context,
                         "Please select an address",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -286,6 +289,8 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 _selectedAddressMarker?.snippet = it.getAddressLine(0)
                 _selectedAddressMarker?.showInfoWindow()
                 _mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+
+                searchRoutesButton.isEnabled = locations.size > 1
             }
         }
     }

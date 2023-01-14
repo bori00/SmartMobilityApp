@@ -12,6 +12,17 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My regular intents"
+            android:layout_marginTop="@dimen/fragment_title_top_margin"
+            android:textSize="@dimen/fragment_title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/label2"
@@ -19,9 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:text="@string/specify_intent_name"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/subtitle_size"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/selectIntentInputID"
@@ -47,9 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
             android:text="@string/specify_the_day"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/subtitle_size" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/selectDayInputID"
@@ -78,20 +85,20 @@
         <Button
             android:id="@+id/nextButtonID"
             android:layout_width="157dp"
-            android:layout_height="51dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:backgroundTint="@color/purple_700"
             android:text="@string/next"
             android:textAllCaps="false"
-            app:cornerRadius="20dp" />
+            app:cornerRadius="@dimen/button_corner_radius" />
 
         <Button
             android:id="@+id/addNewIntentButtonID"
             android:layout_width="159dp"
-            android:layout_height="51dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/add_new_intent"
             android:textAllCaps="false"
-            app:cornerRadius="25dp" />
+            app:cornerRadius="@dimen/button_corner_radius" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

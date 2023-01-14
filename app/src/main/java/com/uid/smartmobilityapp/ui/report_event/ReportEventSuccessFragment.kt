@@ -30,12 +30,13 @@ class ReportEventSuccessFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         viewModel = ReportEventViewModel
-        viewModel.clear() // clear viewmodel after saving data in database
 
         _binding = FragmentReportEventSuccessBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        binding.successMessage.text = "Thank you for reporting this ${viewModel.selectedEventType.value} event happening on ${viewModel.selectedLocation.value?.name} and thus saving time for your peers in the traffic! You're a hero!"
 
         setupBackButton()
+        viewModel.clear() // clear viewmodel after saving data in database
 
         return root
     }
