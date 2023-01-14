@@ -59,7 +59,7 @@ class NotificationPublisher : BroadcastReceiver() {
         }
         destinationIntent.putExtra(UserActivity.destinationFragmentIdExtraName, destination)
         // Create an Intent for the activity you want to start
-        val resultIntent = PendingIntent.getActivity(context, 0, destinationIntent, PendingIntent.FLAG_IMMUTABLE);
+        val resultIntent = PendingIntent.getActivity(context, 0, destinationIntent, PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_ONE_SHOT);
 
         builder.setContentIntent(resultIntent)
         return builder.build()
