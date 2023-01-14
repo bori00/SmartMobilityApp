@@ -20,6 +20,10 @@ object LocationsViewModel: ViewModel() {
         value = AddressWithName(DeviceLocationProviderService().getCurrentLocation(), DeviceLocationProviderService().getCurrentLocation().getAddressLine(0))
     }
 
+    val selectedLocation: MutableLiveData<AddressWithName?> = MutableLiveData<AddressWithName?>().apply {
+        value = null
+    }
+
     val editStop:  MutableLiveData<String> = MutableLiveData<String>().apply {
         value = null
     }

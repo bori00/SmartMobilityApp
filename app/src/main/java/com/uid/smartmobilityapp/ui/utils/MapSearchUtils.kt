@@ -117,7 +117,7 @@ class MapSearchUtils {
                 val location = searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(UserActivity.context)
+                    val geocoder = Geocoder(context)
                     try {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
