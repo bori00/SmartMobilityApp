@@ -89,9 +89,9 @@ class MyRegularIntentsFragment : Fragment() {
 
         val dropdown = binding.selectDayAutoCompleteID
         val items = arrayOf(
-            today,
-            tomorrow,
-            dayAfterTomorrow
+            "Wednesday, 18.01.2023",
+            "Thursday, 19.01.2023",
+            "Friday, 20.01.2023"
         )
         val adapter =
             activity?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, items) }
