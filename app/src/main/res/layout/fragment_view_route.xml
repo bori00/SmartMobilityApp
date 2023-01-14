@@ -35,21 +35,24 @@
         android:id="@+id/feedbackButtonID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
         android:text="Feedback"
-        app:cornerRadius="15dp"
+        app:cornerRadius="@dimen/button_corner_radius"
+        app:layout_constraintBaseline_toBaselineOf="@id/homeButtonID"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.922"
-        app:layout_constraintStart_toEndOf="@+id/homeButtonID"
-        app:layout_constraintTop_toBottomOf="@+id/routeImageViewID" />
+        app:layout_constraintStart_toEndOf="@id/homeButtonID"
+        tools:layout_editor_absoluteY="683dp" />
 
     <Button
         android:id="@+id/homeButtonID"
-        android:layout_width="106dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Home"
-        app:cornerRadius="15dp"
+        app:cornerRadius="@dimen/button_corner_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/feedbackButtonID"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/routeImageViewID" />
+        app:layout_constraintVertical_chainStyle="packed" />
 </androidx.constraintlayout.widget.ConstraintLayout>
