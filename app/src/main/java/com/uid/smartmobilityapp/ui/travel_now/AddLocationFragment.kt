@@ -71,9 +71,9 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         _viewModel.newlySelectedLocation.value = _viewModel.selectedLocation.value
 
         val searchRoutesButton: Button = binding.searchRoutesButtonId
+        searchRoutesButton.isEnabled = _viewModel.locations.value!!.size > 1
         searchRoutesButton.setOnClickListener {
             binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
-
         }
 
         val summaryButton: Button = binding.include.editRouteButtonId
@@ -81,18 +81,20 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
         }
 
-        val nextStop: TextView = binding.include.nextStopTextFieldId
-        var text: String = ""
-        for (loc: Location in locations) {
-            if (loc.indexNo.toInt() > 1) {
-                val addition = "➔${loc.name}"
-                text += addition
-            } else {
-                val addition = loc.name
-                text += addition
-            }
-        }
-        nextStop.text = text
+//        val nextStop: TextView = binding.include.nextStopTextFieldId
+//        var text: String = ""
+//        for (loc: Location in locations) {
+//            if (loc.indexNo.toInt() > 1) {
+//                val addition = "➔${loc.name}"
+//                text += addition
+//            } else {
+//                val addition = loc.name
+//                text += addition
+//            }
+//        }
+//        nextStop.text = text
+
+        editYourRoute()
 
         setupMap(savedInstanceState)
         setupEditText()
@@ -105,24 +107,9 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
     private fun saveStopButtonId() {
         val saveStopButton: Button = binding.saveStopButtonId
         saveStopButton.setOnClickListener {
-//            var addressExists = false
             if (_viewModel.newlySelectedLocation.value == null) {
                 Toast.makeText(UserActivity.context, "Please select an Address", Toast.LENGTH_SHORT).show()
             } else{
-//                for (loc: Location in MyLocations.locations) {
-//                    if (loc.address.toString() ==_viewModel.newlySelectedLocation.value!!.toString()) {
-//                        addressExists = true
-//                    }
-//                }
-//                if(addressExists) {
-//                    _viewModel.input_bikes.value?.add(
-//                        InputBike(
-//                            _viewModel.query.value!!,
-//                            nrBikes.text.toString(),
-//                            _viewModel.selectedAddress.value!!
-//                        )
-//                    )
-//                }
                 val newLocation = Location(
                     _viewModel.newlySelectedLocation.value!!.name,
                     (_viewModel.locations.value!!.lastIndex + 2).toString(),
@@ -141,7 +128,8 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                 } else {
                     _viewModel.locations.value?.add(newLocation)
                 }
-
+                val searchRoutesButton: Button = binding.searchRoutesButtonId
+                searchRoutesButton.isEnabled = _viewModel.locations.value!!.size > 1
                 editYourRoute()
             }
         }
@@ -149,7 +137,7 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
 
     fun editYourRoute(){
         val nextStop: TextView = binding.include.nextStopTextFieldId
-        var text: String = "Current location"
+        var text: String = locations[0].name
         for (loc: Location in locations) {
             if (loc.indexNo.toInt() > 1) {
                 val addition = "➔${loc.name}"
