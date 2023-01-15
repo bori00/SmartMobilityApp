@@ -46,6 +46,7 @@ class ViewFinalRouteFragment : Fragment() {
         _root = binding.root
         setupSearchRoutesButton()
         setupHomeButton()
+        setupFeedbackButton()
         setupLocationSummary()
         setupRouteImage()
         return _root
@@ -55,6 +56,13 @@ class ViewFinalRouteFragment : Fragment() {
         val homeButton: Button = binding.homeButtonID
         homeButton.setOnClickListener { view ->
             binding.root.findNavController().navigate(R.id.action_view_route_to_home)
+        }
+    }
+
+    private fun setupFeedbackButton() {
+        val homeButton: Button = binding.feedbackButtonID
+        homeButton.setOnClickListener { view ->
+            binding.root.findNavController().navigate(R.id.action_final_route_to_feedback)
         }
     }
 
