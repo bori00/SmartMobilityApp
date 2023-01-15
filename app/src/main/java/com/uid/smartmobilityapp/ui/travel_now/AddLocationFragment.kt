@@ -81,18 +81,17 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
         }
 
-//        val nextStop: TextView = binding.include.nextStopTextFieldId
-//        var text: String = ""
-//        for (loc: Location in locations) {
-//            if (loc.indexNo.toInt() > 1) {
-//                val addition = "➔${loc.name}"
-//                text += addition
-//            } else {
-//                val addition = loc.name
-//                text += addition
-//            }
-//        }
-//        nextStop.text = text
+        val bundle: Bundle? = arguments
+        var i = -1
+        if (bundle != null) {
+            i = bundle.getInt("position", -1)
+        }
+        val saveStopButton: Button = binding.saveStopButtonId
+        if (i != -1) {
+           saveStopButton.text = "Edit Stop"
+        } else {
+            saveStopButton.text = "Add Stop"
+        }
 
         editYourRoute()
 
