@@ -95,10 +95,17 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         }
         val saveStopButton: Button = binding.saveStopButtonId
         if (i != -1) {
-           saveStopButton.text = "Edit Stop"
+            if(_viewModel.selectedIntent.value === "Flexible Intent") {
+                saveStopButton.text = "Edit"
+            } else {
+                saveStopButton.text = "Edit Stop"
+            }
         } else {
-            saveStopButton.text = "Add Stop"
-        }
+            if(_viewModel.selectedIntent.value === "Flexible Intent") {
+                saveStopButton.text = "Save"
+            } else {
+                saveStopButton.text = "Add Stop"
+            }        }
 
         editYourRoute()
 
