@@ -96,11 +96,14 @@ class RegularIntentSelectLocationFragment : Fragment(), OnMapReadyCallback {
         } else {
             viewModel.destinationNewAddress.value = viewModel.previousLocation.value
         }
-        binding.root.findNavController().navigate(R.id.action_nav_regular_intent_select_location_nav_regular_intent_setup)
+        binding.root.findNavController().popBackStack()
+        // binding.root.findNavController().navigate(R.id.action_nav_regular_intent_select_location_nav_regular_intent_setup)
     }
 
     private fun onSaveLocationChanges() {
-        binding.root.findNavController().navigate(R.id.action_nav_regular_intent_select_location_nav_regular_intent_setup)
+        //parentFragmentManager.popBackStack();
+        binding.root.findNavController().popBackStack()
+        //binding.root.findNavController().navigate(R.id.action_nav_regular_intent_select_location_nav_regular_intent_setup)
     }
 
     private fun onSetLocationToCurrentLocation() {

@@ -82,12 +82,14 @@ class ReportEventSelectLocationFragment : Fragment(), OnMapReadyCallback {
 
     private fun onDiscardLocationChanges() {
         viewModel.newlySelectedLocation.value = viewModel.selectedLocation.value
-        binding.root.findNavController().navigate(R.id.action_nav_report_event_select_location_to_nav_report_event)
+        binding.root.findNavController().popBackStack()
+//        binding.root.findNavController().navigate(R.id.action_nav_report_event_select_location_to_nav_report_event)
     }
 
     private fun onSaveLocationChanges() {
         viewModel.selectedLocation.value = viewModel.newlySelectedLocation.value;
-        binding.root.findNavController().navigate(R.id.action_nav_report_event_select_location_to_nav_report_event)
+        binding.root.findNavController().popBackStack()
+//        binding.root.findNavController().navigate(R.id.action_nav_report_event_select_location_to_nav_report_event)
     }
 
     private fun onSetLocationToCurrentLocation() {

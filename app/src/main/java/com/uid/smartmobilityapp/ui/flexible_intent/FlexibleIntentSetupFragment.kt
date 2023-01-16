@@ -4,6 +4,7 @@ import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
@@ -86,6 +87,7 @@ class FlexibleIntentSetupFragment : Fragment() {
                 updateButtonState()
             }
 
+
         fromHourButton.setOnClickListener {
             popTimePicker(fromHourButton)
         }
@@ -105,8 +107,8 @@ class FlexibleIntentSetupFragment : Fragment() {
 
     fun updateButtonState() {
         selectDestinationButton.isEnabled = editTextIntentName.text.isNotEmpty() &&
-                fromHourButton.text != "00:00" &&
-                toHourButton.text != "00:00" &&
+                fromHourButton.text != "__:__" &&
+                toHourButton.text != "__:__" &&
                 selectedDay != ""
     }
 
@@ -131,6 +133,16 @@ class FlexibleIntentSetupFragment : Fragment() {
             TimePickerDialog(activity,  /*style,*/onTimeSetListener, hour, minute, true)
         timePickerDialog.setTitle("Select Time")
         timePickerDialog.show()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        val items = arrayOf("Today", "Tomorrow", "In two days")
+        val adapter =
+            activity?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, items) }
+        dropdown.setAdapter(adapter)
     }
 
 }

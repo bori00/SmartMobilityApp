@@ -46,6 +46,6 @@ object RegularIntentViewModel : ViewModel() {
 
     val selectedName: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
     val selectedDay: MutableLiveData<String> = MutableLiveData<String>().apply { value = "" }
-    val selectedArrivalTime: MutableLiveData<String> = MutableLiveData<String>().apply { value = "00:00" }
+    val selectedArrivalTime: MutableLiveData<String> = MutableLiveData<String>().apply { value = "__:__" }
 
 }
