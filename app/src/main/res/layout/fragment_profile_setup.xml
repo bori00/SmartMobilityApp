@@ -194,7 +194,8 @@
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="28dp"
                     android:text="Expiry date:"
                     android:textSize="@dimen/text_size"
                     android:textStyle="bold"
@@ -253,8 +254,8 @@
 
                 <EditText
                     android:id="@+id/expiryDayTextID"
-                    android:layout_width="168dp"
-                    android:layout_height="38dp"
+                    android:layout_width="152dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="20dp"
                     android:inputType="none"
                     android:textColor="#000000"
@@ -297,14 +298,14 @@
                     android:id="@+id/selectDateButtonID"
                     android:layout_width="47dp"
                     android:layout_height="44dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="4dp"
                     android:drawableTop="@drawable/ic_baseline_calendar_month_24"
                     android:drawableTint="@color/white"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="@+id/expiryDayTextID"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/expiryDayTextID"
-                    app:layout_constraintTop_toTopOf="@+id/expiryDayTextID" />
+                    app:layout_constraintTop_toTopOf="@+id/expiryDayTextID"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <RadioGroup
                     android:id="@+id/radio_group_3"
