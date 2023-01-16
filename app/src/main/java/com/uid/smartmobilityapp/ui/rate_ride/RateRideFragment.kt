@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentRateRideBinding
 import com.uid.smartmobilityapp.services.RideFinderService
@@ -49,6 +48,14 @@ class RateRideFragment : Fragment() {
         return root
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.selectedRide.value = null
+        setupRideSelection()
+        viewModel.selectedDate.value = null;
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -69,7 +76,7 @@ class RateRideFragment : Fragment() {
     private fun updateRateButtonState() {
         binding.rateRideButton.isEnabled =
             viewModel.selectedRide.value != null &&
-            viewModel.selectedDate.value != null
+                    viewModel.selectedDate.value != null
     }
 
     private fun setupRideSelection() {
@@ -95,6 +102,7 @@ class RateRideFragment : Fragment() {
                 if (!RideFinderService().findRidesOnDate(selectDate).contains(viewModel.selectedRide.value)) {
                     viewModel.selectedRide.value = null;
                     ridesDropDown.clearListSelection()
+                    ridesDropDown.setText("", false);
                 }
                 ridesDropDown.isEnabled = true
                 adapter.notifyDataSetChanged()
@@ -102,6 +110,7 @@ class RateRideFragment : Fragment() {
                 adapter.clear()
                 viewModel.selectedRide.value = null;
                 ridesDropDown.clearListSelection()
+                ridesDropDown.setText("", false);
                 ridesDropDown.isEnabled = false
                 adapter.notifyDataSetChanged()
             }
