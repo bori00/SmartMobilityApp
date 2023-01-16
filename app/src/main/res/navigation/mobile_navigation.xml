@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_final_route_to_locations"
             app:destination="@id/locations" />
+        <action
+            android:id="@+id/action_final_route_to_feedback"
+            app:destination="@id/nav_rate_ride" />
     </fragment>
 
     <fragment
@@ -158,6 +161,9 @@
             app:destination="@id/final_regular_intent_view">
 
         </action>
+        <action
+            android:id="@+id/view_final_route_to_new_regular"
+            app:destination="@id/nav_regular_intent_setup"/>
     </fragment>
 
     <fragment

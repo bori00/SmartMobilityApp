@@ -37,6 +37,7 @@ class MyRegularIntentsFragment : Fragment() {
 
         setDayDropDown()
         setIntentDropDown()
+        setAddNewIntentButtonButton()
         setNextButton()
         return root
     }
@@ -48,6 +49,12 @@ class MyRegularIntentsFragment : Fragment() {
             binding.root.findNavController().navigate(R.id.view_final_route_regular)
         }
     }
+    private fun setAddNewIntentButtonButton() {
+        val nextButton: Button = binding.addNewIntentButtonID
+        nextButton.setOnClickListener {
+            binding.root.findNavController().navigate(R.id.view_final_route_to_new_regular)
+        }
+    }
 
     private fun enableButton() {
         val nextButton: Button = binding.nextButtonID
@@ -57,8 +64,11 @@ class MyRegularIntentsFragment : Fragment() {
     private fun setIntentDropDown() {
         val dropdown = binding.selectIntentAutoCompleteID
         val items = ArrayList(_viewModel.intents.value!!)
+        val itemNames = items.map( {reg ->
+            reg.name
+        });
         val adapter =
-            activity?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, items) }
+            activity?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, itemNames) }
         dropdown.setAdapter(adapter)
 
         val tw: TextWatcher = object : TextWatcher {
@@ -77,21 +87,11 @@ class MyRegularIntentsFragment : Fragment() {
     }
 
     private fun setDayDropDown() {
-        val tomorrowCalendar = Calendar.getInstance()
-        tomorrowCalendar.add(Calendar.DATE, 1)
-
-        val dateFormat = SimpleDateFormat("EEEE, dd.MM.yyyy")
-        val currentDate = Date()
-        val today = dateFormat.format(currentDate)
-        val tomorrow = dateFormat.format(tomorrowCalendar.time)
-        tomorrowCalendar.add(Calendar.DATE, 1)
-        val dayAfterTomorrow = dateFormat.format(tomorrowCalendar.time)
-
         val dropdown = binding.selectDayAutoCompleteID
         val items = arrayOf(
-            today,
-            tomorrow,
-            dayAfterTomorrow
+            "Wednesday, 18.01.2023",
+            "Thursday, 19.01.2023",
+            "Friday, 20.01.2023"
         )
         val adapter =
             activity?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, items) }

@@ -41,9 +41,9 @@ class ViewFinalRegularIntentRoute : Fragment() {
     private fun setFooterCard() {
 
         var innerDetailsTextView: TextView = binding.include.detailsTextViewID
-        innerDetailsTextView.text = "Scheduled at 9:58 from SINTEROM NORD";
+        innerDetailsTextView.text = "Scheduled at 17:05 from SINTEROM NORD";
         var innerIntervalTextView: TextView = binding.include.intervalTextViewID
-        innerIntervalTextView.text = "9:56-10:19";
+        innerIntervalTextView.text = "17:05-17:28";
         var innerDurationTextView: TextView = binding.include.durationTextViewID
         innerDurationTextView.text = "23 min";
         var innerImageView: ImageView = binding.include.rouetImageViewID

@@ -23,12 +23,12 @@
         android:id="@+id/okButtonID"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="160dp"
         android:layout_marginBottom="12dp"
         android:text="Ok"
         app:cornerRadius="@dimen/button_corner_radius"
         app:layout_constraintBottom_toTopOf="@+id/include"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <include
         android:id="@+id/include"
