@@ -62,7 +62,7 @@ class LocationsFragment : Fragment() {
         val searchRoutesButton: Button = binding.searchRoutesButton2Id
         val locations = _viewModel.locations
         if (_viewModel.selectedIntent.value === "Flexible Intent") {
-            searchRoutesButton.text = "Confirm destination"
+            searchRoutesButton.text = "Next"
             searchRoutesButton.setOnClickListener {
                 binding.root.findNavController()
                     .navigate(R.id.action_travel_now_to_flexible_intent_select_transport)

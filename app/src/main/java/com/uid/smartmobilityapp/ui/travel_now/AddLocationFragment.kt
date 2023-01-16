@@ -72,14 +72,18 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
 
         val searchRoutesButton: Button = binding.searchRoutesButtonId
         searchRoutesButton.isEnabled = _viewModel.locations.value!!.size > 1
-        searchRoutesButton.setOnClickListener {
-            binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
+        if(_viewModel.selectedIntent.value === "Flexible Intent") {
+            searchRoutesButton.text = "Next"
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_flexible_intent_select_transport)
+            }
+        } else {
+            searchRoutesButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_vehicle_list)
+            }
         }
 
         val summaryButton: Button = binding.include.editRouteButtonId
-        summaryButton.setOnClickListener {
-            binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
-        }
 
         val bundle: Bundle? = arguments
         var i = -1
@@ -88,9 +92,19 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         }
         val saveStopButton: Button = binding.saveStopButtonId
         if (i != -1) {
-           saveStopButton.text = "Edit Stop"
+            saveStopButton.text = "Edit Stop"
+            summaryButton.setOnClickListener {
+                binding.root.findNavController().popBackStack()
+            }
         } else {
             saveStopButton.text = "Add Stop"
+            summaryButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
+            }
+        }
+
+        if(_viewModel.selectedIntent.value === "Flexible Intent") {
+            saveStopButton.text = "Save"
         }
 
         editYourRoute()
@@ -125,7 +139,15 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
                     _viewModel.locations.value?.set(
                         i, newLocation)
                 } else {
-                    _viewModel.locations.value?.add(newLocation)
+                    if(_viewModel.selectedIntent.value === "Flexible Intent" &&
+                        _viewModel.locations.value!!.size > 1) {
+                        _viewModel.locations.value?.set(
+                            1, newLocation)
+                    }
+                    else {
+                        _viewModel.locations.value?.add(newLocation)
+                    }
+
                 }
                 val searchRoutesButton: Button = binding.searchRoutesButtonId
                 searchRoutesButton.isEnabled = _viewModel.locations.value!!.size > 1
