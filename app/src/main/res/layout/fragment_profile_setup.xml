@@ -254,8 +254,8 @@
 
                 <EditText
                     android:id="@+id/expiryDayTextID"
-                    android:layout_width="152dp"
-                    android:layout_height="40dp"
+                    android:layout_width="135dp"
+                    android:layout_height="41dp"
                     android:layout_marginStart="20dp"
                     android:inputType="none"
                     android:textColor="#000000"
