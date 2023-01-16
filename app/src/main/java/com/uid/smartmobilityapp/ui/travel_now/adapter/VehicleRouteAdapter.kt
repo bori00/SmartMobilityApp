@@ -1,6 +1,7 @@
 package com.uid.smartmobilityapp.ui.travel_now.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.models.VehicleRouteListItem
+import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 
 class VehicleRouteAdapter(
     private val context: Context,

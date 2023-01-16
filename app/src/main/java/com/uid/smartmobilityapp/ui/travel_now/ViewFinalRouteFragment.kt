@@ -12,7 +12,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentViewRouteBinding
@@ -34,19 +33,12 @@ class ViewFinalRouteFragment : Fragment() {
     ): View {
         _viewModel =
             ViewModelProvider(this).get(ViewVehiclesModel::class.java)
-
-        MyLocations.locations = arrayListOf(
-            Location("CurrentLocation",
-                "1",
-                Geocoder(UserActivity.context).getFromLocationName(
-                    "Str. Donath 15, Cluj-Napoca", 1).get(0))
-        )
-
         _binding = FragmentViewRouteBinding.inflate(inflater, container, false)
         _root = binding.root
+        editYourRoute()
+
         setupSearchRoutesButton()
         setupHomeButton()
-        setupLocationSummary()
         setupRouteImage()
         return _root
     }
@@ -58,9 +50,9 @@ class ViewFinalRouteFragment : Fragment() {
         }
     }
 
-    private fun setupLocationSummary() {
+    fun editYourRoute(){
         val nextStop: TextView = binding.include.nextStopTextFieldId
-        var text: String = "Current location"
+        var text: String = MyLocations.locations[0].name
         for (loc: Location in MyLocations.locations) {
             if (loc.indexNo.toInt() > 1) {
                 val addition = "➔${loc.name}"
@@ -69,6 +61,7 @@ class ViewFinalRouteFragment : Fragment() {
         }
         nextStop.text = text
     }
+
 
     private fun setupSearchRoutesButton() {
         val searchRoutesButton: Button = binding.include.editRouteButtonId

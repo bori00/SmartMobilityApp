@@ -176,9 +176,19 @@ class RegularIntentSetupFragment : Fragment() {
 
     fun updateButtonState() {
         continueButton.isEnabled = editTextIntentName.text.isNotEmpty() &&
-                arrivalTimeButton.text != "00:00" &&
+                arrivalTimeButton.text != "__:__" &&
                 viewModel.selectedDay.value != "" &&
                 viewModel.startingPoint.value?.address != null &&
                 viewModel.destination.value?.address != null
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+
+        val items = arrayOf("Every day", "Work days", "On weekends")
+        val adapter =
+            activity?.let { ArrayAdapter(it, android.R.layout.simple_spinner_dropdown_item, items) }
+        dropdown.setAdapter(adapter)
     }
 }

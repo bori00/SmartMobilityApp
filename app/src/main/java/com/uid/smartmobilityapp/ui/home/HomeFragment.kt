@@ -103,7 +103,7 @@ class HomeFragment : Fragment() {
     private fun clearRegularIntentViewModel() {
         viewModelRegularIntent.selectedName.value = ""
         viewModelRegularIntent.selectedDay.value = ""
-        viewModelRegularIntent.selectedArrivalTime.value = "00:00"
+        viewModelRegularIntent.selectedArrivalTime.value = "__:__"
         viewModelRegularIntent.startingPointNewAddress.value = null
         viewModelRegularIntent.destinationNewAddress.value = null
         viewModelRegularIntent.previousLocation.value = null

@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.uid.smartmobilityapp.MainActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.ui.travel_now.adapter.VehicleAdapter
@@ -52,7 +51,7 @@ class ViewVehiclesFragment : Fragment() {
 
     private fun setupLocationSummary() {
         val nextStop: TextView = binding.include.nextStopTextFieldId
-        var text: String = "Current location"
+        var text: String = MyLocations.locations[0].name
         for (loc: Location in MyLocations.locations) {
             if (loc.indexNo.toInt() > 1) {
                 val addition = "➔${loc.name}"
