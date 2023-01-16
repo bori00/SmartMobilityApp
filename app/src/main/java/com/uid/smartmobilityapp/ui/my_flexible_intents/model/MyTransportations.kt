@@ -8,15 +8,15 @@ object MyTransportations {
             R.drawable.bus1,
             "Bus",
             "10 min",
-            "13:10-13:20",
-            "departs at 13:10 from Observator Nord",
+            "15:10-15:20",
+            "departs at 15:10 from Observator Nord",
         ),
         Transportation(
             R.drawable.bus2,
             "Bus",
             "10 min",
-            "13:20-13:30",
-            "departs at 13:20 from Maresal C-tin Prezan",
+            "15:20-15:30",
+            "departs at 15:20 from Maresal C-tin Prezan",
         )
     )
 
@@ -25,8 +25,8 @@ object MyTransportations {
             R.drawable.ic_baseline_directions_car_24,
             "Car",
             "9 min",
-            "12:20-12:29",
-            "depart at 12:20 from Observator",
+            "14:20-14:29",
+            "depart at 14:20 from Observator",
         )
     )
 }

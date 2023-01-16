@@ -44,7 +44,7 @@ class GetOptimalRouteFragment : Fragment() {
         val sb: SeekBar = binding.seekBar
         val progressTV: TextView = binding.progressSeekBarId
 
-        progressTV.text = "12:20"
+        progressTV.text = "14:20"
         sb.progress = 20
 
         setupDetails()
@@ -71,7 +71,7 @@ class GetOptimalRouteFragment : Fragment() {
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 val builder_seek = StringBuilder()
                 builder_seek
-                    .append("13")
+                    .append("15")
                     .append(":")
                     .append("10")
                 progressTV.text = builder_seek.toString()
@@ -111,7 +111,7 @@ class GetOptimalRouteFragment : Fragment() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // TODO Auto-generated method stub
                 val builder_seek = StringBuilder()
-                val h: Int = 12 + progress / 60
+                val h: Int = 14 + progress / 60
                 val m: Int = progress % 60
                 builder_seek.append(h.toString()).append(":").append(m.toString())
                 progressTV.text = builder_seek.toString()
@@ -140,7 +140,7 @@ class GetOptimalRouteFragment : Fragment() {
         val sb: SeekBar = binding.seekBar
         val progressTV: TextView = binding.progressSeekBarId
 
-        progressTV.text = "12:20"
+        progressTV.text = "14:20"
         sb.progress = 20
 
         val titleTV = _binding!!.optimalRouteTitleTVId
