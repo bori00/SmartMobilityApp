@@ -5,76 +5,124 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/noBikesTF"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bookmarkNameTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:autofillHints="name"
-        android:backgroundTint="@color/purple_100"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </EditText>
+        <EditText
+            android:id="@+id/noBikesTF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:backgroundTint="@color/purple_100"
+            android:ems="10"
+            android:hint="No. Bikes"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addBookmarkFragmentTitleTextView" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <SearchView
-        android:id="@+id/getLocationSearchView"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bookmarkAddressTextInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:queryHint="Address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noBikesTF">
-
-    </SearchView>
-
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="411dp"-->
-<!--        android:layout_height="510dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/noBikesTF">-->
-<!--                <include-->
-<!--                    android:id="@+id/include2"-->
-<!--                    layout="@layout/fragment_select_location"-->
-<!--                    >-->
-<!--                </include> -->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No. bikes"
-        android:textColor="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/bookmarkNameTextInputLayout">
+
+        <SearchView
+            android:id="@+id/getLocationSearchView"
+            android:queryHint="Address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/purple_100"
+            android:backgroundTint="@color/purple_100" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="488dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getLocationSearchView" />
+        app:layout_constraintTop_toBottomOf="@+id/bookmarkAddressTextInputLayout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/mapView"
+        android:src="@drawable/ic_baseline_done_24"
+        app:iconifiedByDefault="false"
+        app:backgroundTint="@color/purple_700"
+        app:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mapView"
-        app:layout_constraintVertical_bias="0.974"
-        app:srcCompat="@drawable/ic_baseline_done_24" />
+        android:contentDescription="Approve" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/noBikesTF"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="57dp"-->
+<!--        android:autofillHints="name"-->
+<!--        android:backgroundTint="@color/purple_100"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textPersonName"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--    </EditText>-->
+
+<!--    <SearchView-->
+<!--        android:id="@+id/getLocationSearchView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:queryHint="Address"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/noBikesTF">-->
+
+<!--    </SearchView>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView8"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="No. bikes"-->
+<!--        android:textColor="@color/purple_700"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <com.google.android.gms.maps.MapView-->
+<!--        android:id="@+id/mapView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="488dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/getLocationSearchView" />-->
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/floatingActionButton2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:clickable="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/mapView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/mapView"-->
+<!--        app:layout_constraintVertical_bias="0.974"-->
+<!--        app:srcCompat="@drawable/ic_baseline_done_24" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

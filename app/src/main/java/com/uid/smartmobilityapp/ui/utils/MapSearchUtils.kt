@@ -107,7 +107,8 @@ class MapSearchUtils {
     }
 
     fun setupMapSearchWithNoBookmarkSuggestions(searchView : SearchView,
-                                              onAddressSelected : Consumer<AddressWithName>) {
+                                              onAddressSelected : Consumer<AddressWithName>,
+                                                context: Context) {
         // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
         searchView.onActionViewExpanded()
 
@@ -116,7 +117,7 @@ class MapSearchUtils {
                 val location = searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(UserActivity.context)
+                    val geocoder = Geocoder(context)
                     try {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {

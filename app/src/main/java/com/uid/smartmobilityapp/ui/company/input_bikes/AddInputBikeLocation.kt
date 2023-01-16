@@ -25,10 +25,12 @@ import com.uid.smartmobilityapp.CompanyActivity
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentAddInputBikesBinding
+import com.uid.smartmobilityapp.models.AddressWithName
 import com.uid.smartmobilityapp.ui.company.input_bikes.model.InputBike
 import com.uid.smartmobilityapp.ui.company.input_bikes.model.MyInputBikes
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
+import com.uid.smartmobilityapp.ui.utils.MapSearchUtils
 import java.io.IOException
 
 class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
@@ -69,12 +71,9 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
                 var addressExists = false
                 if(_viewModel.query.value!=null){
                     for (loc: InputBike in MyInputBikes.input_bikes) {
-                        Log.d("ADDR",loc.address.toString())
-                        Log.d("COMP",_viewModel.selectedAddress.value!!.toString())
                         if (loc.address.toString() ==_viewModel.selectedAddress.value!!.toString()) {
                             addressExists = true
                         }
-                        Log.d("BUG",addressExists.toString())
                     }
                     if(!addressExists){
                         _viewModel.input_bikes.value?.add(
@@ -130,56 +129,13 @@ class AddInputBikeLocation : Fragment(), OnMapReadyCallback {
     }
 
     private fun setupMapSearch() {
-        // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
-        _searchView = binding.getLocationSearchView
-
-        _searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                val location = _searchView.query.toString()
-                var addressList: List<Address>? = null
-                if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(CompanyActivity.context)
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1)
-                        if (!addressList.isEmpty()) {
-                            _viewModel.selectedAddress.value = addressList[0]
-                            _viewModel.query.value = query
-//                            _viewModel.input_bikes.value?.add(
-//                                InputBike(
-//                                    query,
-//                                    "",
-//                                    _viewModel.selectedAddress.value!!
-//                                )
-//                            )
-                        } else {
-                            Toast.makeText(
-                                CompanyActivity.context,
-                                "This location couldn't be found. Please make your query more specific",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    } catch (e: IOException) {
-                        Toast.makeText(
-                            CompanyActivity.context,
-                            "This location couldn't be found. Please make your query more specific",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        e.printStackTrace()
-                    }
-                } else {
-                    Toast.makeText(
-                        CompanyActivity.context,
-                        "Please select an address",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-        })
+        MapSearchUtils().setupMapSearchWithNoBookmarkSuggestions(binding.getLocationSearchView,
+            {addressWithName : AddressWithName ->
+                _viewModel.selectedAddress.value = addressWithName.address
+                _viewModel.query.value = addressWithName.name
+            },
+            CompanyActivity.context
+        )
     }
 
     private fun setupViewModel() {
