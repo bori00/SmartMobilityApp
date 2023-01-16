@@ -51,7 +51,7 @@ class MapSearchUtils {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             // Address successfully selected
-                            val selectedAddressWithName = AddressWithName(addressList[0], addressList[0].getAddressLine(0))
+                            val selectedAddressWithName = AddressWithName(addressList[0], query)
                             onAddressSelected.accept(selectedAddressWithName)
                         } else {
                             Toast.makeText(UserActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()
@@ -107,7 +107,8 @@ class MapSearchUtils {
     }
 
     fun setupMapSearchWithNoBookmarkSuggestions(searchView : SearchView,
-                                              onAddressSelected : Consumer<AddressWithName>) {
+                                              onAddressSelected : Consumer<AddressWithName>,
+                                                context: Context) {
         // inspired by https://www.geeksforgeeks.org/how-to-add-searchview-in-google-maps-in-android/
         searchView.onActionViewExpanded()
 
@@ -116,12 +117,12 @@ class MapSearchUtils {
                 val location = searchView.query.toString()
                 var addressList: List<Address>? = null
                 if (location.isNotEmpty()) {
-                    val geocoder = Geocoder(UserActivity.context)
+                    val geocoder = Geocoder(context)
                     try {
                         addressList = geocoder.getFromLocationName(location, 1)
                         if (!addressList.isEmpty()) {
                             // Address successfully selected
-                            val selectedAddressWithName = AddressWithName(addressList[0], addressList[0].getAddressLine(0))
+                            val selectedAddressWithName = AddressWithName(addressList[0], query)
                             onAddressSelected.accept(selectedAddressWithName)
                         } else {
                             Toast.makeText(UserActivity.context, "This location couldn't be found. Please make your query more specific", Toast.LENGTH_SHORT).show()

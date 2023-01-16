@@ -83,6 +83,7 @@
                 android:layout_toEndOf="@+id/in_date1"
                 android:layout_toRightOf="@+id/in_date1"
                 android:text="Select"
+                android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="@id/in_date1"
                 app:layout_constraintTop_toTopOf="@id/in_date1"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -120,6 +121,7 @@
                 android:layout_toEndOf="@+id/in_date2"
                 android:layout_toRightOf="@+id/in_date2"
                 android:text="@string/select"
+                android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="@id/in_date2"
                 app:layout_constraintTop_toTopOf="@id/in_date2"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -176,6 +178,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="16dp"
                 android:text="@string/report_action"
+                android:textAllCaps="false"
                 app:cornerRadius="@dimen/button_corner_radius"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
