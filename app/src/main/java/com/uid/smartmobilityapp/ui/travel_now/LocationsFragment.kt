@@ -33,7 +33,7 @@ class LocationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d("MainActivity", "Open Bookmarks Fragment")
+        Log.d("UserActivity", "Open Locations Fragment")
         _viewModel = LocationsViewModel
 
         _binding = FragmentLocationsBinding.inflate(inflater, container, false)

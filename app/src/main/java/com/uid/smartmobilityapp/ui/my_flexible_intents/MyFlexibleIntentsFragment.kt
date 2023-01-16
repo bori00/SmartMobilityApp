@@ -34,21 +34,11 @@ class MyFlexibleIntentsFragment : Fragment() {
         _binding = FragmentMyFlexibleIntentsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val spinner: Spinner = binding.spinner
         val futureIntentsNames= ArrayList<String>()
-
-//        for (loc: FlexibleIntention in MyFlexibleIntentions.flexibleIntents) {
-//            futureIntentsNames.add(loc.name)
-//        }
 
         for (loc: FlexibleIntent in FlexibleIntentViewModel.flexibleIntents.value!!) {
             futureIntentsNames.add(loc.name)
         }
-
-//        val arrayAdapter = ArrayAdapter(MainActivity.context, R.layout.simple_spinner_item, futureIntentsNames)
-//        spinner.adapter = arrayAdapter
-//
-//        val text: String = spinner.selectedItem.toString()
 
         val nextButton: Button = binding.nextButtonId
         nextButton.setOnClickListener {
