@@ -37,6 +37,10 @@ class LocationAdapter(
             }
             holder.deleteButtonRef.setOnClickListener {
                 dataSource.removeAt(position)
+                val len = dataSource.size-1
+                for(i in 1..len){
+                    dataSource[i].indexNo = (i+1).toString()
+            }
                 it.findNavController().navigate(R.id.action_locations_to_locations)
             }
 

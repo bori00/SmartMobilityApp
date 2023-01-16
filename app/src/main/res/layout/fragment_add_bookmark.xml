@@ -10,25 +10,13 @@
         android:id="@+id/addBookmarkFragmentTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/fragment_title_top_margin"
         android:text="@string/task_add_bookmark"
         android:textSize="@dimen/fragment_title_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookmarkIcon" />
-
-    <ImageView
-        android:id="@+id/bookmarkIcon"
-        android:layout_width="@dimen/fragment_icon_size"
-        android:layout_height="@dimen/fragment_icon_size"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_menu_bookmarks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/cardview_dark_background"
-        android:contentDescription="Icon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/bookmarkNameTextInputLayout"

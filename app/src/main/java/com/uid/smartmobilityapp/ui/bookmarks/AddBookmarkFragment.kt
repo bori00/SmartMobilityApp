@@ -79,16 +79,16 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
 
     private fun saveBookmark() {
         if (_viewModel.selectedAddress.value == null) {
-            Toast.makeText(UserActivity.context, "Please select an Address", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Please select an Address", Toast.LENGTH_SHORT).show()
             return
         }
         val selectedName = binding.bookmarkNameEditText.text.toString()
         if (selectedName.isEmpty()) {
-            Toast.makeText(UserActivity.context, "Please select a name for the Bookmark", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Please select a name for the Bookmark", Toast.LENGTH_SHORT).show()
             return
         }
         if (_viewModel.bookmarks.value?.find { b -> b.name.equals(selectedName)} != null) {
-            Toast.makeText(UserActivity.context, "You already have a name with this bookmark. Please select another name!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "You already have a name with this bookmark. Please select another name!", Toast.LENGTH_SHORT).show()
             return
         }
         _viewModel.bookmarks.value?.add(Bookmark(
@@ -115,7 +115,8 @@ class AddBookmarkFragment : Fragment(), OnMapReadyCallback {
 
     private fun setupMapSearch() {
         MapSearchUtils().setupMapSearchWithNoBookmarkSuggestions(binding.bookmarkAddressSearchView,
-            {addressWithName : AddressWithName -> _viewModel.selectedAddress.value = addressWithName.address}
+            {addressWithName : AddressWithName -> _viewModel.selectedAddress.value = addressWithName.address},
+            UserActivity.context
         )
     }
 
