@@ -84,9 +84,6 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
         }
 
         val summaryButton: Button = binding.include.editRouteButtonId
-        summaryButton.setOnClickListener {
-            binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
-        }
 
         val bundle: Bundle? = arguments
         var i = -1
@@ -100,12 +97,19 @@ class AddLocationFragment : Fragment(), OnMapReadyCallback {
             } else {
                 saveStopButton.text = "Edit Stop"
             }
+            summaryButton.setOnClickListener {
+                binding.root.findNavController().popBackStack()
+            }
         } else {
             if(_viewModel.selectedIntent.value === "Flexible Intent") {
                 saveStopButton.text = "Save"
             } else {
                 saveStopButton.text = "Add Stop"
-            }        }
+            }
+            summaryButton.setOnClickListener {
+                binding.root.findNavController().navigate(R.id.action_travel_now_to_locations)
+            }
+        }
 
         editYourRoute()
 
