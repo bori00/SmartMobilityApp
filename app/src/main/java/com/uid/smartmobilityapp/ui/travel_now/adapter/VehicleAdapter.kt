@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uid.smartmobilityapp.R
 import com.uid.smartmobilityapp.ui.travel_now.model.VehicleListItem
 import com.uid.smartmobilityapp.models.VehicleRouteListItem
+import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
 
 class VehicleAdapter(
     private val context: Context,
@@ -47,7 +48,7 @@ class VehicleAdapter(
 
 
     inner class VehicleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        private val vehicleRouteList: ArrayList<VehicleRouteListItem> = arrayListOf(
+        private var vehicleRouteList: ArrayList<VehicleRouteListItem> = arrayListOf(
             VehicleRouteListItem(
                 R.drawable.route,
                 "9:56-10:19",
@@ -69,6 +70,17 @@ class VehicleAdapter(
         private lateinit var cheapRef: ImageView
 
         init {
+            if(MyLocations.locations.size > 2) {
+                this.vehicleRouteList = arrayListOf(
+                    VehicleRouteListItem(
+                        R.drawable.multi_stop,
+                        "9:56-10:24",
+                        "Scheduled at 9:58 from SINTEROM NORD",
+                        "28 min"
+                    )
+                )
+                innerAdapter = VehicleRouteAdapter(context, vehicleRouteList)
+            }
             innerRecyclerView.adapter = innerAdapter
             innerRecyclerView.layoutManager = LinearLayoutManager(itemView.getContext())
             timeStampRef = view.findViewById(R.id.hourTextAreaRouteID)

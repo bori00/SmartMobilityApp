@@ -1,8 +1,6 @@
 package com.uid.smartmobilityapp.ui.travel_now
 
-import android.location.Geocoder
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.uid.smartmobilityapp.R
-import com.uid.smartmobilityapp.UserActivity
 import com.uid.smartmobilityapp.databinding.FragmentViewRouteBinding
 import com.uid.smartmobilityapp.ui.travel_now.model.Location
 import com.uid.smartmobilityapp.ui.travel_now.model.MyLocations
@@ -72,7 +69,11 @@ class ViewFinalRouteFragment : Fragment() {
 
     private fun setupRouteImage() {
         val routeImage: ImageView = binding.routeImageViewID
-        routeImage.setImageResource(R.drawable.route_final)
+        if(MyLocations.locations.size > 2) {
+            routeImage.setImageResource(R.drawable.multi_stop_final)
+        } else {
+            routeImage.setImageResource(R.drawable.route_final)
+        }
     }
 
     override fun onDestroyView() {

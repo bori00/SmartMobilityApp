@@ -30,9 +30,9 @@
 
                 <ImageView
                     android:id="@+id/rouetImageViewID"
-                    android:layout_width="105dp"
-                    android:layout_height="39dp"
-                    android:layout_marginStart="24dp"
+                    android:layout_width="129dp"
+                    android:layout_height="41dp"
+                    android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
