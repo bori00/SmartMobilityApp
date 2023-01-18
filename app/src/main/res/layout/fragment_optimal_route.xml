@@ -106,7 +106,7 @@
             android:id="@+id/seekBar"
             android:progress="20"
             android:max="120"
-            android:layout_width="365dp"
+            android:layout_width="match_parent"
             android:layout_height="28dp"
             android:backgroundTint="@color/grey"
             android:progressDrawable="@drawable/seek_bar"
@@ -124,6 +124,7 @@
             android:layout_width="373dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/optimalRouteTitleTVId" />
 
@@ -143,11 +144,10 @@
             android:id="@+id/progressTVID2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="315dp"
             android:text="16:00"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.304"
+            app:layout_constraintHorizontal_bias="0.934"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar"
             app:layout_constraintVertical_bias="0.0" />
