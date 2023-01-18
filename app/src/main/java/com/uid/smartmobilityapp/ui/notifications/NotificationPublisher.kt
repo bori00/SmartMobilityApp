@@ -31,7 +31,9 @@ class NotificationPublisher : BroadcastReceiver() {
             context,
             intent.getStringExtra(EXTRA_TITLE),
             intent.getStringExtra(EXTRA_CONTENT),
-            intent.getStringExtra(EXTRA_CHANNEL_ID))
+            intent.getStringExtra(EXTRA_CHANNEL_ID),
+            intent.getIntExtra(EXTRA_NOTIFICATION_ID, 0)
+        )
 
         val id = intent.getIntExtra(EXTRA_NOTIFICATION_ID, 0)
 
@@ -39,7 +41,7 @@ class NotificationPublisher : BroadcastReceiver() {
         manager.notify(id, notification)
     }
 
-    private fun getNotification(context: Context, title: String?, content: String?, channelId: String?): Notification {
+    private fun getNotification(context: Context, title: String?, content: String?, channelId: String?, notificationId: Int): Notification {
         Log.d("NotificationPublisher", "ChannelId: $channelId title: $title content: $content")
         val builder: NotificationCompat.Builder =
             NotificationCompat.Builder(context, channelId!!)
@@ -58,8 +60,9 @@ class NotificationPublisher : BroadcastReceiver() {
             destination = R.id.nav_flexible_intents
         }
         destinationIntent.putExtra(UserActivity.destinationFragmentIdExtraName, destination)
+        Log.d("NotificationPublisher", "Set initial fragment for " + title + ": "  + destination)
         // Create an Intent for the activity you want to start
-        val resultIntent = PendingIntent.getActivity(context, 0, destinationIntent, PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_ONE_SHOT);
+        val resultIntent = PendingIntent.getActivity(context, notificationId, destinationIntent, PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_ONE_SHOT);
 
         builder.setContentIntent(resultIntent)
         return builder.build()
