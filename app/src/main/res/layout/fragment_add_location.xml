@@ -75,7 +75,7 @@
 
     <Button
         android:id="@+id/searchRoutesButtonId"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="316dp"
         android:gravity="center"
@@ -91,7 +91,7 @@
 
     <Button
         android:id="@+id/saveStopButtonId"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
         android:text="Add Stop"
