@@ -7,230 +7,275 @@
     android:background="@color/background_color"
     tools:context=".SigninActivity">
 
-
-    <TextView
-        android:id="@+id/username_id"
+    <ScrollView
+        android:id="@+id/rateRideScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:text="Username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/username_input_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/username_id"
-        app:layout_constraintStart_toStartOf="@+id/username_id"
-        app:layout_constraintTop_toBottomOf="@+id/username_id"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/password_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/username_error_id" />
-
-    <EditText
-        android:id="@+id/password_input_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_id"
-        app:layout_constraintTop_toBottomOf="@+id/password_id" />
-
-    <TextView
-        android:id="@+id/username_error_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/username_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/username_input_id" />
-
-    <TextView
-        android:id="@+id/password_error_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/password_input_id"
-        app:layout_constraintStart_toStartOf="@+id/password_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/password_input_id" />
-
-    <TextView
-        android:id="@+id/email_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/password_error_id" />
-
-    <EditText
-        android:id="@+id/email_input_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_id"
-        app:layout_constraintTop_toBottomOf="@+id/email_id" />
-
-    <TextView
-        android:id="@+id/email_error_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/password_input_id"
-        app:layout_constraintStart_toStartOf="@+id/password_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/email_input_id" />
-
-    <TextView
-        android:id="@+id/contact_person_name_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Contact person name"
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/email_error_id" />
-
-    <EditText
-        android:id="@+id/contact_person_name_input_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Contact person name"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_id"
-        app:layout_constraintTop_toBottomOf="@+id/contact_person_name_id" />
-
-    <TextView
-        android:id="@+id/contact_person_name_error_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/password_input_id"
-        app:layout_constraintStart_toStartOf="@+id/password_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/contact_person_name_input_id" />
-
-    <TextView
-        android:id="@+id/contact_person_phone_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Contact person phone number"
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/contact_person_name_error_id" />
-
-    <EditText
-        android:id="@+id/contact_person_phone_input_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Contact person phone number"
-        android:inputType="phone"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_id"
-        app:layout_constraintTop_toBottomOf="@+id/contact_person_phone_id" />
-
-    <TextView
-        android:id="@+id/contact_person_phone_error_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/password_input_id"
-        app:layout_constraintStart_toStartOf="@+id/password_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/contact_person_phone_input_id" />
-
-
-    <TextView
-        android:id="@+id/company_website_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Company website"
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/contact_person_phone_error_id" />
-
-    <EditText
-        android:id="@+id/company_website_input_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Company website"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/username_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_id"
-        app:layout_constraintTop_toBottomOf="@+id/company_website_id" />
-
-    <TextView
-        android:id="@+id/company_website_error_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@color/red"
-        app:layout_constraintEnd_toEndOf="@+id/password_input_id"
-        app:layout_constraintStart_toStartOf="@+id/password_input_id"
-        app:layout_constraintTop_toBottomOf="@+id/company_website_input_id" />
-
-
-    <TextView
-        android:id="@+id/signinMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/signupButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:onClick="signupClick"
-        android:text="Signup"
-        android:textAllCaps="false"
-        app:cornerRadius="@dimen/button_corner_radius"
-        app:layout_constraintBottom_toTopOf="@+id/signinMessage"
-        app:layout_constraintEnd_toEndOf="@+id/password_input_id"
-        app:layout_constraintStart_toStartOf="@+id/username_id" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/username_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:text="Username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/username_input_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/username_id"
+                app:layout_constraintStart_toStartOf="@+id/username_id"
+                app:layout_constraintTop_toBottomOf="@+id/username_id"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/password_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/username_error_id" />
+
+            <EditText
+                android:id="@+id/password_input_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_id"
+                app:layout_constraintTop_toBottomOf="@+id/password_id" />
+
+            <TextView
+                android:id="@+id/password_id2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Password Again"
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/password_error_id" />
+
+            <EditText
+                android:id="@+id/password_input_id2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password Again..."
+                android:inputType="textPassword"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_id"
+                app:layout_constraintTop_toBottomOf="@+id/password_id2" />
+
+            <TextView
+                android:id="@+id/username_error_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/username_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/username_input_id" />
+
+            <TextView
+                android:id="@+id/password_error_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="@+id/password_input_id"
+                app:layout_constraintStart_toStartOf="@+id/password_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/password_input_id" />
+
+            <TextView
+                android:id="@+id/password_error_id2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="@+id/password_input_id2"
+                app:layout_constraintStart_toStartOf="@+id/password_input_id2"
+                app:layout_constraintTop_toBottomOf="@+id/password_input_id2" />
+
+            <TextView
+                android:id="@+id/email_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/password_error_id2" />
+
+            <EditText
+                android:id="@+id/email_input_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_id"
+                app:layout_constraintTop_toBottomOf="@+id/email_id" />
+
+            <TextView
+                android:id="@+id/email_error_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="@+id/password_input_id2"
+                app:layout_constraintStart_toStartOf="@+id/password_input_id2"
+                app:layout_constraintTop_toBottomOf="@+id/email_input_id" />
+
+            <TextView
+                android:id="@+id/contact_person_name_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Contact person name"
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/email_error_id" />
+
+            <EditText
+                android:id="@+id/contact_person_name_input_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Contact person name"
+                android:inputType="text"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_id"
+                app:layout_constraintTop_toBottomOf="@+id/contact_person_name_id" />
+
+            <TextView
+                android:id="@+id/contact_person_name_error_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="@+id/password_input_id"
+                app:layout_constraintStart_toStartOf="@+id/password_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/contact_person_name_input_id" />
+
+            <TextView
+                android:id="@+id/contact_person_phone_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Contact person phone number"
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/contact_person_name_error_id" />
+
+            <EditText
+                android:id="@+id/contact_person_phone_input_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Contact person phone number"
+                android:inputType="phone"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_id"
+                app:layout_constraintTop_toBottomOf="@+id/contact_person_phone_id" />
+
+            <TextView
+                android:id="@+id/contact_person_phone_error_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="@+id/password_input_id"
+                app:layout_constraintStart_toStartOf="@+id/password_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/contact_person_phone_input_id" />
+
+
+            <TextView
+                android:id="@+id/company_website_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Company website"
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/contact_person_phone_error_id" />
+
+            <EditText
+                android:id="@+id/company_website_input_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Company website"
+                android:inputType="text"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/username_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_id"
+                app:layout_constraintTop_toBottomOf="@+id/company_website_id" />
+
+            <TextView
+                android:id="@+id/company_website_error_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/red"
+                app:layout_constraintEnd_toEndOf="@+id/password_input_id"
+                app:layout_constraintStart_toStartOf="@+id/password_input_id"
+                app:layout_constraintTop_toBottomOf="@+id/company_website_input_id" />
+
+
+            <TextView
+                android:id="@+id/signinMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/signupButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="signupClick"
+                android:text="Signup"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/button_corner_radius"
+                app:layout_constraintEnd_toEndOf="@+id/password_input_id"
+                app:layout_constraintStart_toStartOf="@+id/username_id"
+                app:layout_constraintTop_toBottomOf="@id/company_website_input_id" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

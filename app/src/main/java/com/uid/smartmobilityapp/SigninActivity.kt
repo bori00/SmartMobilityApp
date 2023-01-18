@@ -33,7 +33,9 @@ class SigninActivity : AppCompatActivity() {
         val usernameInput: TextView = findViewById<TextView>( R.id.username_input_id )
         val usernameError: TextView = findViewById<TextView>( R.id.username_error_id )
         val passwordInput: TextView = findViewById<TextView>( R.id.password_input_id )
+        val passwordInput2: TextView = findViewById<TextView>( R.id.password_input_id2 )
         val passwordError: TextView = findViewById<TextView>( R.id.password_error_id )
+        val passwordError2: TextView = findViewById<TextView>( R.id.password_error_id2 )
         val emailInput: TextView = findViewById<TextView>( R.id.email_input_id )
         val emailError: TextView = findViewById<TextView>( R.id.email_error_id )
         val personNameInput: TextView = findViewById<TextView>( R.id.contact_person_name_input_id )
@@ -51,9 +53,9 @@ class SigninActivity : AppCompatActivity() {
         val isPersonNameValid: Boolean = validateLengthAndEmpty(personNameInput, personNameError)
         val isPersonPhoneValid: Boolean = validateLengthAndEmpty(personPhoneInput, personPhoneError)&& isPhoneValid(personPhoneInput, personPhoneError)
         val isWebsiteValid: Boolean = validateLengthAndEmpty(websiteInput, websiteError)
+        val isPassword2Valid : Boolean = validatePassword2(passwordInput, passwordInput2, passwordError2)
 
-
-        if(isUsernameValid and isPasswordValid and isEmailValid and isPersonNameValid and isPersonPhoneValid and isWebsiteValid) {
+        if(isUsernameValid and isPasswordValid and isEmailValid and isPersonNameValid and isPersonPhoneValid and isWebsiteValid and isPassword2Valid) {
             signInMessage.text = "Signup successful"
             viewModel.companies.value?.add(
                 CompanyDetails(
@@ -71,6 +73,15 @@ class SigninActivity : AppCompatActivity() {
         } else {
             signInMessage.text = ""
         }
+    }
+
+    private fun validatePassword2(input1: TextView, input2: TextView, errorMessage: TextView): Boolean {
+        if (input1.text.toString().equals(input2.text.toString())) {
+            errorMessage.text = ""
+            return true
+        }
+        errorMessage.text = "The passwords do not match."
+        return false
     }
 
     private fun validateUsername(input: TextView, errorMessage: TextView): Boolean {
